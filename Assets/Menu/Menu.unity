@@ -3799,16 +3799,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Characters:
-  - {fileID: 5984037124581977271, guid: 8fabed2d055398f4a8d3b8ea245a41fb, type: 3}
-  - {fileID: 5984037124581977271, guid: 6a3e63e5d4a815f45bfa864897d04be6, type: 3}
-  - {fileID: 5984037124581977271, guid: 3a1325c8e0e04e34ca293b89985daa4b, type: 3}
-  - {fileID: 5984037124581977271, guid: b75b48d1ea099ce438778a9e28397650, type: 3}
+  - {fileID: 9125513441467425218, guid: 8fabed2d055398f4a8d3b8ea245a41fb, type: 3}
+  - {fileID: 9125513441467425218, guid: ea6ed02f0ecd03e4da584faf67769913, type: 3}
+  - {fileID: 9125513441467425218, guid: fa9fb3da5a3fb6b4cafb4138ff106b0b, type: 3}
+  - {fileID: 9125513441467425218, guid: 000c205eaccece143b40759bb2b614e8, type: 3}
   - {fileID: 0}
-  levels:
-  - m_Handle: 0
-  - m_Handle: 0
-  - m_Handle: 0
-  - m_Handle: 0
   mapSelected: 0
   player1Char: 0
   player2Char: 0

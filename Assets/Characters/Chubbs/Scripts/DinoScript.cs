@@ -22,8 +22,8 @@ public float moveSpeed = 3;
 //Force of jumps
 public float jumpForce = 6;
 //How much the dino moves when hit
-public float knockbackForceX = 3;
-public float knockbackForceY = 1;
+public float knockbackForceX = 6.0f;
+public float knockbackForceY = 6.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
 //Damage done by attack one
@@ -33,14 +33,14 @@ public float attackDamage = 20.0f;
 //Collider used for map navigation
 BoxCollider2D navCollider;
 //casual mention of attack collider
-CircleCollider2D attackCollider;
+//CircleCollider2D attackCollider;
 
 //Check if dino is on ground
 public bool grounded = false;
 //Dino's rigidbody
 Rigidbody2D rigbod;
 //Facing left or right
-bool facingRight;
+public bool facingRight;
 //able to attack
 bool canattack = true;
 //Health Slider
@@ -198,15 +198,6 @@ void FixedUpdate()
                 animController.SetBool("Walking", false);
             }
         }
-
-
-        //transform.transform.Translate(Vector2.right * horiMovement * moveSpeed * Time.deltaTime);
-
-    //    if (Input.GetKeyDown(KeyCode.Q))
-    //{
-    //    animController.Play("TailWhip");
-    //}
-
 }
 //Rotate character on input
 void Flip()
@@ -219,8 +210,8 @@ void Flip()
 //Reset Speed to norm, allow attacks, and disable damage colliders
 void Reset()
 {
-    Destroy(gameObject.GetComponent("CircleCollider2D"));
-    moveSpeed = 3;
+        gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
+        moveSpeed = 3;
     canattack = true;
 }
 //Enable attack Trigger and disable movement during attack
@@ -228,42 +219,25 @@ void attack()
 {
     moveSpeed = 0;
     animController.Play("Bite");
-    //Make/Get attack Collider
-    attackCollider = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
-    attackCollider.offset = new Vector2(0.19f, -0.04f);
-    attackCollider.radius = 0.04f;
-    attackCollider.isTrigger = true;
-    //this.tag = "attacking";
-    Invoke("Reset", attack1Delay);
+        gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
+        //Make/Get attack Collider
+        //attackCollider = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
+        //attackCollider.offset = new Vector2(0.19f, -0.04f);
+        //attackCollider.radius = 0.04f;
+        //attackCollider.isTrigger = true;
+        //this.tag = "attacking";
+        Invoke("Reset", attack1Delay);
 }
-//On collider tagged "Player", call "TakeDamage" Method with damage specified by "attackDamage" Variable
-void OnTriggerEnter2D(Collider2D attackColl)
-{
-        GameObject OtherDino = attackColl.gameObject;
-    if (attackColl.gameObject.tag != this.tag)
-    {
-            print(attackColl.gameObject.ToString());
-        attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - attackDamage;
-        if (facingRight)
-        {
-            attackColl.gameObject.SendMessage("KnockbackRight");
-        }
-        if (!facingRight)
-        {
-            attackColl.gameObject.SendMessage("KnockbackLeft");
-        }
-    }
-}
+//Get Knocked away from attacker
 void KnockbackRight()
 {
-    rigbod.velocity = new Vector2(rigbod.velocity.x, knockbackForceX);
-    rigbod.velocity = new Vector2(rigbod.velocity.y, knockbackForceY);
-}
+        rigbod.velocity = new Vector2(knockbackForceX * 1, knockbackForceY * 2);
+    }
 void KnockbackLeft()
 {
-    rigbod.velocity = new Vector2(rigbod.velocity.x, -knockbackForceX);
-    rigbod.velocity = new Vector2(rigbod.velocity.y, knockbackForceY);
-}
+        rigbod.velocity = new Vector2(-knockbackForceX * 1, knockbackForceY * 2);
+    }
+//Hunger and health drain over time
 void HungerDrain()
 {
     if (Hunger > 0)

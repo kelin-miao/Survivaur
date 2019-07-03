@@ -22,8 +22,7 @@ public class MenuScript : MonoBehaviour
     public GameObject p1CharImage;
     public GameObject p2CharImage;
     public Sprite[] charSprites;
-    public GameObject[] Characters;
-    public Scene[] levels; 
+    public GameObject[] Characters; 
 
 
     public int mapSelected;
@@ -38,18 +37,7 @@ public class MenuScript : MonoBehaviour
         MenuManager = this;
         player1Char = 1;
         player2Char = 1;
-        //GetLevels();
     }
-
-    /*void GetLevels()
-    {
-        int levelCount = SceneManager.sceneCountInBuildSettings;
-        levels = new Scene[levelCount];
-        for (int i = 0; i < levelCount; i++)
-        {
-            levels[i] = SceneManager.GetSceneByBuildIndex(levelCount);
-        }
-    }*/
 
     // Start is called before the first frame update
     void Start()

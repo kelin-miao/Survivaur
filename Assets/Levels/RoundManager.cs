@@ -30,27 +30,27 @@ public class RoundManager : MonoBehaviour
     private float tanFov;
 
     //Zoom Vars
-    public float zoomSpeed = 1;
+    public float zoomSpeed = 3;
     public float targetOrtho;
     public float smoothSpeed = 1.0f;
-    public float minOrtho = 5.0f;
+    public float minOrtho = 7.0f;
     public float maxOrtho = 20.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-    //Players
+        //Players
         //Make player 1
-        player1 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player1Char - 1)], p1Spawn);
+        player1 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player1Char - 1)], p1Spawn.position, transform.rotation);
         player1.GetComponent<DinoScript>().playerNumber = 1;
         //player1.tag = "Player 1";
         //Make player 2
-        player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn);
+        player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn.position, transform.rotation);
         player2.GetComponent<DinoScript>().playerNumber = 2;
         //player2.tag = "Player 2";
         //Camera
         //Start Size
-        Camera.main.orthographicSize = 20;
+        //Camera.main.orthographicSize = 20;
         //Centering
         aspectRatio = Screen.width / Screen.height;
         tanFov = Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView / 2.0f);
