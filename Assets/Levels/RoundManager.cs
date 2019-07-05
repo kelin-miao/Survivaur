@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
     //Player Stuff
     int player1Char;
     int player2Char;
-    int player1Lives = 3;
-    int player2Lives = 3;
+    public int player1Lives = 3;
+    public int player2Lives = 3;
+    bool p1lost = false;
+    bool p2lost = false;
     //public GameObject[] Characters;
     public Transform p1Spawn;
     public Transform p2Spawn;
     public GameObject player1;
     public GameObject player2;
+    public GameObject p2Wintext;
+    public GameObject p1Wintext;
 
 
 
@@ -78,6 +83,15 @@ public class RoundManager : MonoBehaviour
             Player2Death();
         }
 
+        if(player1Lives <= 0 && p1lost == false)
+        {
+            Player2Victory();
+        }
+        if (player2Lives <= 0 && p2lost == false)
+        {
+            Player1Victory();
+        }
+
 
 
 
@@ -114,7 +128,7 @@ public class RoundManager : MonoBehaviour
     }
     void Player1Death()
     {
-        --player1Lives;
+        player1Lives--;
         if(player1Lives > 0)
         {
             Player1Respawn();
@@ -128,7 +142,7 @@ public class RoundManager : MonoBehaviour
     }
     void Player2Death()
     {
-        --player2Lives;
+        player2Lives--;
         if (player2Lives > 0)
         {
             Player2Respawn();
@@ -139,5 +153,25 @@ public class RoundManager : MonoBehaviour
         player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn.position, transform.rotation);
         player2.GetComponent<DinoScript>().playerNumber = 2;
         dino2 = player2.GetComponent<Transform>();
+    }
+    void Player2Victory()
+    {
+        p1lost = true;
+        p2Wintext.SetActive(true);
+        Time.timeScale = 0.5f;
+        Invoke("Endgame", 5.0f);
+    }
+    void Player1Victory()
+    {
+        p2lost = true;
+        p1Wintext.SetActive(true);
+        Time.timeScale = 0.5f;
+        Invoke("Endgame", 5.0f);
+
+    }
+    void Endgame()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("Menu");
     }
 }
