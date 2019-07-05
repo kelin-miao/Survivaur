@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
     //Player Stuff
     int player1Char;
     int player2Char;
+    [Range (0, 3)]
     public int player1Lives = 3;
+    [Range (0, 3)]
     public int player2Lives = 3;
     bool p1lost = false;
     bool p2lost = false;
@@ -19,7 +22,8 @@ public class RoundManager : MonoBehaviour
     public GameObject player2;
     public GameObject p2Wintext;
     public GameObject p1Wintext;
-
+    public Text p1LifeCount;
+    public Text p2LifeCount;
 
 
     //Camera Zoom (Placed here for ease)
@@ -91,6 +95,8 @@ public class RoundManager : MonoBehaviour
         {
             Player1Victory();
         }
+        p1LifeCount.text = "Player 1 Lives: " + player1Lives;
+        p2LifeCount.text = "Player 2 Lives: " + player2Lives;
 
 
 

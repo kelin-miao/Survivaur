@@ -21,6 +21,9 @@ public float healthDrainMult = 1;
     public float Hunger = 100f;
 //Hunger Drain Multiplier
 public float hungerDrainMult = 1;
+    //Adrenaline
+    [Range(0, 100)]
+    public float Adrenaline = 100;
 //Movement speed
 public float moveSpeed = 3;
 //Force of jumps
