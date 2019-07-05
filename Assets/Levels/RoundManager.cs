@@ -7,11 +7,14 @@ public class RoundManager : MonoBehaviour
     //Player Stuff
     int player1Char;
     int player2Char;
+    int player1Lives = 3;
+    int player2Lives = 3;
     //public GameObject[] Characters;
     public Transform p1Spawn;
     public Transform p2Spawn;
     public GameObject player1;
     public GameObject player2;
+
 
 
     //Camera Zoom (Placed here for ease)
@@ -64,9 +67,16 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Handle Death and respawn
+        if(player1.GetComponent<DinoScript>().Health <= 0)
+        {
+            Player1Death();
+        }
 
-
-
+        if (player2.GetComponent<DinoScript>().Health <= 0)
+        {
+            Player2Death();
+        }
 
 
 
@@ -74,7 +84,7 @@ public class RoundManager : MonoBehaviour
 
 
         //Camera
-        
+
         //Keep Cam Centered between dinos
         // Position the camera in the center.
         Vector3 newCameraPos = Camera.main.transform.position;
@@ -101,5 +111,33 @@ public class RoundManager : MonoBehaviour
         }
 
         Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, targetOrtho, smoothSpeed * Time.deltaTime);
+    }
+    void Player1Death()
+    {
+        --player1Lives;
+        if(player1Lives > 0)
+        {
+            Player1Respawn();
+        }
+    }
+    void Player1Respawn()
+    {
+        player1 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player1Char - 1)], p1Spawn.position, transform.rotation);
+        player1.GetComponent<DinoScript>().playerNumber = 1;
+        dino1 = player1.GetComponent<Transform>();
+    }
+    void Player2Death()
+    {
+        --player2Lives;
+        if (player2Lives > 0)
+        {
+            Player2Respawn();
+        }
+    }
+    void Player2Respawn()
+    {
+        player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn.position, transform.rotation);
+        player2.GetComponent<DinoScript>().playerNumber = 2;
+        dino2 = player2.GetComponent<Transform>();
     }
 }

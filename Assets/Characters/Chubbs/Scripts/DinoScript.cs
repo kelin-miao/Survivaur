@@ -10,11 +10,15 @@ public class DinoScript : MonoBehaviour
 
 //Stats
 //Health Value
+[Range (0, 100)]
 public float Health = 100f;
+    //Alive bool
+    bool alive = true;
 //Health Drain Multiplier
 public float healthDrainMult = 1;
-//Hunger Value
-public float Hunger = 100f;
+    //Hunger Value
+    [Range(0, 100)]
+    public float Hunger = 100f;
 //Hunger Drain Multiplier
 public float hungerDrainMult = 1;
 //Movement speed
@@ -28,6 +32,7 @@ public float knockbackForceY = 6.0f;
 float attack1Delay = 0.64f;
 //Damage done by attack one
 public float attackDamage = 20.0f;
+public float corpseNutrition = 100;
 
 //Technical
 //Collider used for map navigation
@@ -80,6 +85,8 @@ Animator animController;
     hungerSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<Slider>();
 }
 
+
+//Jumping
 //Check if Dino has hit ground    
 void OnCollisionEnter2D(Collision2D coll)
 {
@@ -110,92 +117,110 @@ void OnCollisionExit2D(Collision2D coll)
 // Update is called once per frame
 void Update()
 {
-        if(playerNumber == 1)
+        if (alive)
         {
-            if (grounded && (Input.GetKey(InputManager.IM.p1jump)) && canattack == true)
+            if (playerNumber == 1)
             {
-                rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                if (grounded && (Input.GetKey(InputManager.IM.p1jump)) && canattack == true)
+                {
+                    rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                }
+                if (Input.GetKey(InputManager.IM.p1attack1) && canattack == true)
+                {
+                    attack();
+                    canattack = false;
+                }
             }
-            if (Input.GetKey(InputManager.IM.p1attack1) && canattack == true)
+            if (playerNumber == 2)
             {
-                attack();
-                canattack = false;
+                if (grounded && (Input.GetKey(InputManager.IM.p2jump)) && canattack == true)
+                {
+                    rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                }
+                if (Input.GetKey(InputManager.IM.p2attack1) && canattack == true)
+                {
+                    attack();
+                    canattack = false;
+                }
             }
-        }
-        if(playerNumber == 2)
-        {
-            if (grounded && (Input.GetKey(InputManager.IM.p2jump)) && canattack == true)
-            {
-                rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
-            }
-            if (Input.GetKey(InputManager.IM.p2attack1) && canattack == true)
-            {
-                attack();
-                canattack = false;
-            }
-        }
 
-    HPslider.value = Health;
-    HungerDrain();
-    hungerSlider.value = Hunger;
-}
+            HPslider.value = Health;
+            HungerDrain();
+            hungerSlider.value = Hunger;
+            if (Health <= 0)
+            {
+                Die();
+            }
+        }
+        if (!alive)
+        {
+            if (corpseNutrition <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 //Handle Movement Input and call flipping
 void FixedUpdate()
 {
-    if(playerNumber == 1)
+        if (alive)
         {
-            if (Input.GetKey(InputManager.IM.p1left))
+
+            if (playerNumber == 1)
             {
-                //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
-                transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-                animController.SetBool("Walking", true);
-                if (!facingRight)
+                if (Input.GetKey(InputManager.IM.p1left))
                 {
-                    Flip();
+                    //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
+                    transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                    animController.SetBool("Walking", true);
+                    if (!facingRight)
+                    {
+                        Flip();
+                    }
+                }
+                else if (Input.GetKey(InputManager.IM.p1right))
+                {
+                    //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
+                    transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime);
+                    animController.SetBool("Walking", true);
+                    if (facingRight)
+                    {
+                        Flip();
+                    }
+                }
+                else
+                {
+                    animController.SetBool("Walking", false);
                 }
             }
-            else if (Input.GetKey(InputManager.IM.p1right))
-            {
-                //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
-                transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime);
-                animController.SetBool("Walking", true);
-                if (facingRight)
-                {
-                    Flip();
-                }
-            }
-            else
-            {
-                animController.SetBool("Walking", false);
-            }
-        }
 
 
-        if (playerNumber == 2)
-        {
-            if (Input.GetKey(InputManager.IM.p2left))
+            if (playerNumber == 2)
             {
-                //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
-                transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-                animController.SetBool("Walking", true);
-                if (!facingRight)
+                if (Input.GetKey(InputManager.IM.p2left))
                 {
-                    Flip();
+                    //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
+                    transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                    animController.SetBool("Walking", true);
+                    if (!facingRight)
+                    {
+                        Flip();
+                    }
                 }
-            }
-            else if (Input.GetKey(InputManager.IM.p2right))
-            {
-                //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
-                transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime);
-                animController.SetBool("Walking", true);
-                if (facingRight)
+                else if (Input.GetKey(InputManager.IM.p2right))
                 {
-                    Flip();
+                    //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
+                    transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime);
+                    animController.SetBool("Walking", true);
+                    if (facingRight)
+                    {
+                        Flip();
+                    }
                 }
-            }
-            else
-            {
-                animController.SetBool("Walking", false);
+                else
+                {
+                    animController.SetBool("Walking", false);
+                }
             }
         }
 }
@@ -217,16 +242,19 @@ void Reset()
 //Enable attack Trigger and disable movement during attack
 void attack()
 {
-    moveSpeed = 0;
-    animController.Play("Bite");
-        gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
-        //Make/Get attack Collider
-        //attackCollider = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
-        //attackCollider.offset = new Vector2(0.19f, -0.04f);
-        //attackCollider.radius = 0.04f;
-        //attackCollider.isTrigger = true;
-        //this.tag = "attacking";
-        Invoke("Reset", attack1Delay);
+        if (alive)
+        {
+            moveSpeed = 0;
+            animController.Play("Bite");
+            gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
+            //Make/Get attack Collider
+            //attackCollider = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
+            //attackCollider.offset = new Vector2(0.19f, -0.04f);
+            //attackCollider.radius = 0.04f;
+            //attackCollider.isTrigger = true;
+            //this.tag = "attacking";
+            Invoke("Reset", attack1Delay);
+        }
 }
 //Get Knocked away from attacker
 void KnockbackRight()
@@ -249,4 +277,13 @@ void HungerDrain()
         Health = Health - (Time.deltaTime * healthDrainMult);
     }
 }
+    void Die()
+    {
+        alive = false;
+        HPslider.enabled = false;
+        hungerSlider.enabled = false;
+        animController.Play("Die");
+        this.tag = ("Corpse");
+        rigbod.constraints = RigidbodyConstraints2D.FreezePositionX;
+    }
 }
