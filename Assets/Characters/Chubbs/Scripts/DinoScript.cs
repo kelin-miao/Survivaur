@@ -8,31 +8,35 @@ public class DinoScript : MonoBehaviour
 //General
     public int playerNumber;
 
-//Stats
+    //Stats
+    //maxvalues
+float MaxHealth = 300;
+    float MaxHunger = 100f;
+public float MaxAdrenaline = 2.0f;
 //Health Value
-[Range (0, 100)]
-public float Health = 100f;
+[Range (0, 500)]
+public float Health;
     //Alive bool
     bool alive = true;
 //Health Drain Multiplier
 public float healthDrainMult = 2;
     //Hunger Value
     [Range(0, 100)]
-    public float Hunger = 100f;
+    public float Hunger;
 //Hunger Drain Multiplier
 public float hungerDrainMult = 3;
 //Adrenaline
 [Range(1, 2)]
 public float Adrenaline;
 //Adrenline Drain Multiplier
-public float adrenalinedrainMult = 0.01f;
+float adrenalinedrainMult = 0.75f;
 //Movement speed
 public float moveSpeed = 3;
 //Force of jumps
 public float jumpForce = 6;
 //How much the dino moves when hit
-public float knockbackForceX = 6.0f;
-public float knockbackForceY = 6.0f;
+float knockbackForceX = 2.0f;
+float knockbackForceY = 3.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
 //Damage done by attack one
@@ -46,7 +50,7 @@ BoxCollider2D navCollider;
 //CircleCollider2D attackCollider;
 
 //Check if dino is on ground
-public bool grounded = false;
+bool grounded = false;
 //Dino's rigidbody
 Rigidbody2D rigbod;
 //Facing left or right
@@ -54,11 +58,11 @@ public bool facingRight;
 //able to attack
 bool canattack = true;
 //Health Slider
-public Slider HPslider;
+Slider HPslider;
 //hunger Slider
-public Slider hungerSlider;
+Slider hungerSlider;
 //Adrenaline Slider
-public Slider adrenalineSlider;
+Slider adrenalineSlider;
 //Animator
 Animator animController;
 
@@ -75,7 +79,9 @@ Animator animController;
             theScale.x *= -1;
             transform.localScale = theScale;
         }
-        Adrenaline = 1.0f;
+        Health = MaxHealth;
+        Hunger = MaxHunger;
+        Adrenaline = 1;
     }
 
 
@@ -248,7 +254,7 @@ void Reset()
 {
         gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
         moveSpeed = 3;
-    canattack = true;
+        canattack = true;
 }
 //Enable attack Trigger and disable movement during attack
 void attack()
@@ -270,11 +276,11 @@ void attack()
 //Get Knocked away from attacker
 void KnockbackRight()
 {
-        rigbod.velocity = new Vector2(knockbackForceX * 1, knockbackForceY * 2);
+        rigbod.velocity = new Vector2(knockbackForceX * 1, knockbackForceY * 1);
     }
 void KnockbackLeft()
 {
-        rigbod.velocity = new Vector2(-knockbackForceX * 1, knockbackForceY * 2);
+        rigbod.velocity = new Vector2(-knockbackForceX * 1, knockbackForceY * 1);
     }
 //Hunger and health drain over time
 void HungerDrain()
@@ -295,6 +301,7 @@ void HungerDrain()
         hungerSlider.enabled = false;
         animController.Play("Die");
         this.tag = ("Corpse");
+        gameObject.layer = 9;
         this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
         rigbod.constraints = RigidbodyConstraints2D.FreezePositionX;
     }

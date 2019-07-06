@@ -821,23 +821,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  MaxAdrenaline: 2
   Health: 100
   healthDrainMult: 1
   Hunger: 100
   hungerDrainMult: 1
   Adrenaline: 100
-  adrenalinedrainMult: 1
   moveSpeed: 3
   jumpForce: 6
-  knockbackForceX: 3
-  knockbackForceY: 1
   attackDamage: 20
   corpseNutrition: 100
-  grounded: 0
   facingRight: 0
-  HPslider: {fileID: 0}
-  hungerSlider: {fileID: 0}
-  adrenalineSlider: {fileID: 0}
 --- !u!60 &2766013069431857713
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -867,9 +861,9 @@ PolygonCollider2D:
       - {x: 0.13179615, y: 0.10192597}
       - {x: 0.031335633, y: 0.11196231}
       - {x: -0.06319809, y: 0.03830751}
-      - {x: -0.13024077, y: 0.02276532}
-      - {x: -0.12131318, y: -0.025236567}
-      - {x: -0.10499557, y: -0.07593012}
+      - {x: -0.13023584, y: 0.038778305}
+      - {x: -0.12993066, y: -0.04986509}
+      - {x: -0.107459545, y: -0.07470131}
       - {x: -0.07546489, y: -0.11011118}
       - {x: 0.05831484, y: -0.11000004}
       - {x: 0.05900526, y: -0.10799599}
@@ -995,9 +989,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 300
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

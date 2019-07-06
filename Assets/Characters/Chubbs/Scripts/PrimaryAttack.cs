@@ -29,7 +29,7 @@ public class PrimaryAttack : MonoBehaviour
         if (attackColl.gameObject.tag == "Player")
         {
             print(attackColl.gameObject.ToString());
-            attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - attackDamage;
+            attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - (attackDamage * attackColl.gameObject.GetComponent<DinoScript>().Adrenaline);
             if (facingRight)
             {
                 attackColl.gameObject.SendMessage("KnockbackRight");
@@ -38,8 +38,23 @@ public class PrimaryAttack : MonoBehaviour
             {
                 attackColl.gameObject.SendMessage("KnockbackLeft");
             }
-            attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100);
-            gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80); //probably swap this 80 and the 100 above for herbivores
+            if(attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
+            {
+                attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100);
+            }
+            else
+            {
+                attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline;
+            }
+            if (gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80) < gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline)
+            {
+                gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80); //probably swap this 80 and the 100 above for herbivores
+            }
+            else
+            {
+                gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
+            }
+            
         }
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
         if (attackColl.gameObject.tag == "Corpse")
