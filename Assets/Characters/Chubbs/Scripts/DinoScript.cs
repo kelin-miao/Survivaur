@@ -15,15 +15,17 @@ public float Health = 100f;
     //Alive bool
     bool alive = true;
 //Health Drain Multiplier
-public float healthDrainMult = 1;
+public float healthDrainMult = 2;
     //Hunger Value
     [Range(0, 100)]
     public float Hunger = 100f;
 //Hunger Drain Multiplier
-public float hungerDrainMult = 1;
-    //Adrenaline
-    [Range(0, 100)]
-    public float Adrenaline = 100;
+public float hungerDrainMult = 3;
+//Adrenaline
+[Range(1, 2)]
+public float Adrenaline;
+//Adrenline Drain Multiplier
+public float adrenalinedrainMult = 0.01f;
 //Movement speed
 public float moveSpeed = 3;
 //Force of jumps
@@ -55,6 +57,8 @@ bool canattack = true;
 public Slider HPslider;
 //hunger Slider
 public Slider hungerSlider;
+//Adrenaline Slider
+public Slider adrenalineSlider;
 //Animator
 Animator animController;
 
@@ -71,6 +75,7 @@ Animator animController;
             theScale.x *= -1;
             transform.localScale = theScale;
         }
+        Adrenaline = 1.0f;
     }
 
 
@@ -86,7 +91,8 @@ Animator animController;
     //Make HealthBar
     HPslider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<Slider>();
     hungerSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<Slider>();
-}
+    adrenalineSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<Slider>();
+    }
 
 
 //Jumping
@@ -150,6 +156,8 @@ void Update()
             HPslider.value = Health;
             HungerDrain();
             hungerSlider.value = Hunger;
+            adrenalineSlider.value = Adrenaline;
+            AdrenalineDrain();
             if (Health <= 0)
             {
                 Die();
@@ -174,7 +182,7 @@ void FixedUpdate()
                 if (Input.GetKey(InputManager.IM.p1left))
                 {
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
-                    transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                    transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
                     if (!facingRight)
                     {
@@ -184,7 +192,7 @@ void FixedUpdate()
                 else if (Input.GetKey(InputManager.IM.p1right))
                 {
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
-                    transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime);
+                    transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
                     if (facingRight)
                     {
@@ -203,7 +211,7 @@ void FixedUpdate()
                 if (Input.GetKey(InputManager.IM.p2left))
                 {
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
-                    transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                    transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
                     if (!facingRight)
                     {
@@ -213,7 +221,7 @@ void FixedUpdate()
                 else if (Input.GetKey(InputManager.IM.p2right))
                 {
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
-                    transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime);
+                    transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
                     if (facingRight)
                     {
@@ -287,6 +295,14 @@ void HungerDrain()
         hungerSlider.enabled = false;
         animController.Play("Die");
         this.tag = ("Corpse");
+        this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
         rigbod.constraints = RigidbodyConstraints2D.FreezePositionX;
+    }
+    void AdrenalineDrain()
+    {
+        if (Adrenaline > 1)
+        {
+            Adrenaline = Adrenaline - ((Time.deltaTime * adrenalinedrainMult)/ 6);
+        }
     }
 }
