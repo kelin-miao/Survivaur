@@ -97,6 +97,10 @@ public class RoundManager : MonoBehaviour
         }
         p1LifeCount.text = "Player 1 Lives: " + player1Lives;
         p2LifeCount.text = "Player 2 Lives: " + player2Lives;
+        if(player1Lives <= 0 && player2Lives <= 0)
+        {
+            Tie();
+        }
 
 
 
@@ -109,6 +113,7 @@ public class RoundManager : MonoBehaviour
         // Position the camera in the center.
         Vector3 newCameraPos = Camera.main.transform.position;
         newCameraPos.x = middlePoint.x;
+        newCameraPos.y = middlePoint.y;
         Camera.main.transform.position = newCameraPos;
 
         // Find center point between Dinos.
@@ -165,15 +170,22 @@ public class RoundManager : MonoBehaviour
         p1lost = true;
         p2Wintext.SetActive(true);
         Time.timeScale = 0.5f;
-        Invoke("Endgame", 5.0f);
+        Invoke("Endgame", 2.5f);
     }
     void Player1Victory()
     {
         p2lost = true;
         p1Wintext.SetActive(true);
         Time.timeScale = 0.5f;
-        Invoke("Endgame", 5.0f);
+        Invoke("Endgame", 2.5f);
 
+    }
+    void Tie()
+    {
+        p1lost = true;
+        p2lost = true;
+        Time.timeScale = 0.5f;
+        Invoke("Endgame", 2.5f);
     }
     void Endgame()
     {

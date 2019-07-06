@@ -7,14 +7,13 @@ public class DinoScript : MonoBehaviour
 {
 //General
     public int playerNumber;
-
+    public bool Herbivore;
     //Stats
     //maxvalues
-float MaxHealth = 300;
-    float MaxHunger = 100f;
+public float MaxHealth = 300;
+public float MaxHunger = 100f;
 public float MaxAdrenaline = 2.0f;
 //Health Value
-[Range (0, 500)]
 public float Health;
     //Alive bool
     bool alive = true;
@@ -255,6 +254,7 @@ void Reset()
         gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
         moveSpeed = 3;
         canattack = true;
+        transform.transform.Translate(Vector2.right * 0.0001f);
 }
 //Enable attack Trigger and disable movement during attack
 void attack()

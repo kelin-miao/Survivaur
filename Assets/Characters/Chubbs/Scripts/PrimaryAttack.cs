@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrimaryAttack : MonoBehaviour
 {
     public GameObject parent;
+    bool herbivore;
     public bool facingRight;
     public float attackDam = 20;
     float attackDamage;
@@ -12,7 +13,7 @@ public class PrimaryAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        herbivore = gameObject.GetComponentInParent<DinoScript>().Herbivore;
     }
 
     // Update is called once per frame
@@ -57,17 +58,29 @@ public class PrimaryAttack : MonoBehaviour
             
         }
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
-        if (attackColl.gameObject.tag == "Corpse")
+        if (attackColl.gameObject.tag == "Corpse" && !herbivore)
         {
-            if(gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition < 100)
+            if(gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition < gameObject.GetComponentInParent<DinoScript>().MaxHunger)
             {
                 gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition;
             }
             else
             {
-                gameObject.GetComponentInParent<DinoScript>().Hunger = 100;
+                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().MaxHunger;
             }
             attackColl.gameObject.GetComponent<DinoScript>().corpseNutrition = attackColl.gameObject.GetComponent<DinoScript>().corpseNutrition - nutrition;
+        }
+        if (attackColl.gameObject.tag == "HerbBush" && herbivore)
+        {
+            if (gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition < gameObject.GetComponentInParent<DinoScript>().MaxHunger)
+            {
+                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition;
+            }
+            else
+            {
+                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().MaxHunger;
+            }
+            attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition = attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition - nutrition;
         }
     }
 }

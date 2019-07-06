@@ -57,6 +57,17 @@ public class MenuScript : MonoBehaviour
         p2CharImage.GetComponent<Image>().sprite = charSprites[(player2Char - 1)];
     }
 
+    //p1Chubbs
+    void p1Chubbs()
+    {
+        player1Char = 5;
+    }
+    //p2Chubbs
+    void p2Chubbs()
+    {
+        player2Char = 5;
+    }
+
     //Close Splash Screen
     void closeSplash()
     {
@@ -228,12 +239,12 @@ public class MenuScript : MonoBehaviour
         if(mapSelected == 1)
         {
             //load map 1
-            SceneManager.LoadScene("TestLevel");
+            SceneManager.LoadScene("Volcano Level");
         }
         if (mapSelected == 2)
         {
             //load map 1
-            SceneManager.LoadScene("Map2");
+            SceneManager.LoadScene("TestLevel");
         }
     }
 }
