@@ -8,6 +8,7 @@ public class DinoScript : MonoBehaviour
 //General
     public int playerNumber;
     public bool Herbivore;
+    public int specAttack;
     //Stats
     //maxvalues
 public float MaxHealth = 300;
@@ -30,7 +31,8 @@ public float Adrenaline;
 //Adrenline Drain Multiplier
 float adrenalinedrainMult = 0.75f;
 //Movement speed
-public float moveSpeed = 3;
+public float maxSpeed = 3;
+float moveSpeed = 3;
 //Force of jumps
 public float jumpForce = 6;
 //How much the dino moves when hit
@@ -38,6 +40,7 @@ float knockbackForceX = 2.0f;
 float knockbackForceY = 3.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
+    float specattackDelay = 0.75f;
 //Damage done by attack one
 public float attackDamage = 20.0f;
 public float corpseNutrition = 100;
@@ -80,6 +83,7 @@ Animator animController;
         }
         Health = MaxHealth;
         Hunger = MaxHunger;
+        moveSpeed = maxSpeed;
         Adrenaline = 1;
     }
 
@@ -144,6 +148,10 @@ void Update()
                     attack();
                     canattack = false;
                 }
+                if (Input.GetKey(InputManager.IM.p1special) && canattack)
+                {
+                    SpecialAttack();
+                }
             }
             if (playerNumber == 2)
             {
@@ -155,6 +163,10 @@ void Update()
                 {
                     attack();
                     canattack = false;
+                }
+                if (Input.GetKey(InputManager.IM.p2special) && canattack)
+                {
+                    SpecialAttack();
                 }
             }
 
@@ -249,10 +261,11 @@ void Flip()
     transform.localScale = theScale;
 }
 //Reset Speed to norm, allow attacks, and disable damage colliders
-void Reset()
+public void Reset()
 {
         gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
-        moveSpeed = 3;
+        gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
+        moveSpeed = maxSpeed;
         canattack = true;
         transform.transform.Translate(Vector2.right * 0.0001f);
 }
@@ -273,6 +286,17 @@ void attack()
             Invoke("Reset", attack1Delay);
         }
 }
+    void SpecialAttack()
+    {
+        if(alive && Adrenaline > 1.8)
+        {
+            moveSpeed = 0;
+            //animController.Play("Roar");
+            gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            Adrenaline = 1;
+            Invoke("Reset", specattackDelay);
+        }
+    }
 //Get Knocked away from attacker
 void KnockbackRight()
 {
@@ -287,7 +311,7 @@ void HungerDrain()
 {
     if (Hunger > 0)
     {
-        Hunger = Hunger - (Time.deltaTime * hungerDrainMult);
+        Hunger = Hunger - (Time.deltaTime * hungerDrainMult * Adrenaline);
     }
     else
     {
@@ -311,5 +335,12 @@ void HungerDrain()
         {
             Adrenaline = Adrenaline - ((Time.deltaTime * adrenalinedrainMult)/ 6);
         }
+    }
+    public void Stun()
+    {
+        gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
+        gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
+        moveSpeed = 0;
+        canattack = false;
     }
 }

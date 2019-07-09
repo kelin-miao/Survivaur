@@ -35,15 +35,15 @@ public class InputManager : MonoBehaviour
         //Assign Keycodes when game starts
         //Player 1
         p1jump = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Jump", "W"));
-        p1attack1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Front Attack", "E"));
-        p1special = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Special Ability", "Q"));
+        p1attack1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Front Attack", "LeftShift"));
+        p1special = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Special Ability", "LeftControl"));
         p1left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Right", "D"));
         p1right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Left", "A"));
 
         //Player 2
         p2jump = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Jump", "UpArrow"));
         p2attack1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Front Attack", "RightShift"));
-        p2special = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Special Ability", "Q"));
+        p2special = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Special Ability", "RightControl"));
         p2left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Right", "RightArrow"));
         p2right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Left", "LeftArrow"));
     }
