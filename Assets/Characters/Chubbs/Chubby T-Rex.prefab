@@ -235,6 +235,11 @@ MonoBehaviour:
   playerNumber: 1
   Herbivore: 0
   specAttack: 1
+  Bleeding: 0
+  biteSound: {fileID: 8300000, guid: 1a0f17c646f76fa47a36b2674d224930, type: 3}
+  specialAttackSound: {fileID: 0}
+  walkingSound: {fileID: 0}
+  jumpSound: {fileID: 0}
   MaxHealth: 300
   MaxHunger: 100
   MaxAdrenaline: 2
@@ -245,8 +250,9 @@ MonoBehaviour:
   Adrenaline: 100
   maxSpeed: 3
   jumpForce: 6
-  attackDamage: 20
+  specattackDelay: 0.75
   corpseNutrition: 100
+  rigbod: {fileID: 0}
   facingRight: 0
 --- !u!60 &210204953046655754
 PolygonCollider2D:

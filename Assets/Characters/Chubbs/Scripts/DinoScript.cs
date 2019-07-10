@@ -10,20 +10,25 @@ public class DinoScript : MonoBehaviour
     public bool Herbivore;
     public int specAttack;
     public bool Bleeding;
-    //Stats
+
+    //Audio
+    public AudioClip biteSound;
+    public AudioClip specialAttackSound;
+    public AudioClip walkingSound;
+    public AudioClip jumpSound;
+//Stats
     //maxvalues
 public float MaxHealth = 300;
 public float MaxHunger = 100f;
 public float MaxAdrenaline = 2.0f;
 //Health Value
 public float Health;
-    //Alive bool
-    bool alive = true;
+//Alive bool
+bool alive = true;
 //Health Drain Multiplier
 public float healthDrainMult = 2;
-    //Hunger Value
-    [Range(0, 100)]
-    public float Hunger;
+//Hunger Value
+public float Hunger;
 //Hunger Drain Multiplier
 public float hungerDrainMult = 3;
 //Adrenaline
@@ -41,14 +46,14 @@ float knockbackForceX = 2.0f;
 float knockbackForceY = 3.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
+//How long after special attack before dino can attack again (ANIM LENGTH)
 public float specattackDelay = 0.75f;
+//How much hunger can be restored by eating this dino's corpse
 public float corpseNutrition = 100;
 
 //Technical
 //Collider used for map navigation
 BoxCollider2D navCollider;
-//casual mention of attack collider
-//CircleCollider2D attackCollider;
 
 //Check if dino is on ground
 bool grounded = false;
@@ -286,6 +291,7 @@ void attack()
         {
             moveSpeed = 0;
             animController.Play("Bite");
+            AudioSource.PlayClipAtPoint(biteSound, transform.position);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
             Invoke("Reset", attack1Delay);
         }
@@ -297,6 +303,7 @@ void attack()
         {
             moveSpeed = 0;
             //animController.Play("Roar");
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
@@ -316,6 +323,7 @@ void attack()
                 transform.transform.Translate(Vector2.right * -chargeSpeed * Time.deltaTime * Adrenaline);
             }
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = Adrenaline - 0.01f;
             Invoke("Reset", specattackDelay);
         }
@@ -325,6 +333,7 @@ void attack()
             moveSpeed = 0;
             //animController.Play("BleedSlash");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
         }
@@ -334,6 +343,7 @@ void attack()
             moveSpeed = 0;
             //animController.Play("TailWhip");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
         }
