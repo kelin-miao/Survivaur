@@ -42,8 +42,6 @@ float knockbackForceY = 3.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
 public float specattackDelay = 0.75f;
-//Damage done by attack one
-public float attackDamage = 20.0f;
 public float corpseNutrition = 100;
 
 //Technical
@@ -326,6 +324,15 @@ void attack()
         {
             moveSpeed = 0;
             //animController.Play("BleedSlash");
+            gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            Adrenaline = 1;
+            Invoke("Reset", specattackDelay);
+        }
+        //Tail Whip
+        if (alive && Adrenaline > 1.8 && specAttack == 4)
+        {
+            moveSpeed = 0;
+            //animController.Play("TailWhip");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);

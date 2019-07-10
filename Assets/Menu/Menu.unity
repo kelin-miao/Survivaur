@@ -4088,13 +4088,13 @@ MonoBehaviour:
   - {fileID: 2433923115456966013, guid: 7b7fd64d0d3133542a865be8bbf75bcb, type: 3}
   - {fileID: 4723107735738678597, guid: 648463de5e9b66446b96599a789a3f15, type: 3}
   - {fileID: 2433923115456966013, guid: b4dfa275466f2a94abfe96715e2aaf24, type: 3}
-  - {fileID: 0}
+  - {fileID: 2724004480270651555, guid: f4a39cdf970e6d540981b2fd4fde42ac, type: 3}
   - {fileID: 21300000, guid: ae1da2fe153ff4e4e9a950fc7cc07804, type: 3}
   Characters:
   - {fileID: 3650923090264848965, guid: dacb5bb49d202d64fb505a33334a9922, type: 3}
   - {fileID: 4834984706399383318, guid: 48818cba5edfeeb42b6b0138001a9cde, type: 3}
   - {fileID: 7763077980444460387, guid: 111e7c7240916db42bbb1f87adfe6df1, type: 3}
-  - {fileID: 9125513441467425218, guid: 000c205eaccece143b40759bb2b614e8, type: 3}
+  - {fileID: 2476513767676910959, guid: 555835b69c8fb8a47b481180ea7324c0, type: 3}
   - {fileID: 210204953046655799, guid: 5b29999fffead7d49a8e8ebb3c6301ae, type: 3}
   mapSelected: 0
   player1Char: 0
