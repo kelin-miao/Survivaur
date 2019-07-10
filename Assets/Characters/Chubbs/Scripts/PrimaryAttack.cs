@@ -30,7 +30,7 @@ public class PrimaryAttack : MonoBehaviour
         if (attackColl.gameObject.tag == "Player")
         {
             print(attackColl.gameObject.ToString());
-            attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - (attackDamage * attackColl.gameObject.GetComponent<DinoScript>().Adrenaline);
+            attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - (attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline);
             if (facingRight)
             {
                 attackColl.gameObject.SendMessage("KnockbackRight");

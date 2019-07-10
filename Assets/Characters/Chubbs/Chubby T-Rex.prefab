@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   Herbivore: 0
-  specAttack: 0
+  specAttack: 1
   MaxHealth: 300
   MaxHunger: 100
   MaxAdrenaline: 2

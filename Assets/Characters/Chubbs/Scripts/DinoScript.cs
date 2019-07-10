@@ -9,6 +9,7 @@ public class DinoScript : MonoBehaviour
     public int playerNumber;
     public bool Herbivore;
     public int specAttack;
+    public bool Bleeding;
     //Stats
     //maxvalues
 public float MaxHealth = 300;
@@ -29,9 +30,9 @@ public float hungerDrainMult = 3;
 [Range(1, 2)]
 public float Adrenaline;
 //Adrenline Drain Multiplier
-float adrenalinedrainMult = 0.75f;
+float adrenalinedrainMult = 0.55f;
 //Movement speed
-public float maxSpeed = 3;
+public float maxSpeed;
 float moveSpeed = 3;
 //Force of jumps
 public float jumpForce = 6;
@@ -40,7 +41,7 @@ float knockbackForceX = 2.0f;
 float knockbackForceY = 3.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
-    float specattackDelay = 0.75f;
+public float specattackDelay = 0.75f;
 //Damage done by attack one
 public float attackDamage = 20.0f;
 public float corpseNutrition = 100;
@@ -54,7 +55,7 @@ BoxCollider2D navCollider;
 //Check if dino is on ground
 bool grounded = false;
 //Dino's rigidbody
-Rigidbody2D rigbod;
+public Rigidbody2D rigbod;
 //Facing left or right
 public bool facingRight;
 //able to attack
@@ -85,6 +86,7 @@ Animator animController;
         Hunger = MaxHunger;
         moveSpeed = maxSpeed;
         Adrenaline = 1;
+        Bleeding = false;
     }
 
 
@@ -175,6 +177,10 @@ void Update()
             hungerSlider.value = Hunger;
             adrenalineSlider.value = Adrenaline;
             AdrenalineDrain();
+            if (Bleeding)
+            {
+                Bleed();
+            }
             if (Health <= 0)
             {
                 Die();
@@ -267,8 +273,14 @@ public void Reset()
         gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
         moveSpeed = maxSpeed;
         canattack = true;
+        Bleeding = false;
         transform.transform.Translate(Vector2.right * 0.0001f);
 }
+//Bleed
+void Bleed()
+    {
+        Health = Health - (Time.deltaTime * healthDrainMult * 15);
+    }
 //Enable attack Trigger and disable movement during attack
 void attack()
 {
@@ -277,21 +289,43 @@ void attack()
             moveSpeed = 0;
             animController.Play("Bite");
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
-            //Make/Get attack Collider
-            //attackCollider = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
-            //attackCollider.offset = new Vector2(0.19f, -0.04f);
-            //attackCollider.radius = 0.04f;
-            //attackCollider.isTrigger = true;
-            //this.tag = "attacking";
             Invoke("Reset", attack1Delay);
         }
 }
     void SpecialAttack()
     {
-        if(alive && Adrenaline > 1.8)
+        //Roar
+        if(alive && Adrenaline > 1.8 && specAttack == 1)
         {
             moveSpeed = 0;
             //animController.Play("Roar");
+            gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            Adrenaline = 1;
+            Invoke("Reset", specattackDelay);
+        }
+        //Charge
+        if (alive && Adrenaline > 1.1 && specAttack == 2)
+        {
+            float chargeSpeed = 12;
+            moveSpeed = 0;
+            //animController.Play("Charge");
+            if(facingRight)
+            {
+                transform.transform.Translate(Vector2.right * chargeSpeed * Time.deltaTime * Adrenaline);
+            }
+            else if(!facingRight)
+            {
+                transform.transform.Translate(Vector2.right * -chargeSpeed * Time.deltaTime * Adrenaline);
+            }
+            gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
+            Adrenaline = Adrenaline - 0.01f;
+            Invoke("Reset", specattackDelay);
+        }
+        //Bleed
+        if (alive && Adrenaline > 1.8 && specAttack == 3)
+        {
+            moveSpeed = 0;
+            //animController.Play("BleedSlash");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);

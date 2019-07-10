@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Roar : MonoBehaviour
 {
-    float stunTime = 10.0f;
+    float stunTime = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
