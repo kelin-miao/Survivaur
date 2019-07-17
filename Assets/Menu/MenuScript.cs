@@ -53,8 +53,11 @@ public class MenuScript : MonoBehaviour
             closeSplash();
             openMain();
         }
-        p1CharImage.GetComponent<Image>().sprite = charSprites[(player1Char - 1)];
-        p2CharImage.GetComponent<Image>().sprite = charSprites[(player2Char - 1)];
+        if(charSelectActive)
+        {
+            p1CharImage.GetComponent<Image>().sprite = charSprites[(player1Char - 1)];
+            p2CharImage.GetComponent<Image>().sprite = charSprites[(player2Char - 1)];
+        }
     }
 
     //p1Chubbs
@@ -246,5 +249,6 @@ public class MenuScript : MonoBehaviour
             //load map 1
             SceneManager.LoadScene("TestLevel");
         }
+        Destroy(gameObject);
     }
 }

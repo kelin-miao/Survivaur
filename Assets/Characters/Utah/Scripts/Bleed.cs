@@ -26,7 +26,7 @@ public class Bleed : MonoBehaviour
             print("SpecColl");
             SpecColl.gameObject.GetComponent<DinoScript>().Bleeding = true;
             SpecColl.gameObject.GetComponent<DinoScript>().Health = SpecColl.gameObject.GetComponent<DinoScript>().Health - (initialDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline);
-            SpecColl.gameObject.GetComponent<DinoScript>().Invoke("Reset", bleedTime);
+            SpecColl.gameObject.GetComponent<DinoScript>().Invoke("StopBleed", bleedTime);
             if (facingRight)
             {
                 SpecColl.gameObject.SendMessage("KnockbackRight");

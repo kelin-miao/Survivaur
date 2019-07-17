@@ -29,33 +29,64 @@ public class PrimaryAttack : MonoBehaviour
         GameObject OtherDino = attackColl.gameObject;
         if (attackColl.gameObject.tag == "Player")
         {
-            print(attackColl.gameObject.ToString());
-            attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - (attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline);
-            if (facingRight)
+            if(!attackColl.gameObject.GetComponent<DinoScript>().blocking)
             {
-                attackColl.gameObject.SendMessage("KnockbackRight");
+                //print(attackColl.gameObject.ToString());
+                //Lower enemy health
+                attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - (attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline);
+                //Knockback enemy depending on which way attacker is facing
+                if (facingRight)
+                {
+                    attackColl.gameObject.SendMessage("KnockbackRight");
+                }
+                if (!facingRight)
+                {
+                    attackColl.gameObject.SendMessage("KnockbackLeft");
+                }
+                //Raise enemy adrenaline
+                if (attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
+                {
+                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100);
+                }
+                else
+                {
+                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline;
+                }
+                //raise attacker adrenaline
+                if (gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80) < gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline)
+                {
+                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80); //probably swap this 80 and the 100 above for herbivores
+                }
+                else
+                {
+                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
+                }
             }
-            if (!facingRight)
+            if (attackColl.gameObject.GetComponent<DinoScript>().blocking)
             {
-                attackColl.gameObject.SendMessage("KnockbackLeft");
+                //print(attackColl.gameObject.ToString());
+                //Lower enemy health
+                attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - ((attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline) * 0.25f);
+                //Raise enemy adrenaline
+                if (attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 50) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
+                {
+                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 50);
+                }
+                else
+                {
+                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline;
+                }
+                //raise attacker adrenaline
+                if (gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 125) < gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline)
+                {
+                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 125); //probably swap this 80 and the 100 above for herbivores
+                }
+                else
+                {
+                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
+                }
             }
-            if(attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
-            {
-                attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100);
-            }
-            else
-            {
-                attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline;
-            }
-            if (gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80) < gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline)
-            {
-                gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80); //probably swap this 80 and the 100 above for herbivores
-            }
-            else
-            {
-                gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
-            }
-            
+
         }
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
         if (attackColl.gameObject.tag == "Corpse" && !herbivore)

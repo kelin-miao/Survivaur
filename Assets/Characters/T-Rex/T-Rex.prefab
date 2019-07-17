@@ -50,7 +50,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.3, y: -2}
+  m_Offset: {x: 3.4, y: -2}
   serializedVersion: 2
   m_Radius: 1.2475091
 --- !u!114 &11694101681812546
@@ -429,7 +429,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.45, y: -0.13}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -502,7 +502,7 @@ RectTransform:
   m_GameObject: {fileID: 3650923090264848965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.033693008}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 3650923091930922998}
   - {fileID: 11694101681812544}
@@ -617,7 +617,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007861121, y: -0.10219437}
+  m_Offset: {x: -0.05960369, y: -1.5047545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -628,7 +628,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1399445, y: 0.015611261}
+  m_Size: {x: 4.299494, y: 3.3904905}
   m_EdgeRadius: 0
 --- !u!222 &3650923090264849020
 CanvasRenderer:
@@ -705,6 +705,11 @@ MonoBehaviour:
   playerNumber: 1
   Herbivore: 0
   specAttack: 1
+  Bleeding: 0
+  biteSound: {fileID: 0}
+  specialAttackSound: {fileID: 0}
+  walkingSound: {fileID: 0}
+  jumpSound: {fileID: 0}
   MaxHealth: 300
   MaxHunger: 100
   MaxAdrenaline: 2
@@ -715,7 +720,7 @@ MonoBehaviour:
   Adrenaline: 100
   maxSpeed: 3
   jumpForce: 6
-  attackDamage: 20
+  specattackDelay: 0.75
   corpseNutrition: 120
   rigbod: {fileID: 0}
   facingRight: 0
@@ -744,19 +749,57 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.1039085, y: -0.016241193}
-      - {x: 1.7239757, y: 0.19519377}
-      - {x: -0.5175152, y: 0.08366144}
-      - {x: -2.58422, y: -0.01267612}
-      - {x: -2.585537, y: -0.3896351}
-      - {x: -2.5766258, y: -2.0538807}
-      - {x: -1.2647362, y: -2.4321156}
-      - {x: -0.5251522, y: -3.2108004}
-      - {x: 0.9076376, y: -3.2105477}
-      - {x: 1.7034187, y: -2.3030968}
-      - {x: 3.104742, y: -2.0872345}
-      - {x: 3.107133, y: -1.4487824}
-      - {x: 3.1096206, y: -0.5436729}
+    - - {x: 0.175, y: -2.575}
+      - {x: 0.075, y: -2.525}
+      - {x: 0.22500001, y: -2.275}
+      - {x: 0.625, y: -1.875}
+      - {x: 0.725, y: -1.65}
+      - {x: 1.1, y: -1.85}
+      - {x: 1.6, y: -1.85}
+      - {x: 1.7, y: -1.825}
+      - {x: 1.625, y: -1.5}
+      - {x: 1.4250001, y: -1.45}
+      - {x: 1.5500001, y: -1.275}
+      - {x: 1.65, y: -1.125}
+      - {x: 1.825, y: -1.075}
+      - {x: 2.0852304, y: -0.9548211}
+      - {x: 2.7665353, y: -0.10681391}
+      - {x: 2.2, y: 0.15}
+      - {x: 1.75, y: 0.15}
+      - {x: 1.575, y: 0.075}
+      - {x: 1.475, y: -0.025}
+      - {x: 1.4250001, y: -0.125}
+      - {x: 1, y: 0.05}
+      - {x: -2.2, y: 0.05}
+      - {x: -2.25, y: 0}
+      - {x: -2.3, y: -0.55}
+      - {x: -1.5, y: -0.75}
+      - {x: -1.125, y: -0.95}
+      - {x: -0.75, y: -1.125}
+      - {x: -0.75, y: -1.5}
+      - {x: -0.7, y: -1.5500001}
+      - {x: -0.825, y: -2.15}
+      - {x: -0.975, y: -2.275}
+      - {x: -0.95, y: -2.5}
+      - {x: -0.875, y: -2.625}
+      - {x: -0.675, y: -3.025}
+      - {x: -0.475, y: -3.2}
+      - {x: 0.75, y: -3.2}
+      - {x: 0.75, y: -3}
+      - {x: 0.7, y: -2.95}
+      - {x: 0.25, y: -2.775}
+    - - {x: -0.22500001, y: -2.8}
+      - {x: -0.3, y: -2.7250001}
+      - {x: -0.32500002, y: -2.7250001}
+      - {x: -0.32500002, y: -2.6000001}
+      - {x: -0.4, y: -2.525}
+      - {x: -0.45000002, y: -2.3500001}
+      - {x: -0.475, y: -2.5}
+      - {x: -0.3, y: -2.675}
+      - {x: -0.275, y: -2.675}
+      - {x: -0.275, y: -2.8}
+      - {x: -0.2, y: -2.875}
+      - {x: -0.15, y: -2.8500001}
 --- !u!1 &3650923090283376575
 GameObject:
   m_ObjectHideFlags: 0

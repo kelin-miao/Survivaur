@@ -10,6 +10,7 @@ public class DinoScript : MonoBehaviour
     public bool Herbivore;
     public int specAttack;
     public bool Bleeding;
+    public bool blocking;
 
     //Audio
     public AudioClip biteSound;
@@ -90,6 +91,7 @@ Animator animController;
         moveSpeed = maxSpeed;
         Adrenaline = 1;
         Bleeding = false;
+        blocking = false;
     }
 
 
@@ -157,6 +159,15 @@ void Update()
                 {
                     SpecialAttack();
                 }
+                if (Input.GetKeyDown(InputManager.IM.p1block) && grounded)
+                {
+                    blocking = true;
+                    canattack = false;
+                }
+                if (Input.GetKeyUp(InputManager.IM.p1block) && grounded)
+                {
+                    Reset();
+                }
             }
             if (playerNumber == 2)
             {
@@ -172,6 +183,14 @@ void Update()
                 if (Input.GetKey(InputManager.IM.p2special) && canattack)
                 {
                     SpecialAttack();
+                }
+                if (Input.GetKeyDown(InputManager.IM.p2block) && grounded)
+                {
+                    blocking = true;
+                }
+                if (Input.GetKeyUp(InputManager.IM.p2block) && grounded)
+                {
+                    blocking = false;
                 }
             }
 
@@ -205,7 +224,7 @@ void FixedUpdate()
 
             if (playerNumber == 1)
             {
-                if (Input.GetKey(InputManager.IM.p1left))
+                if (Input.GetKey(InputManager.IM.p1left) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
@@ -215,7 +234,7 @@ void FixedUpdate()
                         Flip();
                     }
                 }
-                else if (Input.GetKey(InputManager.IM.p1right))
+                else if (Input.GetKey(InputManager.IM.p1right) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
@@ -234,7 +253,7 @@ void FixedUpdate()
 
             if (playerNumber == 2)
             {
-                if (Input.GetKey(InputManager.IM.p2left))
+                if (Input.GetKey(InputManager.IM.p2left) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
@@ -244,7 +263,7 @@ void FixedUpdate()
                         Flip();
                     }
                 }
-                else if (Input.GetKey(InputManager.IM.p2right))
+                else if (Input.GetKey(InputManager.IM.p2right) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
@@ -276,13 +295,17 @@ public void Reset()
         gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
         moveSpeed = maxSpeed;
         canattack = true;
-        Bleeding = false;
+        blocking = false;
         transform.transform.Translate(Vector2.right * 0.0001f);
 }
 //Bleed
 void Bleed()
     {
         Health = Health - (Time.deltaTime * healthDrainMult * 15);
+    }
+public void StopBleed()
+    {
+        Bleeding = false;
     }
 //Enable attack Trigger and disable movement during attack
 void attack()
@@ -291,7 +314,7 @@ void attack()
         {
             moveSpeed = 0;
             animController.Play("Bite");
-            AudioSource.PlayClipAtPoint(biteSound, transform.position);
+            //AudioSource.PlayClipAtPoint(biteSound, transform.position);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
             Invoke("Reset", attack1Delay);
         }
@@ -303,7 +326,7 @@ void attack()
         {
             moveSpeed = 0;
             //animController.Play("Roar");
-            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
@@ -323,18 +346,18 @@ void attack()
                 transform.transform.Translate(Vector2.right * -chargeSpeed * Time.deltaTime * Adrenaline);
             }
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = Adrenaline - 0.01f;
             Invoke("Reset", specattackDelay);
         }
         //Bleed
-        if (alive && Adrenaline > 1.8 && specAttack == 3)
+        if (alive && Adrenaline > 1.4 && specAttack == 3)
         {
             moveSpeed = 0;
             //animController.Play("BleedSlash");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
-            Adrenaline = 1;
+            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            Adrenaline -= 0.4f;
             Invoke("Reset", specattackDelay);
         }
         //Tail Whip
@@ -343,7 +366,7 @@ void attack()
             moveSpeed = 0;
             //animController.Play("TailWhip");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
         }
