@@ -15,6 +15,12 @@ public class MenuScript : MonoBehaviour
     public GameObject mMenu;
     bool optionsActive = false;
     public GameObject optionsMenu;
+    bool TutorialActive = false;
+    public GameObject Tutorial;
+    bool Tutorial2Active = false;
+    public GameObject Tutorial2;
+    bool creditsActive = false;
+    public GameObject Credits;
     bool mapSelectActive = false;
     public GameObject mapSelect;
     bool charSelectActive = false;
@@ -106,6 +112,54 @@ public class MenuScript : MonoBehaviour
         openOptions();
     }
 
+    //Tutorial Button
+    void menuTutorial()
+    {
+        closeMain();
+        openTutorial();
+    }
+
+    //Next Tutorial Page
+    void TutorialNext()
+    {
+        closeTutorial();
+        openTutorial2();
+    }
+
+    //Last Tutorial Page
+    void TutorialBack()
+    {
+        closeTutorial2();
+        openTutorial();
+    }
+
+    //Tutorial Return Button
+    void returnTutorial()
+    {
+        closeTutorial();
+        openMain();
+    }
+    //Tutorial2 Return Button
+    void returnTutorial2()
+    {
+        closeTutorial2();
+        openMain();
+    }
+
+    //Credits Button
+    void credits()
+    {
+        closeMain();
+        openCredits();
+    }
+
+    //Credits Return Button
+    void returnCredits()
+    {
+        closeCredits();
+        openMain();
+    }
+
     //Quit button
     void quit()
     {
@@ -140,6 +194,48 @@ public class MenuScript : MonoBehaviour
         optionsActive = false;
     }
 
+    //Open Tutorial
+    void openTutorial()
+    {
+        Tutorial.SetActive(true);
+        TutorialActive = true;
+    }
+
+    //Close Tutorial
+    void closeTutorial()
+    {
+        Tutorial.SetActive(false);
+        TutorialActive = false;
+    }
+
+    //Open Tutorial2
+    void openTutorial2()
+    {
+        Tutorial2.SetActive(true);
+        Tutorial2Active = true;
+    }
+
+    //Close Tutorial2
+    void closeTutorial2()
+    {
+        Tutorial2.SetActive(false);
+        Tutorial2Active = false;
+    }
+
+    //Open Credits
+    void openCredits()
+    {
+        Credits.SetActive(true);
+        creditsActive = true;
+    }
+
+    //Close Credits
+    void closeCredits()
+    {
+        Credits.SetActive(false);
+        creditsActive = false;
+    }
+
     //Open map select
     void openMapSelect()
     {
@@ -152,6 +248,13 @@ public class MenuScript : MonoBehaviour
         mapSelect.SetActive(false);
         mapSelectActive = false;
     }
+
+    //return from map select
+    void returnMapSelect()
+    {
+        closeMapSelect();
+        openMain();
+    }
     //Open character select
     void openCharSelect()
     {
@@ -163,6 +266,13 @@ public class MenuScript : MonoBehaviour
     {
         charSelect.SetActive(false);
         charSelectActive = false;
+    }
+
+    //return Character select
+    void returnCharSelect()
+    {
+        closeCharSelect();
+        openMapSelect();
     }
     //reset this script
     private void Reset()
