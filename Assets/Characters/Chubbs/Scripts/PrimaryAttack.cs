@@ -67,6 +67,8 @@ public class PrimaryAttack : MonoBehaviour
                 //print(attackColl.gameObject.ToString());
                 //Lower enemy health
                 attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - ((attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline) * 0.25f);
+                //Lower enemy block
+                attackColl.gameObject.GetComponent<DinoScript>().block = (attackColl.gameObject.GetComponent<DinoScript>().block - (attackColl.gameObject.GetComponent<DinoScript>().block / 10));
                 //Raise enemy adrenaline
                 if (attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 50) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
                 {

@@ -79,6 +79,9 @@ Slider hungerSlider;
 Slider adrenalineSlider;
 //Animator
 Animator animController;
+    //Bubble Shield
+    GameObject bubbleShield;
+
 
     void Awake()
     {
@@ -116,6 +119,8 @@ Animator animController;
     HPslider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<Slider>();
     hungerSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<Slider>();
     adrenalineSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<Slider>();
+    bubbleShield = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().gameObject;
+    bubbleShield.SetActive(false);
     }
 
 
@@ -170,6 +175,7 @@ void Update()
                 if (Input.GetKeyDown(InputManager.IM.p1block) && block >= blockthreshold)
                 {
                     blocking = true;
+                    bubbleShield.SetActive(true);
                     canattack = false;
                 }
                 if (Input.GetKeyUp(InputManager.IM.p1block) && grounded)
@@ -195,6 +201,7 @@ void Update()
                 if (Input.GetKeyDown(InputManager.IM.p2block) && block >= blockthreshold)
                 {
                     blocking = true;
+                    bubbleShield.SetActive(true);
                     canattack = false;
                 }
                 if (Input.GetKeyUp(InputManager.IM.p2block) && grounded)
@@ -208,6 +215,7 @@ void Update()
             hungerSlider.value = Hunger;
             adrenalineSlider.value = Adrenaline;
             AdrenalineDrain();
+            bubbleShield.GetComponent<RectTransform>().localScale = new Vector3((block / 10), (block / 10));
             if (Bleeding)
             {
                 Bleed();
@@ -222,6 +230,7 @@ void Update()
                 if(block <= blockthreshold)
                 {
                     block = (blockthreshold * 0.25f);
+                    
                     Reset();
                 }
             }
@@ -319,7 +328,8 @@ public void Reset()
         canattack = true;
         blocking = false;
         transform.transform.Translate(Vector2.right * 0.0001f);
-}
+        bubbleShield.SetActive(false);
+    }
 //Bleed
 void Bleed()
     {
