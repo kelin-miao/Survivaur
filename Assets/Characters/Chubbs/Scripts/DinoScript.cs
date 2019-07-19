@@ -22,6 +22,7 @@ public class DinoScript : MonoBehaviour
 public float MaxHealth = 300;
 public float MaxHunger = 100f;
 public float MaxAdrenaline = 2.0f;
+public float MaxBlock = 70.0f;
 //Health Value
 public float Health;
 //Alive bool
@@ -32,6 +33,12 @@ public float healthDrainMult = 2;
 public float Hunger;
 //Hunger Drain Multiplier
 public float hungerDrainMult = 3;
+    //block resource
+public float block;
+    //block drain
+    float blockDrainMult = 7.0f;
+    //Number under which block breaks
+    float blockthreshold = 15.0f;
 //Adrenaline
 [Range(1, 2)]
 public float Adrenaline;
@@ -92,6 +99,7 @@ Animator animController;
         Adrenaline = 1;
         Bleeding = false;
         blocking = false;
+        block = MaxBlock;
     }
 
 
@@ -159,7 +167,7 @@ void Update()
                 {
                     SpecialAttack();
                 }
-                if (Input.GetKeyDown(InputManager.IM.p1block) && grounded)
+                if (Input.GetKeyDown(InputManager.IM.p1block) && block >= blockthreshold)
                 {
                     blocking = true;
                     canattack = false;
@@ -184,13 +192,14 @@ void Update()
                 {
                     SpecialAttack();
                 }
-                if (Input.GetKeyDown(InputManager.IM.p2block) && grounded)
+                if (Input.GetKeyDown(InputManager.IM.p2block) && block >= blockthreshold)
                 {
                     blocking = true;
+                    canattack = false;
                 }
                 if (Input.GetKeyUp(InputManager.IM.p2block) && grounded)
                 {
-                    blocking = false;
+                    Reset();
                 }
             }
 
@@ -206,6 +215,19 @@ void Update()
             if (Health <= 0)
             {
                 Die();
+            }
+            if(blocking)
+            {
+                block = block - (Time.deltaTime * blockDrainMult);
+                if(block <= blockthreshold)
+                {
+                    block = (blockthreshold * 0.25f);
+                    Reset();
+                }
+            }
+            if(!blocking && block + (Time.deltaTime * blockDrainMult) < MaxBlock)
+            {
+                block = block + (Time.deltaTime * blockDrainMult);
             }
         }
         if (!alive)
