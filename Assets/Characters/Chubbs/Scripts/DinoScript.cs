@@ -58,10 +58,11 @@ float attack1Delay = 0.64f;
 public float specattackDelay = 0.75f;
 //How much hunger can be restored by eating this dino's corpse
 public float corpseNutrition = 100;
-
-//Technical
-//Collider used for map navigation
-BoxCollider2D navCollider;
+    float MaxBubbleSizeX;
+    float MaxBubbleSizeY;
+    //Technical
+    //Collider used for map navigation
+    BoxCollider2D navCollider;
 
 //Check if dino is on ground
 bool grounded = false;
@@ -103,6 +104,8 @@ Animator animController;
         Bleeding = false;
         blocking = false;
         block = MaxBlock;
+        MaxBubbleSizeX = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().localScale.x;
+        MaxBubbleSizeY = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().localScale.y;
     }
 
 
@@ -121,6 +124,7 @@ Animator animController;
     adrenalineSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<Slider>();
     bubbleShield = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().gameObject;
     bubbleShield.SetActive(false);
+
     }
 
 
@@ -215,7 +219,7 @@ void Update()
             hungerSlider.value = Hunger;
             adrenalineSlider.value = Adrenaline;
             AdrenalineDrain();
-            bubbleShield.GetComponent<RectTransform>().localScale = new Vector3((block / 10), (block / 10));
+            bubbleShield.GetComponent<RectTransform>().localScale = new Vector3(MaxBubbleSizeX * (block / 10), MaxBubbleSizeY * (block / 10));
             if (Bleeding)
             {
                 Bleed();
@@ -344,6 +348,7 @@ void attack()
 {
         if (alive)
         {
+            transform.transform.Translate(Vector2.right * 0.0001f);
             moveSpeed = 0;
             animController.Play("Bite");
             //AudioSource.PlayClipAtPoint(biteSound, transform.position);
@@ -434,6 +439,9 @@ void HungerDrain()
         gameObject.layer = 9;
         this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
         rigbod.constraints = RigidbodyConstraints2D.FreezePositionX;
+        gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
+        gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
+        gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
     }
     void AdrenalineDrain()
     {

@@ -1285,11 +1285,11 @@ MonoBehaviour:
   p2LifeCount: {fileID: 302911989}
   dino1: {fileID: 0}
   dino2: {fileID: 0}
-  zoomSpeed: 1
+  zoomSpeed: 3
   targetOrtho: 0
   smoothSpeed: 1
-  minOrtho: 5
-  maxOrtho: 20
+  minOrtho: 2
+  maxOrtho: 10
 --- !u!4 &1454871651
 Transform:
   m_ObjectHideFlags: 0
