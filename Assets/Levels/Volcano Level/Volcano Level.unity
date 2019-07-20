@@ -1521,6 +1521,7 @@ MonoBehaviour:
   p2LifeCount: {fileID: 561579414}
   dino1: {fileID: 0}
   dino2: {fileID: 0}
+  smoothTime: 0.25
   zoomSpeed: 3
   targetOrtho: 0
   smoothSpeed: 1
@@ -2417,7 +2418,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 14
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
