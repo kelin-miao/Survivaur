@@ -66,6 +66,8 @@ public float corpseNutrition = 100;
 
 //Check if dino is on ground
 bool grounded = false;
+    //Check if dino is on wall
+    bool walled = false;
 //Dino's rigidbody
 public Rigidbody2D rigbod;
 //Facing left or right
@@ -132,28 +134,46 @@ Animator animController;
 //Check if Dino has hit ground    
 void OnCollisionEnter2D(Collision2D coll)
 {
+        //Standard Jumping
     if (coll.gameObject.tag == "Ground")
     {
         //Jump Script
-        print("Ground");
+        //print("Ground");
         grounded = true;
         animController.SetBool("Grounded", true);
         canattack = true;
     }
+    //Wall jumping
+    if(coll.gameObject.tag == "Wall")
+        {
+            walled = true;
+            //animController.SetBool("Grounded", true);
+            //canattack = true;
+        }
 }
 
 //Check if Dino has left ground
 void OnCollisionExit2D(Collision2D coll)
 {
+        //Standard Jumping
     if (coll.gameObject.tag == "Ground")
     {
         //Jump Script
-        print("Unground");
+        //print("Unground");
         grounded = false;
         animController.SetBool("Grounded", false);
         canattack = false;
     }
-}
+        //Wall jumping
+        if (coll.gameObject.tag == "Wall")
+        {
+            //Jump Script
+            //print("Unground");
+            walled = false;
+            //animController.SetBool("Grounded", false);
+            //canattack = false;
+        }
+    }
 
 
 // Update is called once per frame
@@ -163,9 +183,23 @@ void Update()
         {
             if (playerNumber == 1)
             {
+                //Normal Jumping
                 if (grounded && (Input.GetKey(InputManager.IM.p1jump)) && canattack == true)
                 {
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                }
+                //Wall Jumping
+                if (walled && (Input.GetKey(InputManager.IM.p1jump)))
+                {
+                    if(facingRight)
+                    {
+                        rigbod.velocity = new Vector2(jumpForce, jumpForce);
+                    }
+                    else
+                    {
+                        rigbod.velocity = new Vector2(-jumpForce, jumpForce);
+                    }
+                    
                 }
                 if (Input.GetKey(InputManager.IM.p1attack1) && canattack == true)
                 {
@@ -189,9 +223,23 @@ void Update()
             }
             if (playerNumber == 2)
             {
+                //Standard Jumping
                 if (grounded && (Input.GetKey(InputManager.IM.p2jump)) && canattack == true)
                 {
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                }
+                //Wall Jumping
+                if (walled && (Input.GetKey(InputManager.IM.p2jump)))
+                {
+                    if (facingRight)
+                    {
+                        rigbod.velocity = new Vector2(jumpForce, jumpForce);
+                    }
+                    else
+                    {
+                        rigbod.velocity = new Vector2(-jumpForce, jumpForce);
+                    }
+
                 }
                 if (Input.GetKey(InputManager.IM.p2attack1) && canattack == true)
                 {
