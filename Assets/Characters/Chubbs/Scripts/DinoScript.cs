@@ -68,6 +68,8 @@ public float corpseNutrition = 100;
 bool grounded = false;
     //Check if dino is on wall
     bool walled = false;
+    bool canWall = true;
+    bool wallOnRight;
 //Dino's rigidbody
 public Rigidbody2D rigbod;
 //Facing left or right
@@ -146,14 +148,30 @@ void OnCollisionEnter2D(Collision2D coll)
     //Wall jumping
     if(coll.gameObject.tag == "Wall")
         {
-            walled = true;
-            //animController.SetBool("Grounded", true);
-            //canattack = true;
+                walled = true;
+                if(coll.transform.position.x > gameObject.transform.position.x)
+                {
+                    wallOnRight = true;
+                }
+                else
+                {
+                    wallOnRight = false;
+                }
+                //animController.SetBool("Grounded", true);
+                //canattack = true;
+            }
         }
-}
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Wall")
+        {
+            walled = false;
+            transform.transform.Translate(Vector2.right * 0.0001f);
+        }
+    }
 
-//Check if Dino has left ground
-void OnCollisionExit2D(Collision2D coll)
+    //Check if Dino has left ground
+    void OnCollisionExit2D(Collision2D coll)
 {
         //Standard Jumping
     if (coll.gameObject.tag == "Ground")
@@ -189,15 +207,19 @@ void Update()
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
                 }
                 //Wall Jumping
-                if (walled && (Input.GetKey(InputManager.IM.p1jump)))
+                if (walled && (Input.GetKey(InputManager.IM.p1jump)) && canWall)
                 {
-                    if(facingRight)
-                    {
-                        rigbod.velocity = new Vector2(jumpForce, jumpForce);
-                    }
-                    else
+                    if(wallOnRight && facingRight)
                     {
                         rigbod.velocity = new Vector2(-jumpForce, jumpForce);
+                        canWall = false;
+                        Invoke("WallJumpReset", 0.5f);
+                    }
+                    else if(!wallOnRight && !facingRight)
+                    {
+                        rigbod.velocity = new Vector2(jumpForce, jumpForce);
+                        canWall = false;
+                        Invoke("WallJumpReset", 0.5f);
                     }
                     
                 }
@@ -233,11 +255,13 @@ void Update()
                 {
                     if (facingRight)
                     {
-                        rigbod.velocity = new Vector2(jumpForce, jumpForce);
+                        rigbod.velocity = new Vector2(-jumpForce, jumpForce);
+                        canWall = false;
                     }
                     else
                     {
-                        rigbod.velocity = new Vector2(-jumpForce, jumpForce);
+                        rigbod.velocity = new Vector2(jumpForce, jumpForce);
+                        canWall = false;
                     }
 
                 }
@@ -298,6 +322,10 @@ void Update()
                 Destroy(gameObject);
             }
         }
+    }
+ void WallJumpReset()
+    {
+        canWall = true;
     }
 //Handle Movement Input and call flipping
 void FixedUpdate()
