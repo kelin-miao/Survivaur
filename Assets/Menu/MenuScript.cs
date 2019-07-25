@@ -54,7 +54,7 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && splashActive == true)
+        if (Input.anyKeyDown && splashActive == true)
         {
             closeSplash();
             openMain();
