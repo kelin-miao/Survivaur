@@ -1476,12 +1476,12 @@ MonoBehaviour:
   p2LifeCount: {fileID: 302911989}
   dino1: {fileID: 0}
   dino2: {fileID: 0}
+  cameraLerpAmount: 0.05
+  maxCameraSizeX: 12
+  minCameraSizeX: 24
+  maxCameraSizeY: 21
+  minCameraSizeY: 42
   smoothTime: 0.25
-  zoomSpeed: 3
-  targetOrtho: 0
-  smoothSpeed: 1
-  minOrtho: 2
-  maxOrtho: 10
 --- !u!4 &1454871651
 Transform:
   m_ObjectHideFlags: 0
