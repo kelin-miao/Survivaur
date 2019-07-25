@@ -232,7 +232,7 @@ void Update()
                 {
                     SpecialAttack();
                 }
-                if (Input.GetKeyDown(InputManager.IM.p1block) && block >= blockthreshold)
+                if (Input.GetKeyDown(InputManager.IM.p1block) && block >= blockthreshold && grounded)
                 {
                     blocking = true;
                     bubbleShield.SetActive(true);
@@ -274,7 +274,7 @@ void Update()
                 {
                     SpecialAttack();
                 }
-                if (Input.GetKeyDown(InputManager.IM.p2block) && block >= blockthreshold)
+                if (Input.GetKeyDown(InputManager.IM.p2block) && block >= blockthreshold && grounded)
                 {
                     blocking = true;
                     bubbleShield.SetActive(true);
@@ -404,6 +404,7 @@ public void Reset()
 {
         gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
         gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
+        animController.SetBool("Attacking", false);
         moveSpeed = maxSpeed;
         canattack = true;
         blocking = false;
@@ -424,8 +425,9 @@ void attack()
 {
         if (alive)
         {
+            animController.SetBool("Attacking", true);
             transform.transform.Translate(Vector2.right * 0.0001f);
-            moveSpeed = 0;
+            //moveSpeed = 0;
             animController.Play("Bite");
             //AudioSource.PlayClipAtPoint(biteSound, transform.position);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
