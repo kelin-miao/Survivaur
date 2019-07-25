@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 18fcd7cee572d654da499466143a2d19
+guid: ebf31040cd696214380c61f6785d7ff9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7331015984892224051
-    second: SM_Attack_0
+      213: -8818171321204620326
+    second: SM_Run_Attack_0
   - first:
-      213: 6708674681209137145
-    second: SM_Attack_1
+      213: -6303850516086070348
+    second: SM_Run_Attack_1
   - first:
-      213: -3434698877005462499
-    second: SM_Attack_2
+      213: -7162873115392898738
+    second: SM_Run_Attack_2
   - first:
-      213: -2365663192941673222
-    second: SM_Attack_3
+      213: 8814686357510169504
+    second: SM_Run_Attack_3
   - first:
-      213: -3832808308227055785
-    second: SM_Attack_4
+      213: 1481078169472788751
+    second: SM_Run_Attack_4
   - first:
-      213: 897463071680078333
-    second: SM_Attack_5
+      213: 8532257792446892145
+    second: SM_Run_Attack_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -102,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SM_Attack_0
+      name: SM_Run_Attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -116,14 +116,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9c5c2ed4c061b24da3170b380165331
-      internalID: 7331015984892224051
+      spriteID: fb9e6c6b83b60794d95e1d654d2d6164
+      internalID: -8818171321204620326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SM_Attack_1
+      name: SM_Run_Attack_1
       rect:
         serializedVersion: 2
         x: 128
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ff31530f0423194c8bab61558716534
-      internalID: 6708674681209137145
+      spriteID: 30284f7d8b5e18045b7d5a7fca79b56c
+      internalID: -6303850516086070348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SM_Attack_2
+      name: SM_Run_Attack_2
       rect:
         serializedVersion: 2
         x: 0
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73dd7c1023170fa4f89f1476f83694c0
-      internalID: -3434698877005462499
+      spriteID: 3ea2453e86a7496459f3e5b7bf29c477
+      internalID: -7162873115392898738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SM_Attack_3
+      name: SM_Run_Attack_3
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17a8cbe885407aa42bac23bea74d3ecf
-      internalID: -2365663192941673222
+      spriteID: c0d9023e3da7e64409fe8c16b5534ca0
+      internalID: 8814686357510169504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SM_Attack_4
+      name: SM_Run_Attack_4
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a43647ba290a76840bdaf78c28f8d335
-      internalID: -3832808308227055785
+      spriteID: d85887f9be98c564cb022054fcd36155
+      internalID: 1481078169472788751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SM_Attack_5
+      name: SM_Run_Attack_5
       rect:
         serializedVersion: 2
         x: 128
@@ -221,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fca9a2f0b18fcb46a297566b9a09929
-      internalID: 897463071680078333
+      spriteID: 6954c03a75312f949aa908cb9db86d34
+      internalID: 8532257792446892145
       vertices: []
       indices: 
       edges: []
@@ -230,7 +230,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f8f6e62cd9e1ecb4ea7ae0849f53df3f
+    spriteID: a30c76b621bb903478d398ad1a7965fe
     internalID: 0
     vertices: []
     indices: 
