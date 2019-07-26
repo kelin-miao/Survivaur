@@ -19,6 +19,10 @@ public class MenuScript : MonoBehaviour
     public GameObject Tutorial;
     bool Tutorial2Active = false;
     public GameObject Tutorial2;
+    bool Tutorial3Active = false;
+    public GameObject Tutorial3;
+    bool Tutorial4Active = false;
+    public GameObject Tutorial4;
     bool creditsActive = false;
     public GameObject Credits;
     bool mapSelectActive = false;
@@ -54,7 +58,7 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && splashActive == true)
+        if (Input.anyKeyDown && splashActive == true)
         {
             closeSplash();
             openMain();
@@ -119,32 +123,119 @@ public class MenuScript : MonoBehaviour
         openTutorial();
     }
 
-    //Next Tutorial Page
-    void TutorialNext()
+    //Open Tutorial Page 2 From Page 1
+    void Tutorial1P2()
     {
         closeTutorial();
         openTutorial2();
     }
 
-    //Last Tutorial Page
-    void TutorialBack()
+    //Open Tutorial Page 3 From Page 1
+    void Tutorial1P3()
     {
-        closeTutorial2();
-        openTutorial();
+        closeTutorial();
+        openTutorial3();
     }
 
-    //Tutorial Return Button
+    //Open Tutorial Page 4 From Page 1
+    void Tutorial1P4()
+    {
+        closeTutorial();
+        openTutorial4();
+    }
+
+    //Tutorial 1 Return Button
     void returnTutorial()
     {
         closeTutorial();
         openMain();
     }
+
+    //Open Tutorial Page 1 From Page 2
+    void Tutorial2P1()
+    {
+        closeTutorial2();
+        openTutorial();
+    }
+    //Open Tutorial Page 3 From Page 2
+    void Tutorial2P3()
+    {
+        closeTutorial2();
+        openTutorial3();
+    }
+
+    //Open Tutorial Page 4 From Page 2
+    void Tutorial2P4()
+    {
+        closeTutorial2();
+        openTutorial4();
+    }
+
     //Tutorial2 Return Button
     void returnTutorial2()
     {
         closeTutorial2();
         openMain();
     }
+
+
+    //Open Tutorial Page 1 From Page 3
+    void Tutorial3P1()
+    {
+        closeTutorial3();
+        openTutorial();
+    }
+
+    //Open Tutorial Page 2 From Page 3
+    void Tutorial3P2()
+    {
+        closeTutorial3();
+        openTutorial2();
+    }
+
+    //Open Tutorial Page 4 From Page 3
+    void Tutorial3P4()
+    {
+        closeTutorial3();
+        openTutorial4();
+    }
+
+    //Tutorial2 Return Button
+    void returnTutorial3()
+    {
+        closeTutorial3();
+        openMain();
+    }
+
+
+    //Open Tutorial Page 1 From Page 4
+    void Tutorial4P1()
+    {
+        closeTutorial4();
+        openTutorial();
+    }
+
+    //Open Tutorial Page 2 From Page 4
+    void Tutorial4P2()
+    {
+        closeTutorial4();
+        openTutorial2();
+    }
+
+    //Open Tutorial Page 3 From Page 4
+    void Tutorial4P3()
+    {
+        closeTutorial4();
+        openTutorial3();
+    }
+
+    //Tutorial2 Return Button
+    void returnTutorial4()
+    {
+        closeTutorial4();
+        openMain();
+    }
+
 
     //Credits Button
     void credits()
@@ -220,6 +311,34 @@ public class MenuScript : MonoBehaviour
     {
         Tutorial2.SetActive(false);
         Tutorial2Active = false;
+    }
+
+    //Open Tutorial3
+    void openTutorial3()
+    {
+        Tutorial3.SetActive(true);
+        Tutorial3Active = true;
+    }
+
+    //Close Tutorial3
+    void closeTutorial3()
+    {
+        Tutorial3.SetActive(false);
+        Tutorial3Active = false;
+    }
+
+    //Open Tutorial4
+    void openTutorial4()
+    {
+        Tutorial4.SetActive(true);
+        Tutorial4Active = true;
+    }
+
+    //Close Tutorial4
+    void closeTutorial4()
+    {
+        Tutorial4.SetActive(false);
+        Tutorial4Active = false;
     }
 
     //Open Credits
