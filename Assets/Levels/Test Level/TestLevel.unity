@@ -1477,10 +1477,10 @@ MonoBehaviour:
   dino1: {fileID: 0}
   dino2: {fileID: 0}
   cameraLerpAmount: 0.05
-  maxCameraSizeX: 12
-  minCameraSizeX: 24
-  maxCameraSizeY: 21
-  minCameraSizeY: 42
+  maxCameraSizeX: 22
+  minCameraSizeX: 7
+  maxCameraSizeY: 22
+  minCameraSizeY: 7
   smoothTime: 0.25
 --- !u!4 &1454871651
 Transform:

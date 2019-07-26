@@ -33,8 +33,8 @@ public class Charge : MonoBehaviour
             {
                 SpecColl.gameObject.GetComponent<DinoScript>().rigbod.velocity = new Vector2(-chargeForceX * 1.5f, chargeForceY * 1.5f);
             }
-            SpecColl.gameObject.GetComponent<DinoScript>().Stun();
-            SpecColl.gameObject.GetComponent<DinoScript>().Invoke("Reset", stunTime);
+            //SpecColl.gameObject.GetComponent<DinoScript>().Stun();
+            //SpecColl.gameObject.GetComponent<DinoScript>().Invoke("Reset", stunTime);
             SpecColl.gameObject.GetComponent<DinoScript>().Health = SpecColl.gameObject.GetComponent<DinoScript>().Health - chargeDamage;
         }
     }
