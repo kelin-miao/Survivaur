@@ -1079,6 +1079,7 @@ MonoBehaviour:
   specialAttackSound: {fileID: 0}
   walkingSound: {fileID: 0}
   jumpSound: {fileID: 0}
+  DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
   MaxHealth: 350
   MaxHunger: 125
   MaxAdrenaline: 2

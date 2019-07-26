@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MenuScript : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class MenuScript : MonoBehaviour
     public GameObject p1CharImage;
     public GameObject p2CharImage;
     public Sprite[] charSprites;
-    public GameObject[] Characters; 
+    public GameObject[] Characters;
+    public AudioClip MouseClick;
 
 
     public int mapSelected;
@@ -61,6 +63,7 @@ public class MenuScript : MonoBehaviour
         if (Input.anyKeyDown && splashActive == true)
         {
             closeSplash();
+            AudioSource.PlayClipAtPoint(MouseClick, transform.position);
             openMain();
         }
         if(charSelectActive)
@@ -74,11 +77,13 @@ public class MenuScript : MonoBehaviour
     void p1Chubbs()
     {
         player1Char = 5;
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
     }
     //p2Chubbs
     void p2Chubbs()
     {
         player2Char = 5;
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
     }
 
     //Close Splash Screen
@@ -105,14 +110,15 @@ public class MenuScript : MonoBehaviour
     void play()
     {
         closeMain();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openMapSelect();
-        //SceneManager.LoadScene("DebugTest");
     }
 
     //Options Button
     void options()
     {
         closeMain();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openOptions();
     }
 
@@ -120,6 +126,7 @@ public class MenuScript : MonoBehaviour
     void menuTutorial()
     {
         closeMain();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial();
     }
 
@@ -127,6 +134,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial1P2()
     {
         closeTutorial();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial2();
     }
 
@@ -134,6 +142,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial1P3()
     {
         closeTutorial();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial3();
     }
 
@@ -141,6 +150,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial1P4()
     {
         closeTutorial();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial4();
     }
 
@@ -148,6 +158,7 @@ public class MenuScript : MonoBehaviour
     void returnTutorial()
     {
         closeTutorial();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openMain();
     }
 
@@ -155,12 +166,14 @@ public class MenuScript : MonoBehaviour
     void Tutorial2P1()
     {
         closeTutorial2();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial();
     }
     //Open Tutorial Page 3 From Page 2
     void Tutorial2P3()
     {
         closeTutorial2();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial3();
     }
 
@@ -168,6 +181,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial2P4()
     {
         closeTutorial2();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial4();
     }
 
@@ -175,6 +189,7 @@ public class MenuScript : MonoBehaviour
     void returnTutorial2()
     {
         closeTutorial2();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openMain();
     }
 
@@ -183,6 +198,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial3P1()
     {
         closeTutorial3();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial();
     }
 
@@ -190,6 +206,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial3P2()
     {
         closeTutorial3();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial2();
     }
 
@@ -197,6 +214,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial3P4()
     {
         closeTutorial3();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial4();
     }
 
@@ -204,6 +222,7 @@ public class MenuScript : MonoBehaviour
     void returnTutorial3()
     {
         closeTutorial3();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openMain();
     }
 
@@ -212,6 +231,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial4P1()
     {
         closeTutorial4();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial();
     }
 
@@ -219,6 +239,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial4P2()
     {
         closeTutorial4();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial2();
     }
 
@@ -226,6 +247,7 @@ public class MenuScript : MonoBehaviour
     void Tutorial4P3()
     {
         closeTutorial4();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openTutorial3();
     }
 
@@ -233,6 +255,7 @@ public class MenuScript : MonoBehaviour
     void returnTutorial4()
     {
         closeTutorial4();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openMain();
     }
 
@@ -241,6 +264,7 @@ public class MenuScript : MonoBehaviour
     void credits()
     {
         closeMain();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openCredits();
     }
 
@@ -248,12 +272,14 @@ public class MenuScript : MonoBehaviour
     void returnCredits()
     {
         closeCredits();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openMain();
     }
 
     //Quit button
     void quit()
     {
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         Application.Quit();
     }
 
@@ -407,6 +433,7 @@ public class MenuScript : MonoBehaviour
     {
         mapSelected = 1;
         closeMapSelect();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openCharSelect();
     }
     //map 2 selected
@@ -414,12 +441,14 @@ public class MenuScript : MonoBehaviour
     {
         mapSelected = 2;
         closeMapSelect();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openCharSelect();
     }
     //Player 1 next char
     void p1Next()
     {
-        if(player1Char < 4)
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
+        if (player1Char < 4)
         {
             ++player1Char;
         }
@@ -432,6 +461,7 @@ public class MenuScript : MonoBehaviour
     //Player 1 Previous char
     void p1Prev()
     {
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         if (player1Char > 1)
         {
             --player1Char;
@@ -444,6 +474,7 @@ public class MenuScript : MonoBehaviour
     //Player 1 next char
     void p2Next()
     {
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         if (player2Char < 4)
         {
             ++player2Char;
@@ -457,6 +488,7 @@ public class MenuScript : MonoBehaviour
     //Player 1 Previous char
     void p2Prev()
     {
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         if (player2Char > 1)
         {
             --player2Char;
@@ -468,7 +500,8 @@ public class MenuScript : MonoBehaviour
     }
     void startGame()
     {
-        if(mapSelected == 1)
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
+        if (mapSelected == 1)
         {
             //load map 1
             SceneManager.LoadScene("Volcano Level");
