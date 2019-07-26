@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 648463de5e9b66446b96599a789a3f15
+guid: 44608f4e13b9ce643b632bd37b184907
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4723107735738678597
-    second: Idle_0
+      213: 7331015984892224051
+    second: SM_Attack_0
   - first:
-      213: -7385789195546760866
-    second: Idle_1
+      213: 6708674681209137145
+    second: SM_Attack_1
   - first:
-      213: 3234629978573100161
-    second: Idle_2
+      213: -3434698877005462499
+    second: SM_Attack_2
   - first:
-      213: 6373048116405451881
-    second: Idle_3
+      213: -2365663192941673222
+    second: SM_Attack_3
+  - first:
+      213: -3832808308227055785
+    second: SM_Attack_4
+  - first:
+      213: 897463071680078333
+    second: SM_Attack_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -72,8 +78,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
-    resizeAlgorithm: 1
+    maxTextureSize: 512
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -83,8 +89,30 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 1024
-    resizeAlgorithm: 1
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -96,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: SM_Attack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
-        width: 1280
-        height: 1280
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1548dbd8ec4d59345832be55adbfbfcd
-      internalID: 4723107735738678597
+      spriteID: b9444731e7128fa46ac68b5fc872ce0c
+      internalID: 7331015984892224051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: SM_Attack_1
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1280
-        width: 1280
-        height: 1280
+        x: 128
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +159,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ea0cf3ed6521724fa50a5f7a37cd116
-      internalID: -7385789195546760866
+      spriteID: c34978023005b64479d469f95744fafc
+      internalID: 6708674681209137145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: SM_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3e5d7a8d0442e41a3edaaf2abcd1c6
+      internalID: -3434698877005462499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SM_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea19d15c1d5dd394ab2737c249072812
+      internalID: -2365663192941673222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SM_Attack_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3706c17118d3204caae9ea16c26dc81
-      internalID: 3234629978573100161
+      spriteID: 66e23b3b77c8ce34f994b84c9834bc5a
+      internalID: -3832808308227055785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: SM_Attack_5
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 128
         y: 0
-        width: 1280
-        height: 1280
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +243,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8e0c0720342f1144ad7465201b6fff3
-      internalID: 6373048116405451881
+      spriteID: 76aacdbc093e87e49b770db6d3dda339
+      internalID: 897463071680078333
       vertices: []
       indices: 
       edges: []
@@ -182,7 +252,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8c771f0d839cca24cb1732a4f0150261
+    spriteID: 96a56b7b6c5b7cb4984b3ec068b5d485
     internalID: 0
     vertices: []
     indices: 
