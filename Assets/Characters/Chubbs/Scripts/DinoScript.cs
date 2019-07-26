@@ -17,6 +17,7 @@ public class DinoScript : MonoBehaviour
     public AudioClip specialAttackSound;
     public AudioClip walkingSound;
     public AudioClip jumpSound;
+    public AudioClip DeathSound;
 //Stats
     //maxvalues
 public float MaxHealth = 300;
@@ -223,7 +224,7 @@ void Update()
                     }
                     
                 }
-                if (Input.GetKey(InputManager.IM.p1attack1) && canattack == true)
+                if (Input.GetKeyDown(InputManager.IM.p1attack1) && canattack == true)
                 {
                     attack();
                     canattack = false;
@@ -265,7 +266,7 @@ void Update()
                     }
 
                 }
-                if (Input.GetKey(InputManager.IM.p2attack1) && canattack == true)
+                if (Input.GetKeyDown(InputManager.IM.p2attack1) && canattack == true)
                 {
                     attack();
                     canattack = false;
@@ -313,6 +314,12 @@ void Update()
             if(!blocking && block + (Time.deltaTime * blockDrainMult) < MaxBlock)
             {
                 block = block + (Time.deltaTime * blockDrainMult);
+            }
+            if(blocking && !grounded)
+            {
+                blocking = false;
+                bubbleShield.SetActive(false);
+                canattack = false;
             }
         }
         if (!alive)
