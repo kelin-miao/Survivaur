@@ -458,7 +458,7 @@ void attack()
         {
             float chargeSpeed = 12;
             moveSpeed = 0;
-            //animController.Play("Charge");
+            animController.Play("ChargeStart");
             if(facingRight)
             {
                 transform.transform.Translate(Vector2.right * chargeSpeed * Time.deltaTime * Adrenaline);
@@ -486,7 +486,7 @@ void attack()
         if (alive && Adrenaline > 1.8 && specAttack == 4)
         {
             moveSpeed = 0;
-            //animController.Play("TailWhip");
+            animController.Play("TailWhip");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = 1;
