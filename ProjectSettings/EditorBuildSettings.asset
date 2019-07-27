@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Volcano Level/Volcano Level.unity
     guid: 4b08898fbf12b004aad8d3db11b2131f
+  - enabled: 1
+    path: Assets/Levels/Ice Age Level/IceAgeLevel2.0.unity
+    guid: 6c3c09d0ce867b74b91c949053c5cc53
   m_configObjects: {}

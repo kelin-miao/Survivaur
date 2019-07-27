@@ -506,7 +506,13 @@ public class MenuScript : MonoBehaviour
             //load map 1
             SceneManager.LoadScene("Volcano Level");
         }
-        if (mapSelected == 2)
+        //Load snow level
+        if (Input.GetKey(KeyCode.Space) && mapSelected == 2)
+        {
+            //load map 1
+            SceneManager.LoadScene("IceAgeLevel2.0");
+        }
+        else if (mapSelected == 2)
         {
             //load map 1
             SceneManager.LoadScene("TestLevel");

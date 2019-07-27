@@ -56,7 +56,7 @@ float knockbackForceY = 3.0f;
 //How long before the dino can attack again (ANIMATION LENGTH)
 float attack1Delay = 0.64f;
 //How long after special attack before dino can attack again (ANIM LENGTH)
-public float specattackDelay = 0.75f;
+public float specattackDelay = 0.65f;
 //How much hunger can be restored by eating this dino's corpse
 public float corpseNutrition = 100;
     float MaxBubbleSizeX;
@@ -214,13 +214,13 @@ void Update()
                     {
                         rigbod.velocity = new Vector2(-jumpForce, jumpForce);
                         canWall = false;
-                        Invoke("WallJumpReset", 0.5f);
+                        Invoke("WallJumpReset", 0.3f);
                     }
                     else if(!wallOnRight && !facingRight)
                     {
                         rigbod.velocity = new Vector2(jumpForce, jumpForce);
                         canWall = false;
-                        Invoke("WallJumpReset", 0.5f);
+                        Invoke("WallJumpReset", 0.3f);
                     }
                     
                 }
@@ -252,17 +252,19 @@ void Update()
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
                 }
                 //Wall Jumping
-                if (walled && (Input.GetKey(InputManager.IM.p2jump)))
+                if (walled && (Input.GetKey(InputManager.IM.p2jump)) && canWall)
                 {
-                    if (facingRight)
+                    if (wallOnRight && facingRight)
                     {
                         rigbod.velocity = new Vector2(-jumpForce, jumpForce);
                         canWall = false;
+                        Invoke("WallJumpReset", 0.3f);
                     }
-                    else
+                    else if(!wallOnRight && !facingRight)
                     {
                         rigbod.velocity = new Vector2(jumpForce, jumpForce);
                         canWall = false;
+                        Invoke("WallJumpReset", 0.3f);
                     }
 
                 }
@@ -435,7 +437,7 @@ void attack()
             animController.SetBool("Attacking", true);
             transform.transform.Translate(Vector2.right * 0.0001f);
             //moveSpeed = 0;
-            animController.Play("Bite");
+            //animController.Play("Bite");
             //AudioSource.PlayClipAtPoint(biteSound, transform.position);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
             Invoke("Reset", attack1Delay);
@@ -447,7 +449,7 @@ void attack()
         if(alive && Adrenaline > 1.8 && specAttack == 1)
         {
             moveSpeed = 0;
-            //animController.Play("Roar");
+            animController.Play("Roar");
             //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             Adrenaline = 1;
@@ -476,7 +478,7 @@ void attack()
         if (alive && Adrenaline > 1.4 && specAttack == 3)
         {
             moveSpeed = 0;
-            //animController.Play("BleedSlash");
+            animController.Play("BleedCut");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline -= 0.4f;

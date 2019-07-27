@@ -11543,8 +11543,8 @@ MonoBehaviour:
   p1CharImage: {fileID: 1674528991}
   p2CharImage: {fileID: 105406007}
   charSprites:
-  - {fileID: 2433923115456966013, guid: 7b7fd64d0d3133542a865be8bbf75bcb, type: 3}
-  - {fileID: 4723107735738678597, guid: 648463de5e9b66446b96599a789a3f15, type: 3}
+  - {fileID: 2724004480270651555, guid: 74d5c86add1d6da4eb118492f5acbbdf, type: 3}
+  - {fileID: 2724004480270651555, guid: 31baf21fb6a79b34f8992d91f76a7e8f, type: 3}
   - {fileID: 2433923115456966013, guid: b4dfa275466f2a94abfe96715e2aaf24, type: 3}
   - {fileID: 2724004480270651555, guid: f4a39cdf970e6d540981b2fd4fde42ac, type: 3}
   - {fileID: 21300000, guid: ae1da2fe153ff4e4e9a950fc7cc07804, type: 3}
