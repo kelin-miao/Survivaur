@@ -49,8 +49,8 @@ public class InputManager : MonoBehaviour
         p2jump = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Jump", "UpArrow"));
         p2attack1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Front Attack", "RightBracket"));
         p2special = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Special Ability", "LeftBracket"));
-        p2left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Right", "RightArrow"));
-        p2right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Left", "LeftArrow"));
+        p2left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Left", "LeftArrow"));
+        p2right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Right", "RightArrow"));
         p2block = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 2 Block", "DownArrow"));
     }
     // Start is called before the first frame update
@@ -61,6 +61,11 @@ public class InputManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    void OnGUI()
     {
         
     }
