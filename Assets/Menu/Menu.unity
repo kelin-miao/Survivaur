@@ -18695,7 +18695,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press any key to continue
+  m_Text: Click anywhere to continue
 --- !u!222 &1594851741
 CanvasRenderer:
   m_ObjectHideFlags: 0

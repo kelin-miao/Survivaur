@@ -9,9 +9,9 @@ public class RoundManager : MonoBehaviour
     //Player Stuff
     int player1Char;
     int player2Char;
-    [Range (0, 3)]
+    [Range(0, 3)]
     public int player1Lives = 3;
-    [Range (0, 3)]
+    [Range(0, 3)]
     public int player2Lives = 3;
     bool p1lost = false;
     bool p2lost = false;
@@ -35,11 +35,9 @@ public class RoundManager : MonoBehaviour
     //Camera Variables
     [SerializeField] private float cameraLerpAmount = 0.05f;
 
-    [SerializeField] private float maxCameraSizeX = 12.0f;
-    [SerializeField] private float minCameraSizeX = 24.0f;
+    [SerializeField] private float minCameraSize = 12.0f;
+    [SerializeField] private float maxCameraSize = 24.0f;
 
-    [SerializeField] private float maxCameraSizeY = 21.0f;
-    [SerializeField] private float minCameraSizeY = 42.0f;
 
     private Vector3 velocity = Vector3.zero;
     [SerializeField] public float smoothTime = 0.25f;
@@ -56,7 +54,7 @@ public class RoundManager : MonoBehaviour
         player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn.position, transform.rotation);
         player2.GetComponent<DinoScript>().playerNumber = 2;
         //player2.tag = "Player 2";
-       
+
         dino1 = player1.GetComponent<Transform>();
         dino2 = player2.GetComponent<Transform>();
     }
@@ -65,7 +63,7 @@ public class RoundManager : MonoBehaviour
     void Update()
     {
         //Handle Death and respawn
-        if(player1.GetComponent<DinoScript>().Health <= 0)
+        if (player1.GetComponent<DinoScript>().Health <= 0)
         {
             Player1Death();
         }
@@ -75,7 +73,7 @@ public class RoundManager : MonoBehaviour
             Player2Death();
         }
 
-        if(player1Lives <= 0 && p1lost == false)
+        if (player1Lives <= 0 && p1lost == false)
         {
             Player2Victory();
         }
@@ -85,7 +83,7 @@ public class RoundManager : MonoBehaviour
         }
         p1LifeCount.text = "Player 1 Lives: " + player1Lives;
         p2LifeCount.text = "Player 2 Lives: " + player2Lives;
-        if(player1Lives <= 0 && player2Lives <= 0)
+        if (player1Lives <= 0 && player2Lives <= 0)
         {
             Tie();
         }
@@ -96,7 +94,7 @@ public class RoundManager : MonoBehaviour
     void Player1Death()
     {
         player1Lives--;
-        if(player1Lives > 0)
+        if (player1Lives > 0)
         {
             Player1Respawn();
         }
@@ -152,25 +150,17 @@ public class RoundManager : MonoBehaviour
     void CentreCamera()
     {
         //Midpoint position formula (((x1+x2)/2), ((y1+y2)/2))
-        Vector3 playersMidpoint = new Vector3((dino1.position.x + dino2.position.x)/2.0f, (dino1.position.y + dino2.position.y) / 2.0f, Camera.main.transform.position.z);
-        
+        Vector3 playersMidpoint = new Vector3((dino1.position.x + dino2.position.x) / 2.0f, (dino1.position.y + dino2.position.y) / 2.0f, Camera.main.transform.position.z);
+
         //Move Camera
         Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, playersMidpoint, ref velocity, smoothTime);
     }
 
     void ResizeCamera()
     {
-        //calculate x distance 
-        float xDistance = Mathf.Clamp(Mathf.Abs(dino1.position.x - dino2.position.x), minCameraSizeX, maxCameraSizeX);
-        float yDistance = Mathf.Clamp(Mathf.Abs(dino1.position.y - dino2.position.y), minCameraSizeY, maxCameraSizeY);
+        //calculate distance
+        float dinoDistance = Mathf.Clamp(Vector3.Distance(dino1.position, dino2.position), minCameraSize, maxCameraSize);
 
-        if(xDistance > yDistance)
-        {
-            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, xDistance/Screen.width * Screen.height, cameraLerpAmount);
-        }
-        else if (xDistance < yDistance)
-        {
-            Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, yDistance/2.0f, cameraLerpAmount);
-        }
+        Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, dinoDistance, cameraLerpAmount);
     }
 }

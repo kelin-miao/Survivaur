@@ -1090,8 +1090,8 @@ MonoBehaviour:
   hungerDrainMult: 1
   block: 0
   Adrenaline: 100
-  maxSpeed: 2.5
-  jumpForce: 6
+  maxSpeed: 6
+  jumpForce: 12
   specattackDelay: 1
   corpseNutrition: 175
   rigbod: {fileID: 0}
