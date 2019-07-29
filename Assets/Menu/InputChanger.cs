@@ -129,11 +129,6 @@ public class InputChanger : MonoBehaviour
                 menuPanelp2.transform.Find("Block").GetComponentInChildren<Text>().text = InputManager.IM.p2block.ToString();
             }
         }
-            ////Delete all of the PlayerPrefs settings by pressing this Button
-            //if (GUI.Button(new Rect(100, 200, 200, 60), "Delete"))
-            //{
-            //    PlayerPrefs.DeleteAll();
-            //}
     }
 
     void P1DefaultInputs()
@@ -252,5 +247,9 @@ public class InputChanger : MonoBehaviour
     {
         KeyToBind = "P2Block";
         waitingForKey = true;
+    }
+    void ResetAll()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
