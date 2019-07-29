@@ -4642,7 +4642,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1054467468}
   m_HandleRect: {fileID: 1054467467}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5957,8 +5957,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Herbivores regain stamina from attacking plants that are found around the
+  m_Text: 'Herbivores regain stamina from attacking plants that are found around the
     level.
+
+
+    Herbivores have defensive special abilities.'
 --- !u!222 &548179317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12280,7 +12283,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 461747463}
   m_HandleRect: {fileID: 461747462}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -17665,7 +17668,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Carnivores regain stamina from attacking the corpse of dead dinosaurs.
+  m_Text: 'Carnivores regain stamina from attacking the corpse of dead dinosaurs.
+
+
+    Carnivores have offensive special abilities.'
 --- !u!222 &1479370574
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19164,7 +19170,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 117986555}
   m_HandleRect: {fileID: 117986554}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
