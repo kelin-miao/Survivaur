@@ -344,7 +344,7 @@ void FixedUpdate()
 
             if (playerNumber == 1)
             {
-                if (Input.GetKey(InputManager.IM.p1left) && !blocking)
+                if (Input.GetKey(InputManager.IM.p1right) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
@@ -354,7 +354,7 @@ void FixedUpdate()
                         Flip();
                     }
                 }
-                else if (Input.GetKey(InputManager.IM.p1right) && !blocking)
+                else if (Input.GetKey(InputManager.IM.p1left) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
@@ -373,7 +373,7 @@ void FixedUpdate()
 
             if (playerNumber == 2)
             {
-                if (Input.GetKey(InputManager.IM.p2left) && !blocking)
+                if (Input.GetKey(InputManager.IM.p2right) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
@@ -383,7 +383,7 @@ void FixedUpdate()
                         Flip();
                     }
                 }
-                else if (Input.GetKey(InputManager.IM.p2right) && !blocking)
+                else if (Input.GetKey(InputManager.IM.p2left) && !blocking)
                 {
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);

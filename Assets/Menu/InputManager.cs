@@ -41,8 +41,8 @@ public class InputManager : MonoBehaviour
         p1jump = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Jump", "W"));
         p1attack1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Front Attack", "V"));
         p1special = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Special Ability", "B"));
-        p1left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Right", "D"));
-        p1right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Left", "A"));
+        p1left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Left", "A"));
+        p1right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Right", "D"));
         p1block = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Player 1 Block", "S"));
 
         //Player 2
