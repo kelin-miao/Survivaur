@@ -510,12 +510,12 @@ public class MenuScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && mapSelected == 2)
         {
             //load map 1
-            SceneManager.LoadScene("IceAgeLevel2.0");
+            SceneManager.LoadScene("TestLevel");
         }
         else if (mapSelected == 2)
         {
             //load map 1
-            SceneManager.LoadScene("TestLevel");
+            SceneManager.LoadScene("IceAgeLevel2.0");
         }
         Destroy(gameObject);
     }
