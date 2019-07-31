@@ -1,7 +1,40 @@
 fileFormatVersion: 2
 guid: aad9895162d7a7240a733be3b442beb3
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8401757585987433780
+    second: volcanopiskel_0
+  - first:
+      213: -7173118972008954357
+    second: volcanopiskel_1
+  - first:
+      213: 5336072144463363588
+    second: volcanopiskel_2
+  - first:
+      213: 8068014854853520111
+    second: volcanopiskel_3
+  - first:
+      213: -643260391496808289
+    second: volcanopiskel_4
+  - first:
+      213: -8048360931221492208
+    second: volcanopiskel_5
+  - first:
+      213: 6081087063850613797
+    second: volcanopiskel_6
+  - first:
+      213: 4320928625422533099
+    second: volcanopiskel_7
+  - first:
+      213: 6377044833005435710
+    second: volcanopiskel_8
+  - first:
+      213: 9154636559219217695
+    second: volcanopiskel_9
+  - first:
+      213: 5140690240150794587
+    second: volcanopiskel_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +73,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -137,7 +170,238 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: volcanopiskel_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 702
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d161cf1f1676e7a44a7bbb451b70a81e
+      internalID: -8401757585987433780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 702
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52349fee224c00145a3e4a3b2a178fb4
+      internalID: -7173118972008954357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_2
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 702
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c67a0b93831f78d4dba245c730cfd03d
+      internalID: 5336072144463363588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 468
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aba12b165c5652478f4a879f7350858
+      internalID: 8068014854853520111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_4
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 468
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7d9c98991e65a43ae3d9126b99e31f
+      internalID: -643260391496808289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_5
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 468
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c81aa96568338b409aee94a1a481d82
+      internalID: -8048360931221492208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 234
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6f26b63e981e54c864b4017db2b663
+      internalID: 6081087063850613797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_7
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 234
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af27a3a1585b9b04b8ff70d77c6ce23a
+      internalID: 4320928625422533099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_8
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 234
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8fcb97aa30d9b8458765d92e6fadf9c
+      internalID: 6377044833005435710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874cce3a6a5c8284dad6a62864bc82e5
+      internalID: 9154636559219217695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: volcanopiskel_10
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 340
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a776b5bc8eb312040afac1adf01b2c38
+      internalID: 5140690240150794587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

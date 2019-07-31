@@ -1075,10 +1075,10 @@ MonoBehaviour:
   specAttack: 4
   Bleeding: 0
   blocking: 0
-  biteSound: {fileID: 0}
-  specialAttackSound: {fileID: 0}
-  walkingSound: {fileID: 0}
-  jumpSound: {fileID: 0}
+  biteSound: {fileID: 8300000, guid: e5cfd6f57100ef149a5477c16569bb8a, type: 3}
+  specialAttackSound: {fileID: 8300000, guid: 324272cbd7f9f034980c50b09e407fb2, type: 3}
+  walkingSound: {fileID: 8300000, guid: e3b5b53a53b31dd478c59bff044e38c0, type: 3}
+  jumpSound: {fileID: 8300000, guid: 4fcb6be8057f5f14a8f0b896b5ccf85a, type: 3}
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
   MaxHealth: 350
   MaxHunger: 125
