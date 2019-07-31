@@ -87,6 +87,8 @@ Slider adrenalineSlider;
 Animator animController;
     //Bubble Shield
     GameObject bubbleShield;
+    //Audio Source
+    AudioSource audiosource;
 
 
     void Awake()
@@ -111,6 +113,8 @@ Animator animController;
         block = MaxBlock;
         MaxBubbleSizeX = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().localScale.x;
         MaxBubbleSizeY = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().localScale.y;
+        audiosource = GetComponent<AudioSource>();
+        audiosource.clip = walkingSound;
     }
 
 
@@ -206,6 +210,7 @@ void Update()
                 if (grounded && (Input.GetKey(InputManager.IM.p1jump)) && canattack == true)
                 {
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                    audiosource.Stop();
                 }
                 //Wall Jumping
                 if (walled && (Input.GetKey(InputManager.IM.p1jump)) && canWall)
@@ -250,6 +255,7 @@ void Update()
                 if (grounded && (Input.GetKey(InputManager.IM.p2jump)) && canattack == true)
                 {
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
+                    audiosource.Stop();
                 }
                 //Wall Jumping
                 if (walled && (Input.GetKey(InputManager.IM.p2jump)) && canWall)
@@ -349,6 +355,10 @@ void FixedUpdate()
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
+                    if (!audiosource.isPlaying && grounded && !blocking)
+                    {
+                        audiosource.Play();
+                    }
                     if (!facingRight)
                     {
                         Flip();
@@ -359,6 +369,10 @@ void FixedUpdate()
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
+                    if(!audiosource.isPlaying && grounded && !blocking)
+                    {
+                        audiosource.Play();
+                    }
                     if (facingRight)
                     {
                         Flip();
@@ -367,6 +381,10 @@ void FixedUpdate()
                 else
                 {
                     animController.SetBool("Walking", false);
+                    if (audiosource.isPlaying)
+                    {
+                        audiosource.Stop();
+                    }
                 }
             }
 
@@ -378,6 +396,10 @@ void FixedUpdate()
                     //rigbod.velocity = new Vector2(moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
+                    if (!audiosource.isPlaying && grounded && !blocking)
+                    {
+                        audiosource.Play();
+                    }
                     if (!facingRight)
                     {
                         Flip();
@@ -388,6 +410,10 @@ void FixedUpdate()
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
+                    if (!audiosource.isPlaying && grounded && !blocking)
+                    {
+                        audiosource.Play();
+                    }
                     if (facingRight)
                     {
                         Flip();
@@ -438,7 +464,7 @@ void attack()
             transform.transform.Translate(Vector2.right * 0.0001f);
             //moveSpeed = 0;
             //animController.Play("Bite");
-            //AudioSource.PlayClipAtPoint(biteSound, transform.position);
+            AudioSource.PlayClipAtPoint(biteSound, transform.position, 2);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
             Invoke("Reset", attack1Delay);
         }
@@ -450,7 +476,7 @@ void attack()
         {
             moveSpeed = 0;
             animController.Play("Roar");
-            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
@@ -470,7 +496,7 @@ void attack()
                 transform.transform.Translate(Vector2.right * -chargeSpeed * Time.deltaTime * Adrenaline);
             }
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = Adrenaline - 0.01f;
             Invoke("Reset", specattackDelay);
         }
@@ -480,7 +506,7 @@ void attack()
             moveSpeed = 0;
             animController.Play("BleedCut");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline -= 0.4f;
             Invoke("Reset", specattackDelay);
         }
@@ -490,7 +516,7 @@ void attack()
             moveSpeed = 0;
             animController.Play("TailWhip");
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = 1;
             Invoke("Reset", specattackDelay);
         }
@@ -519,6 +545,7 @@ void HungerDrain()
     void Die()
     {
         alive = false;
+        AudioSource.PlayClipAtPoint(DeathSound, transform.position, 2);
         HPslider.enabled = false;
         hungerSlider.enabled = false;
         animController.Play("Die");
