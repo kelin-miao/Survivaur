@@ -1063,9 +1063,9 @@ MonoBehaviour:
   MaxAdrenaline: 2
   MaxBlock: 70
   Health: 100
-  healthDrainMult: 1
+  healthDrainMult: 4
   Hunger: 100
-  hungerDrainMult: 1
+  hungerDrainMult: 4
   block: 0
   Adrenaline: 100
   maxSpeed: 6.5
