@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DinoScript : MonoBehaviour
 {
-//General
+    //General
     public int playerNumber;
     public bool Herbivore;
     public int specAttack;
@@ -18,73 +18,73 @@ public class DinoScript : MonoBehaviour
     public AudioClip walkingSound;
     public AudioClip jumpSound;
     public AudioClip DeathSound;
-//Stats
+    //Stats
     //maxvalues
-public float MaxHealth = 300;
-public float MaxHunger = 100f;
-public float MaxAdrenaline = 2.0f;
-public float MaxBlock = 70.0f;
-//Health Value
-public float Health;
-//Alive bool
-bool alive = true;
-//Health Drain Multiplier
-public float healthDrainMult = 2;
-//Hunger Value
-public float Hunger;
-//Hunger Drain Multiplier
-public float hungerDrainMult = 3;
+    public float MaxHealth = 300;
+    public float MaxHunger = 100f;
+    public float MaxAdrenaline = 2.0f;
+    public float MaxBlock = 70.0f;
+    //Health Value
+    public float Health;
+    //Alive bool
+    bool alive = true;
+    //Health Drain Multiplier
+    public float healthDrainMult = 2;
+    //Hunger Value
+    public float Hunger;
+    //Hunger Drain Multiplier
+    public float hungerDrainMult = 3;
     //block resource
-public float block;
+    public float block;
     //block drain
     float blockDrainMult = 7.0f;
     //Number under which block breaks
     float blockthreshold = 15.0f;
-//Adrenaline
-[Range(1, 2)]
-public float Adrenaline;
-//Adrenline Drain Multiplier
-float adrenalinedrainMult = 0.55f;
-//Movement speed
-public float maxSpeed;
-float moveSpeed = 3;
-//Force of jumps
-public float jumpForce = 6;
-//How much the dino moves when hit
-float knockbackForceX = 2.0f;
-float knockbackForceY = 3.0f;
-//How long before the dino can attack again (ANIMATION LENGTH)
-float attack1Delay = 0.64f;
-//How long after special attack before dino can attack again (ANIM LENGTH)
-public float specattackDelay = 0.65f;
-//How much hunger can be restored by eating this dino's corpse
-public float corpseNutrition = 100;
+    //Adrenaline
+    [Range(1, 2)]
+    public float Adrenaline;
+    //Adrenline Drain Multiplier
+    float adrenalinedrainMult = 0.55f;
+    //Movement speed
+    public float maxSpeed;
+    float moveSpeed = 3;
+    //Force of jumps
+    public float jumpForce = 6;
+    //How much the dino moves when hit
+    float knockbackForceX = 2.0f;
+    float knockbackForceY = 3.0f;
+    //How long before the dino can attack again (ANIMATION LENGTH)
+    float attack1Delay = 0.64f;
+    //How long after special attack before dino can attack again (ANIM LENGTH)
+    public float specattackDelay = 0.65f;
+    //How much hunger can be restored by eating this dino's corpse
+    public float corpseNutrition = 100;
     float MaxBubbleSizeX;
     float MaxBubbleSizeY;
     //Technical
     //Collider used for map navigation
     BoxCollider2D navCollider;
 
-//Check if dino is on ground
-bool grounded = false;
+    //Check if dino is on ground
+    bool grounded = false;
     //Check if dino is on wall
     bool walled = false;
     bool canWall = true;
     bool wallOnRight;
-//Dino's rigidbody
-public Rigidbody2D rigbod;
-//Facing left or right
-public bool facingRight;
-//able to attack
-bool canattack = true;
-//Health Slider
-Slider HPslider;
-//hunger Slider
-Slider hungerSlider;
-//Adrenaline Slider
-Slider adrenalineSlider;
-//Animator
-Animator animController;
+    //Dino's rigidbody
+    public Rigidbody2D rigbod;
+    //Facing left or right
+    public bool facingRight;
+    //able to attack
+    bool canattack = true;
+    //Health Slider
+    Slider HPslider;
+    //hunger Slider
+    Slider hungerSlider;
+    //Adrenaline Slider
+    Slider adrenalineSlider;
+    //Animator
+    Animator animController;
     //Bubble Shield
     GameObject bubbleShield;
     //Audio Source
@@ -93,7 +93,7 @@ Animator animController;
 
     void Awake()
     {
-        if(playerNumber == 1)
+        if (playerNumber == 1)
         {
             facingRight = true;
         }
@@ -120,73 +120,74 @@ Animator animController;
 
     // Start is called before the first frame update
     void Start()
-{
-    //Get Animation Controller for controlling animations from this script
-    animController = this.GetComponent<Animator>();
-    //Get Rigidbody for this Dino for manipulation from this script
-    rigbod = GetComponent<Rigidbody2D>();
-    //Get Movement collider
-    navCollider = GetComponent<BoxCollider2D>();
-    //Make HealthBar
-    HPslider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<Slider>();
-    hungerSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<Slider>();
-    adrenalineSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<Slider>();
-    bubbleShield = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().gameObject;
-    bubbleShield.SetActive(false);
+    {
+        //Get Animation Controller for controlling animations from this script
+        animController = this.GetComponent<Animator>();
+        //Get Rigidbody for this Dino for manipulation from this script
+        rigbod = GetComponent<Rigidbody2D>();
+        //Get Movement collider
+        navCollider = GetComponent<BoxCollider2D>();
+        //Make HealthBar
+        HPslider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<Slider>();
+        hungerSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<Slider>();
+        adrenalineSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<Slider>();
+        bubbleShield = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().gameObject;
+        bubbleShield.SetActive(false);
 
     }
 
 
-//Jumping
-//Check if Dino has hit ground    
-void OnCollisionEnter2D(Collision2D coll)
-{
+    //Jumping
+    //Check if Dino has hit ground    
+    void OnCollisionEnter2D(Collision2D coll)
+    {
         //Standard Jumping
-    if (coll.gameObject.tag == "Ground")
-    {
-        //Jump Script
-        //print("Ground");
-        grounded = true;
-        animController.SetBool("Grounded", true);
-        canattack = true;
-    }
-    //Wall jumping
-    if(coll.gameObject.tag == "Wall")
+        if (coll.gameObject.tag == "Ground")
         {
-                walled = true;
-                if(coll.transform.position.x > gameObject.transform.position.x)
-                {
-                    wallOnRight = true;
-                }
-                else
-                {
-                    wallOnRight = false;
-                }
-                //animController.SetBool("Grounded", true);
-                //canattack = true;
-            }
+            //Jump Script
+            //print("Ground");
+            grounded = true;
+            animController.SetBool("Grounded", true);
+            animController.Play("Idle");
+            canattack = true;
         }
-    void OnCollisionStay2D(Collision2D coll)
-    {
+        //Wall jumping
         if (coll.gameObject.tag == "Wall")
         {
-            walled = false;
-            transform.transform.Translate(Vector2.right * 0.0001f);
+            walled = true;
+            if (coll.transform.position.x > gameObject.transform.position.x)
+            {
+                wallOnRight = true;
+            }
+            else
+            {
+                wallOnRight = false;
+            }
+            //animController.SetBool("Grounded", true);
+            //canattack = true;
         }
     }
+    //void OnCollisionStay2D(Collision2D coll)
+    //{
+    //    if (coll.gameObject.tag == "Wall")
+    //    {
+    //        walled = false;
+    //        transform.transform.Translate(Vector2.right * 0.0001f);
+    //    }
+    //}
 
     //Check if Dino has left ground
     void OnCollisionExit2D(Collision2D coll)
-{
-        //Standard Jumping
-    if (coll.gameObject.tag == "Ground")
     {
-        //Jump Script
-        //print("Unground");
-        grounded = false;
-        animController.SetBool("Grounded", false);
-        canattack = false;
-    }
+        //Standard Jumping
+        if (coll.gameObject.tag == "Ground")
+        {
+            //Jump Script
+            //print("Unground");
+            grounded = false;
+            animController.SetBool("Grounded", false);
+            canattack = false;
+        }
         //Wall jumping
         if (coll.gameObject.tag == "Wall")
         {
@@ -199,9 +200,9 @@ void OnCollisionEnter2D(Collision2D coll)
     }
 
 
-// Update is called once per frame
-void Update()
-{
+    // Update is called once per frame
+    void Update()
+    {
         if (alive)
         {
             if (playerNumber == 1)
@@ -215,19 +216,19 @@ void Update()
                 //Wall Jumping
                 if (walled && (Input.GetKey(InputManager.IM.p1jump)) && canWall)
                 {
-                    if(wallOnRight && facingRight)
+                    if (wallOnRight && facingRight)
                     {
                         rigbod.velocity = new Vector2(-jumpForce, jumpForce);
                         canWall = false;
                         Invoke("WallJumpReset", 0.3f);
                     }
-                    else if(!wallOnRight && !facingRight)
+                    else if (!wallOnRight && !facingRight)
                     {
                         rigbod.velocity = new Vector2(jumpForce, jumpForce);
                         canWall = false;
                         Invoke("WallJumpReset", 0.3f);
                     }
-                    
+
                 }
                 if (Input.GetKeyDown(InputManager.IM.p1attack1) && canattack == true)
                 {
@@ -238,13 +239,13 @@ void Update()
                 {
                     SpecialAttack();
                 }
-                if (Input.GetKeyDown(InputManager.IM.p1block) && block >= blockthreshold && grounded)
+                if (Input.GetKeyDown(InputManager.IM.p1block) && block >= blockthreshold)
                 {
                     blocking = true;
                     bubbleShield.SetActive(true);
                     canattack = false;
                 }
-                if (Input.GetKeyUp(InputManager.IM.p1block) && grounded)
+                if (Input.GetKeyUp(InputManager.IM.p1block))
                 {
                     Reset();
                 }
@@ -266,7 +267,7 @@ void Update()
                         canWall = false;
                         Invoke("WallJumpReset", 0.3f);
                     }
-                    else if(!wallOnRight && !facingRight)
+                    else if (!wallOnRight && !facingRight)
                     {
                         rigbod.velocity = new Vector2(jumpForce, jumpForce);
                         canWall = false;
@@ -283,19 +284,20 @@ void Update()
                 {
                     SpecialAttack();
                 }
-                if (Input.GetKeyDown(InputManager.IM.p2block) && block >= blockthreshold && grounded)
+                if (Input.GetKeyDown(InputManager.IM.p2block) && block >= blockthreshold)
                 {
                     blocking = true;
                     bubbleShield.SetActive(true);
                     canattack = false;
                 }
-                if (Input.GetKeyUp(InputManager.IM.p2block) && grounded)
+                if (Input.GetKeyUp(InputManager.IM.p2block))
                 {
                     Reset();
                 }
             }
 
             HPslider.value = Health;
+            HealthRegen();
             HungerDrain();
             hungerSlider.value = Hunger;
             adrenalineSlider.value = Adrenaline;
@@ -309,26 +311,26 @@ void Update()
             {
                 Die();
             }
-            if(blocking)
+            if (blocking)
             {
                 block = block - (Time.deltaTime * blockDrainMult);
-                if(block <= blockthreshold)
+                if (block <= blockthreshold)
                 {
                     block = (blockthreshold * 0.25f);
-                    
+
                     Reset();
                 }
             }
-            if(!blocking && block + (Time.deltaTime * blockDrainMult) < MaxBlock)
+            if (!blocking && block + (Time.deltaTime * blockDrainMult) < MaxBlock)
             {
                 block = block + (Time.deltaTime * blockDrainMult);
             }
-            if(blocking && !grounded)
-            {
-                blocking = false;
-                bubbleShield.SetActive(false);
-                canattack = false;
-            }
+            //if(blocking && !grounded)
+            //{
+            //    blocking = false;
+            //    bubbleShield.SetActive(false);
+            //    canattack = false;
+            //}
         }
         if (!alive)
         {
@@ -338,13 +340,13 @@ void Update()
             }
         }
     }
- void WallJumpReset()
+    void WallJumpReset()
     {
         canWall = true;
     }
-//Handle Movement Input and call flipping
-void FixedUpdate()
-{
+    //Handle Movement Input and call flipping
+    void FixedUpdate()
+    {
         if (alive)
         {
 
@@ -369,7 +371,7 @@ void FixedUpdate()
                     //rigbod.velocity = new Vector2(-moveSpeed, rigbod.velocity.y);
                     transform.transform.Translate(Vector2.right * -moveSpeed * Time.deltaTime * Adrenaline);
                     animController.SetBool("Walking", true);
-                    if(!audiosource.isPlaying && grounded && !blocking)
+                    if (!audiosource.isPlaying && grounded && !blocking)
                     {
                         audiosource.Play();
                     }
@@ -425,18 +427,18 @@ void FixedUpdate()
                 }
             }
         }
-}
-//Rotate character on input
-void Flip()
-{
-    facingRight = !facingRight;
-    Vector3 theScale = transform.localScale;
-    theScale.x *= -1;
-    transform.localScale = theScale;
-}
-//Reset Speed to norm, allow attacks, and disable damage colliders
-public void Reset()
-{
+    }
+    //Rotate character on input
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+    //Reset Speed to norm, allow attacks, and disable damage colliders
+    public void Reset()
+    {
         gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = false;
         gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
         animController.SetBool("Attacking", false);
@@ -446,18 +448,18 @@ public void Reset()
         transform.transform.Translate(Vector2.right * 0.0001f);
         bubbleShield.SetActive(false);
     }
-//Bleed
-void Bleed()
+    //Bleed
+    void Bleed()
     {
         Health = Health - (Time.deltaTime * healthDrainMult * 15);
     }
-public void StopBleed()
+    public void StopBleed()
     {
         Bleeding = false;
     }
-//Enable attack Trigger and disable movement during attack
-void attack()
-{
+    //Enable attack Trigger and disable movement during attack
+    void attack()
+    {
         if (alive)
         {
             animController.SetBool("Attacking", true);
@@ -468,11 +470,11 @@ void attack()
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
             Invoke("Reset", attack1Delay);
         }
-}
+    }
     void SpecialAttack()
     {
         //Roar
-        if(alive && Adrenaline > 1.8 && specAttack == 1)
+        if (alive && Adrenaline > 1.8 && specAttack == 1)
         {
             moveSpeed = 0;
             animController.Play("Roar");
@@ -487,11 +489,11 @@ void attack()
             float chargeSpeed = 12;
             moveSpeed = 0;
             animController.Play("ChargeStart");
-            if(facingRight)
+            if (facingRight)
             {
                 transform.transform.Translate(Vector2.right * chargeSpeed * Time.deltaTime * Adrenaline);
             }
-            else if(!facingRight)
+            else if (!facingRight)
             {
                 transform.transform.Translate(Vector2.right * -chargeSpeed * Time.deltaTime * Adrenaline);
             }
@@ -521,17 +523,26 @@ void attack()
             Invoke("Reset", specattackDelay);
         }
     }
-//Get Knocked away from attacker
-void KnockbackRight()
-{
+    //Get Knocked away from attacker
+    void KnockbackRight()
+    {
         rigbod.velocity = new Vector2(knockbackForceX * 1, knockbackForceY * 1);
     }
-void KnockbackLeft()
-{
+    void KnockbackLeft()
+    {
         rigbod.velocity = new Vector2(-knockbackForceX * 1, knockbackForceY * 1);
     }
-//Hunger and health drain over time
-void HungerDrain()
+
+    void HealthRegen()
+    {
+        if(Hunger > 0 && (Health + (Time.deltaTime * healthDrainMult) < MaxHealth))
+        {
+            Health = Health + (Time.deltaTime * healthDrainMult);
+        }
+
+    }
+    //Hunger and health drain over time
+    void HungerDrain()
 {
     if (Hunger > 0)
     {
@@ -559,9 +570,13 @@ void HungerDrain()
     }
     void AdrenalineDrain()
     {
-        if (Adrenaline > 1)
+        if ((Adrenaline > 1) && (Hunger > 0))
         {
             Adrenaline = Adrenaline - ((Time.deltaTime * adrenalinedrainMult)/ 6);
+        }
+        else if ((Adrenaline < 2) && (Hunger <= 0))
+        {
+            Adrenaline = Adrenaline + ((Time.deltaTime * adrenalinedrainMult) / 6);
         }
     }
     public void Stun()
