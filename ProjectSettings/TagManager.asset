@@ -51,3 +51,6 @@ TagManager:
   - name: Player
     uniqueID: 813211283
     locked: 0
+  - name: Environment Particles
+    uniqueID: 587041633
+    locked: 0
