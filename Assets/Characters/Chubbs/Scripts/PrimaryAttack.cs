@@ -88,7 +88,7 @@ public class PrimaryAttack : MonoBehaviour
                     gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
                 }
             }
-
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
         if (attackColl.gameObject.tag == "Corpse" && !herbivore)
@@ -115,5 +115,6 @@ public class PrimaryAttack : MonoBehaviour
             }
             attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition = attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition - nutrition;
         }
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 }
