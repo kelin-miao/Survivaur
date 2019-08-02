@@ -203,7 +203,7 @@ public class DinoScript : MonoBehaviour
             //print("Unground");
             grounded = false;
             animController.SetBool("Grounded", false);
-            canattack = false;
+            //canattack = false;
         }
         //Wall jumping
         if (coll.gameObject.tag == "Wall")
@@ -587,6 +587,9 @@ public class DinoScript : MonoBehaviour
         gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
         gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
         gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
+        tagObj.SetActive(false);
+        gameObject.transform.Find("Canvas").gameObject.transform.Find("Arrow").gameObject.SetActive(false);
+
     }
     void AdrenalineDrain()
     {
