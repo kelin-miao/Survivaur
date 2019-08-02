@@ -89,6 +89,9 @@ public class DinoScript : MonoBehaviour
     GameObject bubbleShield;
     //Audio Source
     AudioSource audiosource;
+    //Player Tag
+    Text playerTag;
+    GameObject tagObj;
 
 
     void Awake()
@@ -121,6 +124,10 @@ public class DinoScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Get Player Tag
+        tagObj = gameObject.transform.Find("Canvas").gameObject.transform.Find("PlayerTag").gameObject;
+        playerTag = gameObject.transform.Find("Canvas").gameObject.transform.Find("PlayerTag").GetComponentInChildren<Text>();
+        playerTag.text = "Player " + playerNumber;
         //Get Animation Controller for controlling animations from this script
         animController = this.GetComponent<Animator>();
         //Get Rigidbody for this Dino for manipulation from this script
@@ -141,40 +148,50 @@ public class DinoScript : MonoBehaviour
     //Check if Dino has hit ground    
     void OnCollisionEnter2D(Collision2D coll)
     {
-        //Standard Jumping
-        if (coll.gameObject.tag == "Ground")
+        if(alive)
         {
-            //Jump Script
-            //print("Ground");
-            grounded = true;
-            animController.SetBool("Grounded", true);
-            animController.Play("Idle");
-            canattack = true;
-        }
-        //Wall jumping
-        if (coll.gameObject.tag == "Wall")
-        {
-            walled = true;
-            if (coll.transform.position.x > gameObject.transform.position.x)
+            //Standard Jumping
+            if (coll.gameObject.tag == "Ground")
             {
-                wallOnRight = true;
+                //Jump Script
+                //print("Ground");
+                grounded = true;
+                animController.SetBool("Grounded", true);
+                animController.Play("Idle");
+                canattack = true;
             }
-            else
+            //Wall jumping
+            if (coll.gameObject.tag == "Wall")
             {
-                wallOnRight = false;
+                walled = true;
+                if (coll.transform.position.x > gameObject.transform.position.x)
+                {
+                    wallOnRight = true;
+                }
+                else
+                {
+                    wallOnRight = false;
+                }
+                //animController.SetBool("Grounded", true);
+                //canattack = true;
             }
-            //animController.SetBool("Grounded", true);
-            //canattack = true;
         }
     }
-    //void OnCollisionStay2D(Collision2D coll)
-    //{
-    //    if (coll.gameObject.tag == "Wall")
-    //    {
-    //        walled = false;
-    //        transform.transform.Translate(Vector2.right * 0.0001f);
-    //    }
-    //}
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if(alive)
+        {
+            //if (coll.gameObject.tag == "Ground")
+            //{
+            //    transform.transform.Translate(Vector2.up * 0.0001f);
+            //}
+            if (coll.gameObject.tag == "Wall")
+            {
+                walled = false;
+                transform.transform.Translate(Vector2.right * 0.0001f);
+            }
+        }
+    }
 
     //Check if Dino has left ground
     void OnCollisionExit2D(Collision2D coll)
@@ -433,8 +450,11 @@ public class DinoScript : MonoBehaviour
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
+        Vector3 tagScale = tagObj.transform.localScale;
         theScale.x *= -1;
+        tagScale.x *= -1;
         transform.localScale = theScale;
+        tagObj.transform.localScale = tagScale;
     }
     //Reset Speed to norm, allow attacks, and disable damage colliders
     public void Reset()
