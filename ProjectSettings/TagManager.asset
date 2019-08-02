@@ -8,6 +8,7 @@ TagManager:
   - Corpse
   - HerbBush
   - Wall
+  - EnvironmentEntity
   layers:
   - Default
   - TransparentFX

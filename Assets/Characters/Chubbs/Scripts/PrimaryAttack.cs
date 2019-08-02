@@ -103,6 +103,7 @@ public class PrimaryAttack : MonoBehaviour
             }
             attackColl.gameObject.GetComponent<DinoScript>().corpseNutrition = attackColl.gameObject.GetComponent<DinoScript>().corpseNutrition - nutrition;
         }
+        //Herbivore Feeding
         if (attackColl.gameObject.tag == "HerbBush" && herbivore)
         {
             if (gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition < gameObject.GetComponentInParent<DinoScript>().MaxHunger)
@@ -114,6 +115,10 @@ public class PrimaryAttack : MonoBehaviour
                 gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().MaxHunger;
             }
             attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition = attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition - nutrition;
+        }
+        if(attackColl.gameObject.tag == "EnvironmentEntity")
+        {
+            attackColl.gameObject.GetComponent<IceWall>().wallHP = attackColl.gameObject.GetComponent<IceWall>().wallHP - attackDamage;
         }
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
