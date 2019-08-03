@@ -46,7 +46,7 @@ public class DinoScript : MonoBehaviour
     [Range(1, 2)]
     public float Adrenaline;
     //Adrenline Drain Multiplier
-    float adrenalinedrainMult = 0.55f;
+    public float adrenalinedrainMult = 0.55f;
     //Movement speed
     public float maxSpeed;
     float moveSpeed = 3;
@@ -105,10 +105,9 @@ public class DinoScript : MonoBehaviour
         if (playerNumber == 2)
         {
             facingRight = false;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
+
         Health = MaxHealth;
         Hunger = MaxHunger;
         moveSpeed = maxSpeed;
@@ -320,12 +319,14 @@ public class DinoScript : MonoBehaviour
                 }
             }
 
-            HPslider.value = Health;
             HealthRegen();
             HungerDrain();
+            AdrenalineDrain();
+
+            HPslider.value = Health;
             hungerSlider.value = Hunger;
             adrenalineSlider.value = Adrenaline;
-            AdrenalineDrain();
+
             bubbleShield.GetComponent<RectTransform>().localScale = new Vector3(MaxBubbleSizeX * (block / 10), MaxBubbleSizeY * (block / 10));
             if (Bleeding)
             {
@@ -364,10 +365,12 @@ public class DinoScript : MonoBehaviour
             }
         }
     }
+
     void WallJumpReset()
     {
         canWall = true;
     }
+
     //Handle Movement Input and call flipping
     void FixedUpdate()
     {
@@ -452,16 +455,13 @@ public class DinoScript : MonoBehaviour
             }
         }
     }
+
     //Rotate character on input
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        Vector3 tagScale = tagObj.transform.localScale;
-        theScale.x *= -1;
-        tagScale.x *= -1;
-        transform.localScale = theScale;
-        tagObj.transform.localScale = tagScale;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        tagObj.transform.localScale = new Vector3(tagObj.transform.localScale.x * -1, tagObj.transform.localScale.y, tagObj.transform.localScale.z);
     }
     //Reset Speed to norm, allow attacks, and disable damage colliders
     public void Reset()
@@ -478,7 +478,7 @@ public class DinoScript : MonoBehaviour
     //Bleed
     void Bleed()
     {
-        Health = Health - (Time.deltaTime * healthDrainMult * 15);
+        Health -= Time.deltaTime * healthDrainMult;
     }
     public void StopBleed()
     {
@@ -564,22 +564,22 @@ public class DinoScript : MonoBehaviour
     {
         if(Hunger > 0 && (Health + (Time.deltaTime * healthDrainMult) < MaxHealth))
         {
-            Health = Health + (Time.deltaTime * healthDrainMult);
+            Health += Time.deltaTime * healthDrainMult;
         }
 
     }
     //Hunger and health drain over time
     void HungerDrain()
-{
-    if (Hunger > 0)
     {
-        Hunger = Hunger - (Time.deltaTime * hungerDrainMult * Adrenaline);
+        if (Hunger > 0)
+        {
+            Hunger -= Time.deltaTime * hungerDrainMult * Adrenaline;
+        }
+        else
+        {
+            Health -= Time.deltaTime * healthDrainMult;
+        }
     }
-    else
-    {
-        Health = Health - (Time.deltaTime * healthDrainMult);
-    }
-}
     void Die()
     {
         alive = false;
@@ -603,11 +603,11 @@ public class DinoScript : MonoBehaviour
     {
         if ((Adrenaline > 1) && (Hunger > 0))
         {
-            Adrenaline = Adrenaline - ((Time.deltaTime * adrenalinedrainMult)/ 6);
+            Adrenaline -= Time.deltaTime * adrenalinedrainMult;
         }
         else if ((Adrenaline < 2) && (Hunger <= 0))
         {
-            Adrenaline = Adrenaline + ((Time.deltaTime * adrenalinedrainMult) / 6);
+            Adrenaline += Time.deltaTime * adrenalinedrainMult;
         }
     }
     public void Stun()

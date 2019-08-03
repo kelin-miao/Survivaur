@@ -1498,6 +1498,7 @@ MonoBehaviour:
   hungerDrainMult: 4
   block: 0
   Adrenaline: 0
+  adrenalinedrainMult: 0.1
   maxSpeed: 6
   jumpForce: 12
   specattackDelay: 0.75

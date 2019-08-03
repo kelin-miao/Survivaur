@@ -69,10 +69,11 @@ public class PrimaryAttack : MonoBehaviour
             }
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
+
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
         if (attackColl.gameObject.tag == "Corpse" && !myDino.isHerbivore)
         {
-            otherDino.Hunger += Mathf.Clamp(nutrition, 0, otherDino.MaxHunger - otherDino.Hunger);
+            myDino.Hunger += Mathf.Clamp(nutrition, 0, myDino.MaxHunger - myDino.Hunger);
             otherDino.corpseNutrition -= nutrition;
 
         }
