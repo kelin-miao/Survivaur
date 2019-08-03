@@ -801,6 +801,11 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47eab9493c1f6204c8c9672442abee42, type: 3}
 --- !u!1 &277195444
@@ -3524,6 +3529,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1273624789}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1386941878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1386941880}
+  - component: {fileID: 1386941879}
+  m_Layer: 0
+  m_Name: Lava Fall Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1386941879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386941878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654f2fc0db87dec4da32e806255434e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDistance: 90
+  timeTillRespawn: 0.25
+  lavaPrefab: {fileID: 6162687303455067869, guid: 37fe14fbfd606a44e8d6557eaaa414f3,
+    type: 3}
+--- !u!4 &1386941880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386941878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -45, y: 60, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1392739205
 PrefabInstance:
   m_ObjectHideFlags: 0
