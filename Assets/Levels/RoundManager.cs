@@ -63,12 +63,12 @@ public class RoundManager : MonoBehaviour
     void Update()
     {
         //Handle Death and respawn
-        if (player1.GetComponent<DinoScript>().Health <= 0)
+        if (player1.GetComponent<DinoScript>().Health < 0)
         {
             Player1Death();
         }
 
-        if (player2.GetComponent<DinoScript>().Health <= 0)
+        if (player2.GetComponent<DinoScript>().Health < 0)
         {
             Player2Death();
         }

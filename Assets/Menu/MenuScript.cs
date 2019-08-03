@@ -54,7 +54,7 @@ public class MenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioListener.volume = PlayerPrefs.GetFloat("GlobalVolume");
     }
 
     // Update is called once per frame

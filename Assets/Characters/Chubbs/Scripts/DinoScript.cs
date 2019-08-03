@@ -332,7 +332,7 @@ public class DinoScript : MonoBehaviour
             {
                 Bleed();
             }
-            if (Health <= 0)
+            if (Health < 0)
             {
                 Die();
             }
