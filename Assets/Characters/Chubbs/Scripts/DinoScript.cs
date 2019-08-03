@@ -18,6 +18,8 @@ public class DinoScript : MonoBehaviour
     public AudioClip walkingSound;
     public AudioClip jumpSound;
     public AudioClip DeathSound;
+    public ParticleSystem DeathEffect;
+
     //Stats
     //maxvalues
     public float MaxHealth = 300;
@@ -580,6 +582,7 @@ public class DinoScript : MonoBehaviour
         HPslider.enabled = false;
         hungerSlider.enabled = false;
         animController.Play("Die");
+        Instantiate(DeathEffect, transform.position, transform.rotation);
         this.tag = ("Corpse");
         gameObject.layer = 9;
         this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
