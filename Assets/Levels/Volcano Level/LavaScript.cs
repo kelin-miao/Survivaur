@@ -13,7 +13,6 @@ public class LavaScript : MonoBehaviour
 
     Vector2 StartPos;
 
-
     // Start is called before the first frame update
     void Start()
     {

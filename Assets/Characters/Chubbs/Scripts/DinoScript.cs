@@ -7,7 +7,7 @@ public class DinoScript : MonoBehaviour
 {
     //General
     public int playerNumber;
-    public bool Herbivore;
+    public bool isHerbivore;
     public int specAttack;
     public bool Bleeding;
     public bool blocking;
@@ -138,6 +138,11 @@ public class DinoScript : MonoBehaviour
         HPslider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<Slider>();
         hungerSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<Slider>();
         adrenalineSlider = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<Slider>();
+
+        HPslider.maxValue = MaxHealth;
+        hungerSlider.maxValue = MaxHunger;
+        adrenalineSlider.maxValue = MaxAdrenaline;
+
         bubbleShield = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().gameObject;
         bubbleShield.SetActive(false);
 

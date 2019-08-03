@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 7763077980444460387}
   facingRight: 0
-  attackDam: 20
+  attackDam: 15
   nutrition: 20
 --- !u!1 &6761182738876584999
 GameObject:
@@ -1488,11 +1488,11 @@ MonoBehaviour:
   walkingSound: {fileID: 8300000, guid: e3b5b53a53b31dd478c59bff044e38c0, type: 3}
   jumpSound: {fileID: 8300000, guid: 4fcb6be8057f5f14a8f0b896b5ccf85a, type: 3}
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
-  MaxHealth: 350
-  MaxHunger: 150
+  MaxHealth: 110
+  MaxHunger: 100
   MaxAdrenaline: 2
   MaxBlock: 70
-  Health: 0
+  Health: 110
   healthDrainMult: 4
   Hunger: 0
   hungerDrainMult: 4

@@ -4,118 +4,86 @@ using UnityEngine;
 
 public class PrimaryAttack : MonoBehaviour
 {
-    public GameObject parent;
-    bool herbivore;
-    public bool facingRight;
-    public float attackDam = 20;
-    float attackDamage;
-    public float nutrition = 20;
+    [SerializeField] private float attackDam = 20;
+    [SerializeField] private float nutrition = 20;
+
     // Start is called before the first frame update
     void Start()
     {
-        herbivore = gameObject.GetComponentInParent<DinoScript>().Herbivore;
     }
-
     // Update is called once per frame
     void Update()
     {
-        facingRight = gameObject.GetComponentInParent<DinoScript>().facingRight;
-        attackDamage = (attackDam * gameObject.GetComponentInParent<DinoScript>().Adrenaline);
     }
 
     //On collider tagged "Player", call "TakeDamage" Method with damage specified by "attackDamage" Variable
     void OnTriggerEnter2D(Collider2D attackColl)
     {
-        GameObject OtherDino = attackColl.gameObject;
+        DinoScript otherDino = attackColl.gameObject.GetComponent<DinoScript>();
+        DinoScript myDino = gameObject.GetComponentInParent<DinoScript>();
+
+        float attackDamage = attackDam * myDino.Adrenaline;
+
         if (attackColl.gameObject.tag == "Player")
         {
-            if(!attackColl.gameObject.GetComponent<DinoScript>().blocking)
+            //Not Blocking
+            if(!otherDino.blocking)
             {
-                //print(attackColl.gameObject.ToString());
-                //Lower enemy health
-                attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - (attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline);
-                //Knockback enemy depending on which way attacker is facing
-                if (facingRight)
+                if (myDino.facingRight)
                 {
                     attackColl.gameObject.SendMessage("KnockbackRight");
                 }
-                if (!facingRight)
+                else
                 {
                     attackColl.gameObject.SendMessage("KnockbackLeft");
                 }
-                //Raise enemy adrenaline
-                if (attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
-                {
-                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 100);
-                }
-                else
-                {
-                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline;
-                }
-                //raise attacker adrenaline
-                if (gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80) < gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline)
-                {
-                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 80); //probably swap this 80 and the 100 above for herbivores
-                }
-                else
-                {
-                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
-                }
-            }
-            if (attackColl.gameObject.GetComponent<DinoScript>().blocking)
-            {
-                //print(attackColl.gameObject.ToString());
+
                 //Lower enemy health
-                attackColl.gameObject.GetComponent<DinoScript>().Health = attackColl.gameObject.GetComponent<DinoScript>().Health - ((attackDamage * gameObject.GetComponentInParent<DinoScript>().Adrenaline) * 0.25f);
-                //Lower enemy block
-                attackColl.gameObject.GetComponent<DinoScript>().block = (attackColl.gameObject.GetComponent<DinoScript>().block - (attackColl.gameObject.GetComponent<DinoScript>().block / 10));
+                otherDino.Health -= attackDamage * myDino.Adrenaline;
+
+                //Knockback enemy depending on which way attacker is facing
+
+
                 //Raise enemy adrenaline
-                if (attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 50) < attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline)
-                {
-                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().Adrenaline + (attackDamage / 50);
-                }
-                else
-                {
-                    attackColl.gameObject.GetComponent<DinoScript>().Adrenaline = attackColl.gameObject.GetComponent<DinoScript>().MaxAdrenaline;
-                }
+                otherDino.Adrenaline += Mathf.Clamp(attackDamage / 100, 0, otherDino.MaxAdrenaline - otherDino.Adrenaline);
+
                 //raise attacker adrenaline
-                if (gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 125) < gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline)
-                {
-                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().Adrenaline + (attackDamage / 125); //probably swap this 80 and the 100 above for herbivores
-                }
-                else
-                {
-                    gameObject.GetComponentInParent<DinoScript>().Adrenaline = gameObject.GetComponentInParent<DinoScript>().MaxAdrenaline;
-                }
+                myDino.Adrenaline += Mathf.Clamp(attackDamage / 80, 0, myDino.MaxAdrenaline - myDino.Adrenaline);
+            }
+
+            //Is Blocking
+            if (otherDino.blocking)
+            {
+                //Lower enemy health
+                otherDino.Health -= attackDamage * myDino.Adrenaline * 0.25f;
+
+                //Lower enemy block
+                otherDino.block -= (otherDino.block - (otherDino.block / 10));
+
+                //Raise enemy adrenaline
+                otherDino.Adrenaline += Mathf.Clamp(attackDamage / 50, 0, otherDino.MaxAdrenaline - otherDino.Adrenaline);
+
+                //raise attacker adrenaline
+                myDino.Adrenaline += Mathf.Clamp(attackDamage / 125, 0, myDino.MaxAdrenaline - myDino.Adrenaline);
+
             }
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
-        if (attackColl.gameObject.tag == "Corpse" && !herbivore)
+        if (attackColl.gameObject.tag == "Corpse" && !myDino.isHerbivore)
         {
-            if(gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition < gameObject.GetComponentInParent<DinoScript>().MaxHunger)
-            {
-                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition;
-            }
-            else
-            {
-                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().MaxHunger;
-            }
-            attackColl.gameObject.GetComponent<DinoScript>().corpseNutrition = attackColl.gameObject.GetComponent<DinoScript>().corpseNutrition - nutrition;
+            otherDino.Hunger += Mathf.Clamp(nutrition, 0, otherDino.MaxHunger - otherDino.Hunger);
+            otherDino.corpseNutrition -= nutrition;
+
         }
         //Herbivore Feeding
-        if (attackColl.gameObject.tag == "HerbBush" && herbivore)
+        if (attackColl.gameObject.tag == "HerbBush" && myDino.isHerbivore)
         {
-            if (gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition < gameObject.GetComponentInParent<DinoScript>().MaxHunger)
-            {
-                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().Hunger + nutrition;
-            }
-            else
-            {
-                gameObject.GetComponentInParent<DinoScript>().Hunger = gameObject.GetComponentInParent<DinoScript>().MaxHunger;
-            }
-            attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition = attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition - nutrition;
+            myDino.Hunger += Mathf.Clamp(nutrition, 0, myDino.MaxHunger - myDino.Hunger);
+            attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition -= nutrition;
         }
+
+        //Ice Wall
         if(attackColl.gameObject.tag == "EnvironmentEntity")
         {
             attackColl.gameObject.GetComponent<IceWall>().wallHP = attackColl.gameObject.GetComponent<IceWall>().wallHP - attackDamage;
