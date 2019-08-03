@@ -441,12 +441,12 @@ PrefabInstance:
     - target: {fileID: 7442239762205311526, guid: 47eab9493c1f6204c8c9672442abee42,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 7442239762205311526, guid: 47eab9493c1f6204c8c9672442abee42,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7442239762205311526, guid: 47eab9493c1f6204c8c9672442abee42,
         type: 3}
@@ -487,6 +487,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629884321997251709, guid: 47eab9493c1f6204c8c9672442abee42,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47eab9493c1f6204c8c9672442abee42, type: 3}
@@ -3041,7 +3076,7 @@ Transform:
   m_LocalScale: {x: 5.959102, y: 7.693094, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1564697424
 GameObject:
