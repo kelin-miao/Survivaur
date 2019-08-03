@@ -37,5 +37,9 @@ public class Charge : MonoBehaviour
             //SpecColl.gameObject.GetComponent<DinoScript>().Invoke("Reset", stunTime);
             SpecColl.gameObject.GetComponent<DinoScript>().Health = SpecColl.gameObject.GetComponent<DinoScript>().Health - chargeDamage;
         }
+        if (SpecColl.gameObject.tag == "EnvironmentEntity")
+        {
+            SpecColl.gameObject.GetComponent<IceWall>().wallHP = SpecColl.gameObject.GetComponent<IceWall>().wallHP - 160;
+        }
     }
 }
