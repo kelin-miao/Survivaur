@@ -65,8 +65,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6885a5885cada47a9df58560de3037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 3650923090264848965}
-  facingRight: 0
   attackDam: 20
   nutrition: 20
 --- !u!1 &1060577877744890934
@@ -1126,7 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  Herbivore: 0
+  isHerbivore: 0
   specAttack: 1
   Bleeding: 0
   blocking: 0
@@ -1135,6 +1133,8 @@ MonoBehaviour:
   walkingSound: {fileID: 8300000, guid: e3b5b53a53b31dd478c59bff044e38c0, type: 3}
   jumpSound: {fileID: 8300000, guid: 4fcb6be8057f5f14a8f0b896b5ccf85a, type: 3}
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
+  DeathEffect: {fileID: 2059862136676620720, guid: 111c9b8011241e14d9aa8e296927b170,
+    type: 3}
   MaxHealth: 100
   MaxHunger: 100
   MaxAdrenaline: 2
