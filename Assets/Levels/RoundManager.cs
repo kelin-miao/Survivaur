@@ -46,6 +46,7 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         //Players
+        Time.timeScale = 1.0f;
         //Make player 1
         player1 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player1Char - 1)], p1Spawn.position, transform.rotation);
         player1.GetComponent<DinoScript>().playerNumber = 1;

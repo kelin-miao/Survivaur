@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  isHerbivore: 0
+  isHerbivore: 1
   specAttack: 2
   Bleeding: 0
   blocking: 0

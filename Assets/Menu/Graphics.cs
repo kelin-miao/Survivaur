@@ -8,7 +8,7 @@ public class Graphics : MonoBehaviour
     public Dropdown graphicsPreset;
     public Dropdown Resolution;
     public Dropdown RefreshDrop;
-    public Toggle fullscreenToggle;
+    public Toggle vSyncToggle;
     public Slider VolumeSlider;
     // Start is called before the first frame update
     void Start()
@@ -147,5 +147,16 @@ public class Graphics : MonoBehaviour
     void SwitchFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
+    }
+    void SwitchVSync()
+    {
+        if(QualitySettings.vSyncCount == 1)
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+        if (QualitySettings.vSyncCount == 0)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
     }
 }
