@@ -56,7 +56,7 @@ public class DinoScript : MonoBehaviour
     float knockbackForceX = 2.0f;
     float knockbackForceY = 3.0f;
     //How long before the dino can attack again (ANIMATION LENGTH)
-    float attack1Delay = 0.64f;
+    float attack1Delay = 0.35f;
     //How long after special attack before dino can attack again (ANIM LENGTH)
     public float specattackDelay = 0.65f;
     //How much hunger can be restored by eating this dino's corpse
