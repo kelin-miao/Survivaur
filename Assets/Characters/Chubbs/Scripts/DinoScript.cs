@@ -51,7 +51,7 @@ public class DinoScript : MonoBehaviour
     public float adrenalinedrainMult = 0.55f;
     //Movement speed
     public float maxSpeed;
-    public float moveSpeed = 3;
+    float moveSpeed = 3;
     //Force of jumps
     public float jumpForce = 6;
     //How much the dino moves when hit
