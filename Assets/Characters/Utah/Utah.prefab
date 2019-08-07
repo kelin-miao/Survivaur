@@ -483,7 +483,7 @@ MonoBehaviour:
   biteSound: {fileID: 8300000, guid: e5cfd6f57100ef149a5477c16569bb8a, type: 3}
   specialAttackSound: {fileID: 8300000, guid: b18e52c80f1c87e43a151a86bb6598e9, type: 3}
   walkingSound: {fileID: 8300000, guid: 0cc78a6c1f3a7824a8faa04a32994b5d, type: 3}
-  jumpSound: {fileID: 8300000, guid: 4fcb6be8057f5f14a8f0b896b5ccf85a, type: 3}
+  jumpSound: {fileID: 8300000, guid: af068bf80b63ddb42bb462211cbded4b, type: 3}
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
   DeathEffect: {fileID: 2059862136676620720, guid: 111c9b8011241e14d9aa8e296927b170,
     type: 3}

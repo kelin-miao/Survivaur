@@ -1131,7 +1131,7 @@ MonoBehaviour:
   biteSound: {fileID: 8300000, guid: e5cfd6f57100ef149a5477c16569bb8a, type: 3}
   specialAttackSound: {fileID: 8300000, guid: ab5675de58cf7f54f9c114fd87a64b44, type: 3}
   walkingSound: {fileID: 8300000, guid: e3b5b53a53b31dd478c59bff044e38c0, type: 3}
-  jumpSound: {fileID: 8300000, guid: 4fcb6be8057f5f14a8f0b896b5ccf85a, type: 3}
+  jumpSound: {fileID: 8300000, guid: af068bf80b63ddb42bb462211cbded4b, type: 3}
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
   DeathEffect: {fileID: 2059862136676620720, guid: 111c9b8011241e14d9aa8e296927b170,
     type: 3}
@@ -1197,7 +1197,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.478
   m_Pitch: 1
   Loop: 0
   Mute: 0
