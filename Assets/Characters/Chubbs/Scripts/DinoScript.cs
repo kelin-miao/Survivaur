@@ -45,18 +45,20 @@ public class DinoScript : MonoBehaviour
     //Adrenaline
     [Range(1, 2)]
     public float Adrenaline;
+    //Adrenaline requirement for special attack
+    public float AdRequirement;
     //Adrenline Drain Multiplier
     public float adrenalinedrainMult = 0.55f;
     //Movement speed
     public float maxSpeed;
-    float moveSpeed = 3;
+    public float moveSpeed = 3;
     //Force of jumps
     public float jumpForce = 6;
     //How much the dino moves when hit
     float knockbackForceX = 2.0f;
     float knockbackForceY = 3.0f;
     //How long before the dino can attack again (ANIMATION LENGTH)
-    float attack1Delay = 0.35f;
+    float attack1Delay = 0.5f;
     //How long after special attack before dino can attack again (ANIM LENGTH)
     public float specattackDelay = 0.65f;
     //How much hunger can be restored by eating this dino's corpse
@@ -94,6 +96,8 @@ public class DinoScript : MonoBehaviour
     //Player Tag
     Text playerTag;
     GameObject tagObj;
+    Sprite baseADRback;
+    public Sprite SpecableADRback;
 
 
     void Awake()
@@ -126,6 +130,7 @@ public class DinoScript : MonoBehaviour
     void Start()
     {
         //Get Player Tag
+        baseADRback = gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").gameObject.transform.Find("Background").GetComponent<Image>().sprite;
         tagObj = gameObject.transform.Find("Canvas").gameObject.transform.Find("PlayerTag").gameObject;
         playerTag = gameObject.transform.Find("Canvas").gameObject.transform.Find("PlayerTag").GetComponentInChildren<Text>();
         playerTag.text = "Player " + playerNumber;
@@ -231,7 +236,7 @@ public class DinoScript : MonoBehaviour
             if (playerNumber == 1)
             {
                 //Normal Jumping
-                if (grounded && (Input.GetKey(InputManager.IM.p1jump)) && canattack == true)
+                if (grounded && (Input.GetKeyDown(InputManager.IM.p1jump)) && canattack == true)
                 {
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
                     audiosource.Stop();
@@ -276,7 +281,7 @@ public class DinoScript : MonoBehaviour
             if (playerNumber == 2)
             {
                 //Standard Jumping
-                if (grounded && (Input.GetKey(InputManager.IM.p2jump)) && canattack == true)
+                if (grounded && (Input.GetKeyDown(InputManager.IM.p2jump)) && canattack == true)
                 {
                     rigbod.velocity = new Vector2(rigbod.velocity.x, jumpForce);
                     audiosource.Stop();
@@ -356,6 +361,14 @@ public class DinoScript : MonoBehaviour
             //    bubbleShield.SetActive(false);
             //    canattack = false;
             //}
+            if(Adrenaline >= AdRequirement)
+            {
+                gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").gameObject.transform.Find("Background").GetComponent<Image>().sprite = SpecableADRback;
+            }
+            else
+            {
+                gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").gameObject.transform.Find("Background").GetComponent<Image>().sprite = baseADRback;
+            }
         }
         if (!alive)
         {
@@ -478,7 +491,14 @@ public class DinoScript : MonoBehaviour
     //Bleed
     void Bleed()
     {
-        Health -= Time.deltaTime * healthDrainMult;
+        if(Hunger <= 0)
+        {
+            Health -= (Time.deltaTime * healthDrainMult);
+        }
+        else
+        {
+            Health -= (Time.deltaTime * healthDrainMult * 2);
+        }
     }
     public void StopBleed()
     {
@@ -501,7 +521,7 @@ public class DinoScript : MonoBehaviour
     void SpecialAttack()
     {
         //Roar
-        if (alive && Adrenaline > 1.8 && specAttack == 1)
+        if (alive && Adrenaline > AdRequirement && specAttack == 1)
         {
             moveSpeed = 0;
             animController.Play("Roar");
@@ -511,7 +531,7 @@ public class DinoScript : MonoBehaviour
             Invoke("Reset", specattackDelay);
         }
         //Charge
-        if (alive && Adrenaline > 1.1 && specAttack == 2)
+        if (alive && Adrenaline > AdRequirement && specAttack == 2)
         {
             float chargeSpeed = 12;
             moveSpeed = 0;
@@ -530,7 +550,7 @@ public class DinoScript : MonoBehaviour
             Invoke("Reset", specattackDelay);
         }
         //Bleed
-        if (alive && Adrenaline > 1.4 && specAttack == 3)
+        if (alive && Adrenaline > AdRequirement && specAttack == 3)
         {
             moveSpeed = 0;
             animController.Play("BleedCut");
@@ -540,7 +560,7 @@ public class DinoScript : MonoBehaviour
             Invoke("Reset", specattackDelay);
         }
         //Tail Whip
-        if (alive && Adrenaline > 1.8 && specAttack == 4)
+        if (alive && Adrenaline > AdRequirement && specAttack == 4)
         {
             moveSpeed = 0;
             animController.Play("TailWhip");
