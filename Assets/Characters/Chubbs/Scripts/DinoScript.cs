@@ -99,6 +99,8 @@ public class DinoScript : MonoBehaviour
     Sprite baseADRback;
     public Sprite SpecableADRback;
 
+    //public Sprite AttackEffects;
+
 
     void Awake()
     {
@@ -515,6 +517,7 @@ public class DinoScript : MonoBehaviour
             //animController.Play("Bite");
             AudioSource.PlayClipAtPoint(biteSound, transform.position, 2);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
+            //Instantiate(AttackEffects, gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().offset, transform.rotation);
             Invoke("Reset", attack1Delay);
         }
     }
