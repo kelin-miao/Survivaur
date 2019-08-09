@@ -1148,13 +1148,14 @@ MonoBehaviour:
   AdRequirement: 1.8
   adrenalinedrainMult: 0.1
   maxSpeed: 6.5
-  moveSpeed: 3.5
   jumpForce: 12
   specattackDelay: 0.75
   corpseNutrition: 120
   rigbod: {fileID: 0}
   facingRight: 0
   SpecableADRback: {fileID: 21300000, guid: 4c344556377ee994c93ef8b5d8ad31d6, type: 3}
+  AttackEffects: {fileID: 5692376895435485095, guid: 399ee3081eac739468947e7d331b573c,
+    type: 3}
 --- !u!60 &3650923090264849016
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -51,7 +51,7 @@ public class DinoScript : MonoBehaviour
     public float adrenalinedrainMult = 0.55f;
     //Movement speed
     public float maxSpeed;
-    public float moveSpeed = 3;
+    float moveSpeed = 3;
     //Force of jumps
     public float jumpForce = 6;
     //How much the dino moves when hit
@@ -98,6 +98,8 @@ public class DinoScript : MonoBehaviour
     GameObject tagObj;
     Sprite baseADRback;
     public Sprite SpecableADRback;
+
+    //public Sprite AttackEffects;
 
 
     void Awake()
@@ -515,6 +517,7 @@ public class DinoScript : MonoBehaviour
             //animController.Play("Bite");
             AudioSource.PlayClipAtPoint(biteSound, transform.position, 2);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
+            //Instantiate(AttackEffects, gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().offset, transform.rotation);
             Invoke("Reset", attack1Delay);
         }
     }

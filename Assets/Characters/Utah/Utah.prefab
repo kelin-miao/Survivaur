@@ -499,8 +499,7 @@ MonoBehaviour:
   Adrenaline: 100
   AdRequirement: 1.4
   adrenalinedrainMult: 0.1
-  maxSpeed: 6.5
-  moveSpeed: 4
+  maxSpeed: 7
   jumpForce: 12
   specattackDelay: 0.75
   corpseNutrition: 75
