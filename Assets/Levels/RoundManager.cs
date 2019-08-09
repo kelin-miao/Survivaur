@@ -23,8 +23,8 @@ public class RoundManager : MonoBehaviour
     public GameObject player2;
     public GameObject p2Wintext;
     public GameObject p1Wintext;
-    public Text p1LifeCount;
-    public Text p2LifeCount;
+    public GameObject p1Eggs;
+    public GameObject p2Eggs;
 
 
 
@@ -82,8 +82,10 @@ public class RoundManager : MonoBehaviour
         {
             Player1Victory();
         }
-        p1LifeCount.text = "Player 1 Lives: " + player1Lives;
-        p2LifeCount.text = "Player 2 Lives: " + player2Lives;
+        //p1LifeCount.text = "Player 1 Lives: " + player1Lives;
+        //p2LifeCount.text = "Player 2 Lives: " + player2Lives;
+        p1Eggs.GetComponent<Animator>().SetInteger("lives", player1Lives);
+        p2Eggs.GetComponent<Animator>().SetInteger("lives", player2Lives);
         if (player1Lives <= 0 && player2Lives <= 0)
         {
             Tie();

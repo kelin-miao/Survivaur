@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &574226085454213338
+--- !u!1 &7806609255073458254
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 574226085454213341}
-  - component: {fileID: 574226085454213343}
-  - component: {fileID: 574226085454213340}
+  - component: {fileID: 7806609255073458249}
+  - component: {fileID: 7806609255073458251}
+  - component: {fileID: 7806609255073458248}
   m_Layer: 5
-  m_Name: P2LivesCount
+  m_Name: P2LifeCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &574226085454213341
+--- !u!224 &7806609255073458249
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574226085454213338}
+  m_GameObject: {fileID: 7806609255073458254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,24 +34,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1128, y: -34.399994}
-  m_SizeDelta: {x: 438.5, y: 31.700012}
+  m_AnchoredPosition: {x: -88.65, y: -12.2}
+  m_SizeDelta: {x: 177.3, y: 24.4}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &574226085454213343
+--- !u!222 &7806609255073458251
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574226085454213338}
+  m_GameObject: {fileID: 7806609255073458254}
   m_CullTransparentMesh: 0
---- !u!114 &574226085454213340
+--- !u!114 &7806609255073458248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574226085454213338}
+  m_GameObject: {fileID: 7806609255073458254}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -67,8 +67,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d257d183a1809094791ff1eab943ac98, type: 3}
-    m_FontSize: 25
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
@@ -78,4 +78,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 2 Lives: ?'
+  m_Text: Player 2
