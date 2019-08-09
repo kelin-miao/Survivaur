@@ -48,7 +48,7 @@ public class DinoScript : MonoBehaviour
     //Adrenaline requirement for special attack
     public float AdRequirement;
     //Adrenline Drain Multiplier
-    public float adrenalinedrainMult = 0.55f;
+    public float adrenalinedrainMult = 0.5f;
     //Movement speed
     public float maxSpeed;
     float moveSpeed = 3;
@@ -58,7 +58,7 @@ public class DinoScript : MonoBehaviour
     float knockbackForceX = 2.0f;
     float knockbackForceY = 3.0f;
     //How long before the dino can attack again (ANIMATION LENGTH)
-    float attack1Delay = 0.5f;
+    float attack1Delay = 0.55f;
     //How long after special attack before dino can attack again (ANIM LENGTH)
     public float specattackDelay = 0.65f;
     //How much hunger can be restored by eating this dino's corpse
@@ -517,7 +517,22 @@ public class DinoScript : MonoBehaviour
             //animController.Play("Bite");
             AudioSource.PlayClipAtPoint(biteSound, transform.position, 2);
             gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().enabled = true;
-            //Instantiate(AttackEffects, gameObject.transform.Find("PrimaryAttackColl").GetComponent<CircleCollider2D>().offset, transform.rotation);
+            if(specAttack == 1)
+            {
+                gameObject.transform.Find("PrimaryAttackColl").GetComponent<Animator>().Play("RexSlash", 0, -0.5f);
+            }
+            else if (specAttack == 2)
+            {
+                gameObject.transform.Find("PrimaryAttackColl").GetComponent<Animator>().Play("TrikeSlash", 0, -0.5f);
+            }
+            else if (specAttack == 3)
+            {
+                gameObject.transform.Find("PrimaryAttackColl").GetComponent<Animator>().Play("UtahSlash", 0, -0.5f);
+            }
+            else if (specAttack == 4)
+            {
+                gameObject.transform.Find("PrimaryAttackColl").GetComponent<Animator>().Play("AnkySlash", 0, -0.5f);
+            }
             Invoke("Reset", attack1Delay);
         }
     }
