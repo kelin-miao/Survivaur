@@ -74,11 +74,11 @@ public class RoundManager : MonoBehaviour
             Player2Death();
         }
 
-        if (player1Lives <= 0 && p1lost == false)
+        if (player1Lives <= 0 && p1lost == false && !p2lost)
         {
             Player2Victory();
         }
-        if (player2Lives <= 0 && p2lost == false)
+        if (player2Lives <= 0 && p2lost == false && !p1lost)
         {
             Player1Victory();
         }
