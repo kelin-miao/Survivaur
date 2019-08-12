@@ -339,9 +339,9 @@ MonoBehaviour:
   numberTrees: 5
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 17.32
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 8.66
+  treeRange: 2.88
 --- !u!1 &243394585
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!114 &425972241
 MonoBehaviour:
@@ -867,9 +867,9 @@ MonoBehaviour:
   numberTrees: 3
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 12
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 6
+  treeRange: 2.88
 --- !u!1 &460283447
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!114 &460283450
 MonoBehaviour:
@@ -977,9 +977,9 @@ MonoBehaviour:
   numberTrees: 3
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 13.32
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 6.66
+  treeRange: 2.88
 --- !u!1 &641838414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,9 +1026,9 @@ MonoBehaviour:
   numberTrees: 4
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 16
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 8
+  treeRange: 2.88
 --- !u!1 &648596413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,9 +1258,9 @@ MonoBehaviour:
   numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 24
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 12
+  treeRange: 2.88
 --- !u!1 &1022102153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,9 +1307,9 @@ MonoBehaviour:
   numberTrees: 9
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 22.66
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 11.33
+  treeRange: 2.88
 --- !u!1 &1064051877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!1 &1277249907
 GameObject:
@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!114 &1358342117
 MonoBehaviour:
@@ -1751,7 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!1 &1669376782 stripped
 GameObject:
@@ -1805,9 +1805,9 @@ MonoBehaviour:
   numberTrees: 8
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 21.32
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 10.66
+  treeRange: 2.88
 --- !u!1 &1721025387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!114 &1721025390
 MonoBehaviour:
@@ -1915,9 +1915,9 @@ MonoBehaviour:
   numberTrees: 3
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 14.66
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 7.33
+  treeRange: 2.88
 --- !u!1 &1804874818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6977713923374233520, guid: a2a99b36e7369164fa3d7d8824cfcb77,
@@ -1970,9 +1970,9 @@ MonoBehaviour:
   numberTrees: 6
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 18.666
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 9.33
+  treeRange: 2.88
 --- !u!1 &1840046256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 2
+  offsetMax: 1
   offset: 0
 --- !u!114 &1840046259
 MonoBehaviour:
@@ -2165,6 +2165,6 @@ MonoBehaviour:
   numberTrees: 7
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
-  treeDistance: 1.28
-  distanceMultiplier: 20
-  treeRange: 5.76
+  treeDistance: 0.64
+  distanceMultiplier: 10
+  treeRange: 2.88
