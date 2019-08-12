@@ -1589,6 +1589,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1393516587527117301, guid: a2a99b36e7369164fa3d7d8824cfcb77,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 851930177}
+    - target: {fileID: 1393516587527117301, guid: a2a99b36e7369164fa3d7d8824cfcb77,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendMessage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2a99b36e7369164fa3d7d8824cfcb77, type: 3}
 --- !u!1 &1341434553
