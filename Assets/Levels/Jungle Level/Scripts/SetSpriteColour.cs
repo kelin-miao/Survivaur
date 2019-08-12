@@ -18,7 +18,7 @@ public class SetSpriteColour : MonoBehaviour
 
         if (depth != 0)
         {
-            float depthColour = 1.0f / (depth + 1);
+            float depthColour = 1.0f - (depth * 0.1f);
 
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 

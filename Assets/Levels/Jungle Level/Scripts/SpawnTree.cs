@@ -9,7 +9,7 @@ public class SpawnTree : MonoBehaviour
 
     [SerializeField] GameObject treePrefab;
     [SerializeField] float treeDistance = 0.64f;
-    [SerializeField] float distanceMultiplier = 6.0f;
+    [SerializeField] float distanceMultiplier = 12.0f;
     [SerializeField] float treeRange = 2.88f;
 
     // Start is called before the first frame update

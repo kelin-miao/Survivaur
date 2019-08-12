@@ -10,6 +10,6 @@ public class RandomOffset : MonoBehaviour
     void Start()
     {
         offset = Random.Range(-offsetMax, offsetMax);
-        transform.position = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
+        gameObject.transform.position = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
     }
 }
