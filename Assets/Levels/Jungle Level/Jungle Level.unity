@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 5
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!1 &255966349
 GameObject:
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!1 &419525520
 GameObject:
@@ -749,7 +749,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!114 &425972241
 MonoBehaviour:
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 4
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!114 &460283450
 MonoBehaviour:
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 4
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 4
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -1688,7 +1688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 9
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!1 &1075313296
 GameObject:
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!1 &1292928090
 GameObject:
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!114 &1358342117
 MonoBehaviour:
@@ -2338,7 +2338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!1 &1669376782 stripped
 GameObject:
@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 8
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!114 &1721025390
 MonoBehaviour:
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 4
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 6
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
@@ -2656,7 +2656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b882db990c35b1479e1ca4a5a2e69c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetMax: 8
+  offsetMax: 3
   offset: 0
 --- !u!114 &1840046259
 MonoBehaviour:
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00678b3bbd18464eab0e65c336df04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberTrees: 7
+  numberTrees: 10
   treePrefab: {fileID: 6780500657805909780, guid: 4bd69fdd165c51c498e82a1e2bd8dce3,
     type: 3}
   treeDistance: 0.64
