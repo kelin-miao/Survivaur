@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Ice Age Level/IceAgeLevel2.0.unity
     guid: 6c3c09d0ce867b74b91c949053c5cc53
+  - enabled: 1
+    path: Assets/Levels/Jungle Level/Jungle Level.unity
+    guid: 8773c6e5138d8cc4387b427d145e5ebf
   m_configObjects: {}

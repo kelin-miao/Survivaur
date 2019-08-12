@@ -444,6 +444,13 @@ public class MenuScript : MonoBehaviour
         AudioSource.PlayClipAtPoint(MouseClick, transform.position);
         openCharSelect();
     }
+    void map3Selected()
+    {
+        mapSelected = 3;
+        closeMapSelect();
+        AudioSource.PlayClipAtPoint(MouseClick, transform.position);
+        openCharSelect();
+    }
     //Player 1 next char
     void p1Next()
     {
@@ -512,10 +519,15 @@ public class MenuScript : MonoBehaviour
             //load map 1
             SceneManager.LoadScene("TestLevel");
         }
-        else if (mapSelected == 2)
+        if (mapSelected == 2)
         {
             //load map 1
             SceneManager.LoadScene("IceAgeLevel2.0");
+        }
+        if (mapSelected == 3)
+        {
+            //load map 1
+            SceneManager.LoadScene("Jungle Level");
         }
         Destroy(gameObject);
     }
