@@ -23,7 +23,7 @@ public class SetSpriteColour : MonoBehaviour
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
             spriteRenderer.color = new Color(depthColour, depthColour, depthColour, 1.0f);
-            spriteRenderer.sortingOrder = -depth;
+            spriteRenderer.sortingOrder = -depth - 3;
         }
     }
 }
