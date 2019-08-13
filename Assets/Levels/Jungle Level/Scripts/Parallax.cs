@@ -7,7 +7,7 @@ public class Parallax : MonoBehaviour
     Camera main;
     public int depth;
 
-    [SerializeField] float displacement;
+    [SerializeField] float depthMoveMultiplier = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Parallax : MonoBehaviour
     {
         if (depth != 0)
         {
-            displacement = main.transform.position.x * depth / 10.0f;
+            float displacement = main.transform.position.x * depth / depthMoveMultiplier;
             gameObject.transform.position = new Vector3( displacement, gameObject.transform.position.y , gameObject.transform.position.z);
         }
     }

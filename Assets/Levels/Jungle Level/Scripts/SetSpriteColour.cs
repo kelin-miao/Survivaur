@@ -9,21 +9,23 @@ public class SetSpriteColour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Parallax parallax = GetComponentInParent<Parallax>();
+        depth = GetComponentInParent<Parallax>().depth;
 
-        if (parallax != null)
+        float depthColour = Mathf.Clamp(1.0f - (depth * 0.1f), 0.0f, 1.0f);
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer.color = new Color(depthColour, depthColour, depthColour, 1.0f);
+
+        //set sorting order
+        if (depth > 0)
         {
-            depth = parallax.depth;
+            spriteRenderer.sortingOrder = -depth - 1;
         }
 
-        if (depth != 0)
+        if (depth < 0)
         {
-            float depthColour = 1.0f - (depth * 0.1f);
-
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-
-            spriteRenderer.color = new Color(depthColour, depthColour, depthColour, 1.0f);
-            spriteRenderer.sortingOrder = -depth - 3;
+            spriteRenderer.sortingOrder = -depth + 1;
         }
     }
 }
