@@ -21,8 +21,8 @@ public class RoundManager : MonoBehaviour
     public Transform p2Spawn;
     public GameObject player1;
     public GameObject player2;
-    public GameObject p2Wintext;
-    public GameObject p1Wintext;
+    public GameObject Wintext;
+    Animator EndText;
     public GameObject p1Eggs;
     public GameObject p2Eggs;
 
@@ -45,6 +45,8 @@ public class RoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Get Win text animator
+        EndText = Wintext.GetComponent<Animator>();
         //Players
         Time.timeScale = 1.0f;
         //Make player 1
@@ -126,14 +128,14 @@ public class RoundManager : MonoBehaviour
     void Player2Victory()
     {
         p1lost = true;
-        p2Wintext.SetActive(true);
+        EndText.SetBool("P2Won", true);
         Time.timeScale = 0.5f;
         Invoke("Endgame", 2.5f);
     }
     void Player1Victory()
     {
         p2lost = true;
-        p1Wintext.SetActive(true);
+        EndText.SetBool("P1Won", true);
         Time.timeScale = 0.5f;
         Invoke("Endgame", 2.5f);
 
@@ -142,6 +144,7 @@ public class RoundManager : MonoBehaviour
     {
         p1lost = true;
         p2lost = true;
+        EndText.SetBool("Tie", true);
         Time.timeScale = 0.5f;
         Invoke("Endgame", 2.5f);
     }
