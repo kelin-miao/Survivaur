@@ -94,6 +94,7 @@ public class RoundManager : MonoBehaviour
         CentreCamera();
         ResizeCamera();
     }
+
     void Player1Death()
     {
         player1Lives--;
