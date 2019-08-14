@@ -49,6 +49,7 @@ public class PrimaryAttack : MonoBehaviour
 
                 //raise attacker adrenaline
                 myDino.Adrenaline += Mathf.Clamp(attackDamage / 80, 0, myDino.MaxAdrenaline - myDino.Adrenaline);
+                gameObject.GetComponent<CircleCollider2D>().enabled = false;
             }
 
             //Is Blocking
@@ -65,9 +66,9 @@ public class PrimaryAttack : MonoBehaviour
 
                 //raise attacker adrenaline
                 myDino.Adrenaline += Mathf.Clamp(attackDamage / 125, 0, myDino.MaxAdrenaline - myDino.Adrenaline);
-
+                gameObject.GetComponent<CircleCollider2D>().enabled = false;
             }
-            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            
         }
 
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
@@ -75,20 +76,21 @@ public class PrimaryAttack : MonoBehaviour
         {
             myDino.Hunger += Mathf.Clamp(nutrition, 0, myDino.MaxHunger - myDino.Hunger);
             otherDino.corpseNutrition -= nutrition;
-
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
         //Herbivore Feeding
         if (attackColl.gameObject.tag == "HerbBush" && myDino.isHerbivore)
         {
             myDino.Hunger += Mathf.Clamp(nutrition, 0, myDino.MaxHunger - myDino.Hunger);
             attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition -= nutrition;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
 
         //Ice Wall
         if(attackColl.gameObject.tag == "EnvironmentEntity")
         {
             attackColl.gameObject.GetComponent<IceWall>().wallHP = attackColl.gameObject.GetComponent<IceWall>().wallHP - attackDamage;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 }

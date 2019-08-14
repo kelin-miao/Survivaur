@@ -382,10 +382,10 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007861121, y: -0.10219437}
+  m_Offset: {x: -0.040053874, y: -0.43594182}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -396,7 +396,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1399445, y: 0.015611261}
+  m_Size: {x: 0.8154195, y: 0.409495}
   m_EdgeRadius: 0
 --- !u!222 &4834984706399383343
 CanvasRenderer:
@@ -495,7 +495,7 @@ MonoBehaviour:
   AdRequirement: 1.4
   adrenalinedrainMult: 0.1
   maxSpeed: 7
-  jumpForce: 12
+  jumpForce: 14
   specattackDelay: 0.75
   corpseNutrition: 75
   rigbod: {fileID: 0}
