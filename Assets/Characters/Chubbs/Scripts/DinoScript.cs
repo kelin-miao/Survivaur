@@ -635,7 +635,7 @@ public class DinoScript : MonoBehaviour
         gameObject.transform.Find("Canvas").gameObject.transform.Find("AdrenalineSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
         tagObj.SetActive(false);
         gameObject.transform.Find("Canvas").gameObject.transform.Find("Arrow").gameObject.SetActive(false);
-
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
     void AdrenalineDrain()
     {
