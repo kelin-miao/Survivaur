@@ -55,8 +55,8 @@ public class DinoScript : MonoBehaviour
     //Force of jumps
     public float jumpForce = 6;
     //How much the dino moves when hit
-    float knockbackForceX = 2.0f;
-    float knockbackForceY = 3.0f;
+    [SerializeField] float knockbackForceX = 5.0f;
+    [SerializeField] float knockbackForceY = 5.0f;
     //How long before the dino can attack again (ANIMATION LENGTH)
     float attack1Delay = 0.55f;
     //How long after special attack before dino can attack again (ANIM LENGTH)
