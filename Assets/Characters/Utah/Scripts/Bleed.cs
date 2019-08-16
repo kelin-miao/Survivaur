@@ -35,6 +35,10 @@ public class Bleed : MonoBehaviour
             {
                 SpecColl.gameObject.SendMessage("KnockbackLeft");
             }
+            //Damage Flash
+            SpecColl.GetComponent<DinoScript>().Invoke("DamageColorChange", 0.0f);
+            SpecColl.GetComponent<DinoScript>().damageLoop = true;
+            SpecColl.GetComponent<DinoScript>().Invoke("DamageLoopBreak", bleedTime);
         }
     }
 }

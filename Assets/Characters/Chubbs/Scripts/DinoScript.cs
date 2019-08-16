@@ -20,6 +20,10 @@ public class DinoScript : MonoBehaviour
     public AudioClip DeathSound;
     public ParticleSystem DeathEffect;
 
+    //Color Stuff
+    public bool DupeChar;
+    public bool damageLoop = false;
+
     //Stats
     //maxvalues
     public float MaxHealth = 300;
@@ -104,6 +108,7 @@ public class DinoScript : MonoBehaviour
 
     void Awake()
     {
+        
         if (playerNumber == 1)
         {
             facingRight = true;
@@ -111,7 +116,6 @@ public class DinoScript : MonoBehaviour
         if (playerNumber == 2)
         {
             facingRight = false;
-            transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
 
         Health = MaxHealth;
@@ -153,6 +157,14 @@ public class DinoScript : MonoBehaviour
 
         bubbleShield = gameObject.transform.Find("Canvas").gameObject.transform.Find("Bubble").GetComponentInChildren<RectTransform>().gameObject;
         bubbleShield.SetActive(false);
+        if(playerNumber == 2)
+        {
+            Flip();
+        }
+        if (DupeChar == true)
+        {
+            GetComponent<SpriteRenderer>().color = new Color32(255, 200, 200, 255);
+        }
 
     }
 
@@ -430,6 +442,7 @@ public class DinoScript : MonoBehaviour
                         audiosource.Stop();
                     }
                 }
+                
             }
 
 
@@ -654,5 +667,29 @@ public class DinoScript : MonoBehaviour
         gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = false;
         moveSpeed = 0;
         canattack = false;
+    }
+    public void DamageColorChange()
+    {
+            GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 255);
+        Invoke("DamColorReset", 0.1f);
+    }
+    void DamColorReset()
+    {
+        if(DupeChar == true)
+        {
+            GetComponent<SpriteRenderer>().color = new Color32(255, 200, 200, 255);
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        }
+        if(damageLoop)
+        {
+            Invoke("DamageColorChange", 0.05f);
+        }
+    }
+    public void DamageLoopBreak()
+    {
+        damageLoop = false;
     }
 }

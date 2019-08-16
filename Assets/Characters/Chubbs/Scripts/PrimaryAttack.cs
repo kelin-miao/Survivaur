@@ -50,6 +50,10 @@ public class PrimaryAttack : MonoBehaviour
                 //raise attacker adrenaline
                 myDino.Adrenaline += Mathf.Clamp(attackDamage / 80, 0, myDino.MaxAdrenaline - myDino.Adrenaline);
                 gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                //Damage Flash
+                otherDino.GetComponent<DinoScript>().Invoke("DamageColorChange", 0.0f);
+                otherDino.GetComponent<DinoScript>().damageLoop = true;
+                otherDino.GetComponent<DinoScript>().Invoke("DamageLoopBreak", 0.3f);
             }
 
             //Is Blocking

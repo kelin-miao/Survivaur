@@ -35,6 +35,10 @@ public class TailWhip : MonoBehaviour
             SpecColl.gameObject.GetComponent<DinoScript>().Stun();
             SpecColl.gameObject.GetComponent<DinoScript>().Invoke("Reset", stunTime);
             SpecColl.gameObject.GetComponent<DinoScript>().Health = SpecColl.gameObject.GetComponent<DinoScript>().Health - whipDamage;
+            //Damage Flash
+            SpecColl.GetComponent<DinoScript>().Invoke("DamageColorChange", 0.0f);
+            SpecColl.GetComponent<DinoScript>().damageLoop = true;
+            SpecColl.GetComponent<DinoScript>().Invoke("DamageLoopBreak", stunTime);
         }
         if (SpecColl.gameObject.tag == "EnvironmentEntity")
         {

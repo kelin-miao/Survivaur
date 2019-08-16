@@ -31,6 +31,10 @@ public class LavaScript : MonoBehaviour
         {
             coll.gameObject.GetComponent<DinoScript>().Health = coll.gameObject.GetComponent<DinoScript>().Health - lavaDamage;
             coll.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,lavaKnockBackForce);
+            //Damage Flash
+            coll.gameObject.GetComponent<DinoScript>().Invoke("DamageColorChange", 0.0f);
+            coll.gameObject.GetComponent<DinoScript>().damageLoop = true;
+            coll.gameObject.GetComponent<DinoScript>().Invoke("DamageLoopBreak", 0.3f);
         }
     }
 

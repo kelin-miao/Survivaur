@@ -25,6 +25,8 @@ public class RoundManager : MonoBehaviour
     Animator EndText;
     public GameObject p1Eggs;
     public GameObject p2Eggs;
+    Color NormalColor;
+    Color DuplicateColor;
 
 
 
@@ -45,6 +47,10 @@ public class RoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NormalColor = new Color(255, 255, 255, 255);
+        DuplicateColor = new Color(255, 200, 130, 255);
+        player1Char = (MenuScript.MenuManager.player1Char - 1);
+        player2Char = (MenuScript.MenuManager.player2Char - 1);
         //Get Win text animator
         EndText = Wintext.GetComponent<Animator>();
         //Players
@@ -57,7 +63,10 @@ public class RoundManager : MonoBehaviour
         player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn.position, transform.rotation);
         player2.GetComponent<DinoScript>().playerNumber = 2;
         //player2.tag = "Player 2";
-
+        if (player1Char == player2Char)
+        {
+            player2.GetComponent<DinoScript>().DupeChar = true;
+        }
         dino1 = player1.GetComponent<Transform>();
         dino2 = player2.GetComponent<Transform>();
     }
@@ -92,7 +101,7 @@ public class RoundManager : MonoBehaviour
         {
             Tie();
         }
-
+        
         CentreCamera();
         ResizeCamera();
     }
@@ -123,6 +132,10 @@ public class RoundManager : MonoBehaviour
     {
         player2 = Instantiate(MenuScript.MenuManager.Characters[(MenuScript.MenuManager.player2Char - 1)], p2Spawn.position, transform.rotation);
         player2.GetComponent<DinoScript>().playerNumber = 2;
+        if (player1Char == player2Char)
+        {
+            player2.GetComponent<DinoScript>().DupeChar = true;
+        }
         dino2 = player2.GetComponent<Transform>();
     }
     void Player2Victory()
