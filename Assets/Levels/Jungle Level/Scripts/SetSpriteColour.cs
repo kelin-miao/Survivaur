@@ -11,11 +11,22 @@ public class SetSpriteColour : MonoBehaviour
     {
         depth = GetComponentInParent<Parallax>().depth;
 
-        float depthColour = Mathf.Clamp(1.0f - (depth * 0.1f), 0.0f, 1.0f);
+        float depthColour = 1.0f / Mathf.Abs(depth);
 
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
         spriteRenderer.color = new Color(depthColour, depthColour, depthColour, 1.0f);
+
+        if (depth > 0)
+        {
+            gameObject.transform.localScale = new Vector3(transform.localScale.x / Mathf.Abs(depth), transform.localScale.y, transform.localScale.z);
+        }
+
+        if (depth < 0)
+        {
+            gameObject.transform.localScale = new Vector3(transform.localScale.x * Mathf.Abs(depth/2.0f) + 1.0f, transform.localScale.y, transform.localScale.z);
+        }
+
 
         //set sorting order
         if (depth > 0)
