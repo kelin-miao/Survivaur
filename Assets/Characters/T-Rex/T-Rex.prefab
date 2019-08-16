@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDam: 20
   herbivoreNutrition: 25
-  carnivoreNutrition: 75
+  carnivoreNutrition: 37.5
 --- !u!95 &139729373540848131
 Animator:
   serializedVersion: 3
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 3978830662094989996}
   - component: {fileID: 2534279330885876227}
   - component: {fileID: 8191489425423369927}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,6 +1200,8 @@ MonoBehaviour:
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
   DeathEffect: {fileID: 2059862136676620720, guid: 111c9b8011241e14d9aa8e296927b170,
     type: 3}
+  DupeChar: 0
+  damageLoop: 0
   MaxHealth: 100
   MaxHunger: 100
   MaxAdrenaline: 2
@@ -1465,7 +1467,7 @@ GameObject:
   - component: {fileID: 1758939451833054514}
   - component: {fileID: 6441464563674947362}
   - component: {fileID: 4590585563092434846}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PlayerTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}

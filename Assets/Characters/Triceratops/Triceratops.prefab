@@ -1553,6 +1553,8 @@ MonoBehaviour:
   DeathSound: {fileID: 8300000, guid: da80d6b7dfbc46c4a9f67c10cfc4d658, type: 3}
   DeathEffect: {fileID: 2059862136676620720, guid: 111c9b8011241e14d9aa8e296927b170,
     type: 3}
+  DupeChar: 0
+  damageLoop: 0
   MaxHealth: 110
   MaxHunger: 100
   MaxAdrenaline: 2

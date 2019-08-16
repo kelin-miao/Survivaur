@@ -62,9 +62,9 @@ public class DinoScript : MonoBehaviour
     [SerializeField] float knockbackForceX = 5.0f;
     [SerializeField] float knockbackForceY = 5.0f;
     //How long before the dino can attack again (ANIMATION LENGTH)
-    float attack1Delay = 0.55f;
+    float attack1Delay = 0.3f;
     //How long after special attack before dino can attack again (ANIM LENGTH)
-    public float specattackDelay = 0.65f;
+    public float specattackDelay = 0.67f;
     //How much hunger can be restored by eating this dino's corpse
     public float corpseNutrition = 100;
     float MaxBubbleSizeX;
@@ -641,8 +641,8 @@ public class DinoScript : MonoBehaviour
         animController.Play("Die");
         Instantiate(DeathEffect, transform.position, transform.rotation);
         this.tag = ("Corpse");
-        gameObject.layer = 9;
-        this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
+        //gameObject.layer = 9;
+        //this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
         rigbod.constraints = RigidbodyConstraints2D.FreezePositionX;
         gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
         gameObject.transform.Find("Canvas").gameObject.transform.Find("HungerSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
