@@ -153,14 +153,24 @@ public class RoundManager : MonoBehaviour
         Invoke("Endgame", 2.5f);
 
     }
-    void Tie()
+
+    IEnumerator Tie()
     {
         p1lost = true;
         p2lost = true;
         EndText.SetBool("Tie", true);
         Time.timeScale = 0.5f;
         Invoke("Endgame", 2.5f);
+        yield return null;
     }
+    //void Tie()
+    //{
+    //    p1lost = true;
+    //    p2lost = true;
+    //    EndText.SetBool("Tie", true);
+    //    Time.timeScale = 0.5f;
+    //    Invoke("Endgame", 2.5f);
+    //}
     void Endgame()
     {
         Time.timeScale = 1.0f;

@@ -576,7 +576,7 @@ public class DinoScript : MonoBehaviour
                 transform.transform.Translate(Vector2.right * -chargeSpeed * Time.deltaTime * Adrenaline);
             }
             gameObject.transform.Find("SpecialAttackColl").GetComponent<PolygonCollider2D>().enabled = true;
-            AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
+            //AudioSource.PlayClipAtPoint(specialAttackSound, transform.position);
             Adrenaline = Adrenaline - 0.01f;
             Invoke("Reset", specattackDelay);
         }
