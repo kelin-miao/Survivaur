@@ -24,7 +24,7 @@ public class RoundManager : MonoBehaviour
     public GameObject Wintext;
     Animator EndText;
     public GameObject MeteorEnd;
-    Animator MeteorFlash;
+    public GameObject fadeOut;
     public GameObject p1Eggs;
     public GameObject p2Eggs;
     Color NormalColor;
@@ -56,7 +56,6 @@ public class RoundManager : MonoBehaviour
         //Get Win text animator
         EndText = Wintext.GetComponent<Animator>();
         //Get Meteor ending animator
-        MeteorFlash = MeteorEnd.GetComponent<Animator>();
         //Players
         Time.timeScale = 1.0f;
         //Make player 1
@@ -146,6 +145,7 @@ public class RoundManager : MonoBehaviour
         EndText.SetBool("P2Won", true);
         Time.timeScale = 0.5f;
         Invoke("FlashMeteor", 2.5f);
+        fadeOut.SetActive(true);
     }
     void Player1Victory()
     {
@@ -153,6 +153,7 @@ public class RoundManager : MonoBehaviour
         EndText.SetBool("P1Won", true);
         Time.timeScale = 0.5f;
         Invoke("FlashMeteor", 2.5f);
+        fadeOut.SetActive(true);
     }
 
     void MeteorEndgame()
@@ -160,7 +161,7 @@ public class RoundManager : MonoBehaviour
         Time.timeScale = 0.5f;
         Invoke("FlashMeteor", 2.5f);
         MeteorEnd.SetActive(true);
-        MeteorFlash.Play("Jungle Anim");
+        fadeOut.SetActive(true);
     }
 
     void FlashMeteor()
@@ -169,7 +170,7 @@ public class RoundManager : MonoBehaviour
         //Time.timeScale = 1.0f;
         Invoke("Endgame", 2.5f);
         MeteorEnd.SetActive(true);
-        MeteorFlash.Play("Jungle Anim");
+        fadeOut.SetActive(true);
     }
 
     IEnumerator Tie()
