@@ -31,11 +31,11 @@ public class DinoScript : MonoBehaviour
     //Alive bool
     bool alive = true;
     //Health Drain Multiplier
-    public float healthDrainMult = 2;
+    public float healthDrainMult = 2.0f;
     //Hunger Value
     public float Hunger;
     //Hunger Drain Multiplier
-    public float hungerDrainMult = 3;
+    public float hungerDrainMult = 4.0f;
     //block resource
     public float block;
     //block drain
@@ -611,6 +611,7 @@ public class DinoScript : MonoBehaviour
     {
         if (Hunger > 0)
         {
+            //per minute
             Hunger -= Time.deltaTime * hungerDrainMult * Adrenaline;
         }
         else

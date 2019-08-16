@@ -5,7 +5,8 @@ using UnityEngine;
 public class PrimaryAttack : MonoBehaviour
 {
     [SerializeField] private float attackDam = 20;
-    [SerializeField] private float nutrition = 20;
+    [SerializeField] private float herbivoreNutrition = 25;
+    [SerializeField] private float carnivoreNutrition = 75;
 
     // Start is called before the first frame update
     void Start()
@@ -74,15 +75,15 @@ public class PrimaryAttack : MonoBehaviour
         //Carnivore Feeding (!DISABLE FOR HERBIVORES!)
         if (attackColl.gameObject.tag == "Corpse" && !myDino.isHerbivore)
         {
-            myDino.Hunger += Mathf.Clamp(nutrition, 0, myDino.MaxHunger - myDino.Hunger);
-            otherDino.corpseNutrition -= nutrition;
+            myDino.Hunger += Mathf.Clamp(carnivoreNutrition, 0, myDino.MaxHunger - myDino.Hunger);
+            otherDino.corpseNutrition -= carnivoreNutrition;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
         //Herbivore Feeding
         if (attackColl.gameObject.tag == "HerbBush" && myDino.isHerbivore)
         {
-            myDino.Hunger += Mathf.Clamp(nutrition, 0, myDino.MaxHunger - myDino.Hunger);
-            attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition -= nutrition;
+            myDino.Hunger += Mathf.Clamp(herbivoreNutrition, 0, myDino.MaxHunger - myDino.Hunger);
+            attackColl.gameObject.GetComponent<HerbScript>().HerbNutrition -= herbivoreNutrition;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
 
