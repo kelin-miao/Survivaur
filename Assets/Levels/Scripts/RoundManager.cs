@@ -23,7 +23,7 @@ public class RoundManager : MonoBehaviour
     public GameObject player2;
     public GameObject Wintext;
     Animator EndText;
-    public GameObject MeteorEnd;
+    //public GameObject MeteorEnd;
     public GameObject fadeOut;
     public GameObject p1Eggs;
     public GameObject p2Eggs;
@@ -49,8 +49,6 @@ public class RoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NormalColor = new Color(255, 255, 255, 255);
-        DuplicateColor = new Color(255, 200, 130, 255);
         player1Char = (MenuScript.MenuManager.player1Char - 1);
         player2Char = (MenuScript.MenuManager.player2Char - 1);
         //Get Win text animator
@@ -144,32 +142,31 @@ public class RoundManager : MonoBehaviour
         p1lost = true;
         EndText.SetBool("P2Won", true);
         Time.timeScale = 0.5f;
-        Invoke("FlashMeteor", 2.5f);
-        fadeOut.SetActive(true);
+        Invoke("FlashMeteor", 1.5f);
+        //fadeOut.SetActive(true);
     }
     void Player1Victory()
     {
         p2lost = true;
         EndText.SetBool("P1Won", true);
         Time.timeScale = 0.5f;
-        Invoke("FlashMeteor", 2.5f);
-        fadeOut.SetActive(true);
+        Invoke("FlashMeteor", 1.5f);
+        //fadeOut.SetActive(true);
     }
 
     void MeteorEndgame()
     {
         Time.timeScale = 0.5f;
-        Invoke("FlashMeteor", 2.5f);
-        MeteorEnd.SetActive(true);
-        fadeOut.SetActive(true);
+        //Invoke("Endgame", 2.5f);
+        Invoke("FlashMeteor", 0.0f);
+        //fadeOut.SetActive(true);
     }
 
     void FlashMeteor()
     {
-        //EndText.Play("Nil");
+        EndText.Play("Nil");
         //Time.timeScale = 1.0f;
         Invoke("Endgame", 2.5f);
-        MeteorEnd.SetActive(true);
         fadeOut.SetActive(true);
     }
 
@@ -179,7 +176,7 @@ public class RoundManager : MonoBehaviour
         p2lost = true;
         EndText.SetBool("Tie", true);
         Time.timeScale = 0.5f;
-        Invoke("FlashMeteor", 2.5f);
+        Invoke("FlashMeteor", 1.5f);
         yield return null;
     }
     void Endgame()
