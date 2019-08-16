@@ -23,6 +23,8 @@ public class RoundManager : MonoBehaviour
     public GameObject player2;
     public GameObject Wintext;
     Animator EndText;
+    public GameObject MeteorEnd;
+    Animator MeteorFlash;
     public GameObject p1Eggs;
     public GameObject p2Eggs;
     Color NormalColor;
@@ -53,6 +55,8 @@ public class RoundManager : MonoBehaviour
         player2Char = (MenuScript.MenuManager.player2Char - 1);
         //Get Win text animator
         EndText = Wintext.GetComponent<Animator>();
+        //Get Meteor ending animator
+        MeteorFlash = MeteorEnd.GetComponent<Animator>();
         //Players
         Time.timeScale = 1.0f;
         //Make player 1
@@ -93,8 +97,6 @@ public class RoundManager : MonoBehaviour
         {
             Player1Victory();
         }
-        //p1LifeCount.text = "Player 1 Lives: " + player1Lives;
-        //p2LifeCount.text = "Player 2 Lives: " + player2Lives;
         p1Eggs.GetComponent<Animator>().SetInteger("lives", player1Lives);
         p2Eggs.GetComponent<Animator>().SetInteger("lives", player2Lives);
         if (player1Lives <= 0 && player2Lives <= 0)
@@ -143,15 +145,31 @@ public class RoundManager : MonoBehaviour
         p1lost = true;
         EndText.SetBool("P2Won", true);
         Time.timeScale = 0.5f;
-        Invoke("Endgame", 2.5f);
+        Invoke("FlashMeteor", 2.5f);
     }
     void Player1Victory()
     {
         p2lost = true;
         EndText.SetBool("P1Won", true);
         Time.timeScale = 0.5f;
-        Invoke("Endgame", 2.5f);
+        Invoke("FlashMeteor", 2.5f);
+    }
 
+    void MeteorEndgame()
+    {
+        Time.timeScale = 0.5f;
+        Invoke("FlashMeteor", 2.5f);
+        MeteorEnd.SetActive(true);
+        MeteorFlash.Play("Jungle Anim");
+    }
+
+    void FlashMeteor()
+    {
+        //EndText.Play("Nil");
+        //Time.timeScale = 1.0f;
+        Invoke("Endgame", 2.5f);
+        MeteorEnd.SetActive(true);
+        MeteorFlash.Play("Jungle Anim");
     }
 
     IEnumerator Tie()
@@ -160,17 +178,9 @@ public class RoundManager : MonoBehaviour
         p2lost = true;
         EndText.SetBool("Tie", true);
         Time.timeScale = 0.5f;
-        Invoke("Endgame", 2.5f);
+        Invoke("FlashMeteor", 2.5f);
         yield return null;
     }
-    //void Tie()
-    //{
-    //    p1lost = true;
-    //    p2lost = true;
-    //    EndText.SetBool("Tie", true);
-    //    Time.timeScale = 0.5f;
-    //    Invoke("Endgame", 2.5f);
-    //}
     void Endgame()
     {
         Time.timeScale = 1.0f;
