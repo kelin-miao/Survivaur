@@ -317,8 +317,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 813211283
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2724004480270651555, guid: 31baf21fb6a79b34f8992d91f76a7e8f,
     type: 3}
@@ -496,6 +496,8 @@ MonoBehaviour:
   adrenalinedrainMult: 0.1
   maxSpeed: 7
   jumpForce: 14
+  knockbackForceX: 5
+  knockbackForceY: 5
   specattackDelay: 0.75
   corpseNutrition: 75
   rigbod: {fileID: 0}
@@ -1638,7 +1640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDam: 20
-  nutrition: 20
+  herbivoreNutrition: 25
+  carnivoreNutrition: 75
 --- !u!95 &1696138856135094100
 Animator:
   serializedVersion: 3

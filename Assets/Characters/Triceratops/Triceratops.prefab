@@ -1128,7 +1128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDam: 15
-  nutrition: 20
+  herbivoreNutrition: 25
+  carnivoreNutrition: 75
 --- !u!95 &5893117387676177893
 Animator:
   serializedVersion: 3
@@ -1566,6 +1567,8 @@ MonoBehaviour:
   adrenalinedrainMult: 0.1
   maxSpeed: 6
   jumpForce: 12
+  knockbackForceX: 5
+  knockbackForceY: 5
   specattackDelay: 0.75
   corpseNutrition: 120
   rigbod: {fileID: 0}
@@ -1605,8 +1608,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 813211283
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2724004480270651555, guid: b4dfa275466f2a94abfe96715e2aaf24,
     type: 3}
