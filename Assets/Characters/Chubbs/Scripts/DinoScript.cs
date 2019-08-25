@@ -636,6 +636,8 @@ public class DinoScript : MonoBehaviour
     {
         alive = false;
         AudioSource.PlayClipAtPoint(DeathSound, transform.position, 2);
+        blocking = false;
+        bubbleShield.SetActive(false);
         HPslider.enabled = false;
         hungerSlider.enabled = false;
         animController.Play("Die");

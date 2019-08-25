@@ -14,9 +14,14 @@ public class IcicleDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            float Health = collision.gameObject.GetComponent<DinoScript>().Health;
-
-            Health -= 10f;
+            if(collision.gameObject.GetComponent<DinoScript>().blocking == false)
+            {
+                collision.gameObject.GetComponent<DinoScript>().Health -= 5.0f;
+            }
+            else
+            {
+                collision.gameObject.GetComponent<DinoScript>().block -= 7.0f;
+            }
         }
 
 
