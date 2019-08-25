@@ -643,7 +643,7 @@ public class DinoScript : MonoBehaviour
         animController.Play("Die");
         Instantiate(DeathEffect, transform.position, transform.rotation);
         this.tag = ("Corpse");
-        //gameObject.layer = 9;
+        gameObject.layer = 9;
         //this.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
         rigbod.constraints = RigidbodyConstraints2D.FreezePositionX;
         gameObject.transform.Find("Canvas").gameObject.transform.Find("HealthSlider").GetComponentInChildren<RectTransform>().gameObject.SetActive(false);
